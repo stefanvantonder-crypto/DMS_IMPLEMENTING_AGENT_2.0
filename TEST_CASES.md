@@ -53,7 +53,7 @@ These are manual test categories only. They define what must be checked as V1 fe
 
 - Confirm `app/index.html` opens directly in a browser.
 - Confirm the configuration banner reports repository JSON configuration or embedded fallback configuration.
-- Confirm fallback mode displays: `Fallback configuration loaded. Repository JSON not available. Use only for local UI testing.`
+- Confirm fallback mode displays: `Fallback configuration loaded. Repository JSON not available. Non-authoritative; use only for local UI testing.`
 - Confirm all four approved agents are visible.
 - Confirm Proposal Preparation Agent displays exactly 1 enabled V1 output.
 - Confirm Project Governance Agent displays exactly 15 enabled V1 outputs.
@@ -136,3 +136,25 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm the session report includes the V1 scope-control notice and does not describe itself as a generated client deliverable.
 - Confirm no files are created automatically under `outputs/` except browser downloads chosen by the user.
 - Confirm no DOCX files are generated.
+
+## V1.7 Manual Browser Polish Checklist
+
+- Open `app/index.html` directly in a browser and confirm the page loads cleanly without a server.
+- Confirm the header identifies the static Markdown prompt-control shell and the configuration banner is readable.
+- Confirm fallback mode, if shown, is clearly marked non-authoritative.
+- Select Proposal Preparation Agent and confirm the purpose, input guidance and Proposal output display clearly.
+- Select Proposal only, generate a controlled prompt and confirm Proposal is the only selected output in the prompt.
+- Download a session report and confirm the report contains Proposal only.
+- Select Project Governance Agent and confirm exactly 15 governance outputs appear.
+- Select Project Charter only, generate a controlled prompt and confirm only Project Charter appears.
+- Add Risk Management Plan, generate again and confirm only Project Charter and Risk Management Plan appear.
+- Download a session report and confirm it records only the selected governance outputs.
+- Select Document Review Agent and confirm exactly 3 review outputs appear.
+- Select Gap Analysis Report and confirm the prompt includes compliance, gaps, audit readiness, evidence quality and severity levels.
+- Select Workflow Agent and confirm exactly 5 workflow outputs appear and the Mini Workflow Brief panel appears.
+- Complete the Mini Workflow Brief fields, select Workflow Design Document and confirm the prompt includes the brief content.
+- Confirm validation warnings appear for no agent selected, agent selected with no output selected, and Workflow Agent selected without a process source or Mini Workflow Brief.
+- Confirm the selected-output-only rule still prevents unselected outputs from appearing in prompts and session reports.
+- Confirm prompt preview text wraps cleanly and remains readable.
+- Confirm Download Session Report creates a Markdown browser download only and does not create generated client documents inside the repository.
+- Confirm no backend, Python, DOCX generation, root `package.json`, `server.js`, external libraries or generated client documents are added.

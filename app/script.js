@@ -305,7 +305,7 @@ function renderConfigBanner() {
   }
 
   banner.classList.add("status-fallback");
-  banner.textContent = "Fallback configuration loaded. Repository JSON not available. Use only for local UI testing.";
+  banner.textContent = "Fallback configuration loaded. Repository JSON not available. Non-authoritative; use only for local UI testing.";
 }
 
 function renderAgents() {
@@ -452,7 +452,7 @@ function renderWarnings() {
   elements.warningCount.textContent = String(warnings.length);
 
   if (warnings.length === 0) {
-    elements.warningList.innerHTML = `<div class="success-message">No V1.4 prompt warnings for the current selection.</div>`;
+    elements.warningList.innerHTML = `<div class="success-message">No current validation warnings for the selected V1 controls.</div>`;
     return;
   }
 
@@ -513,7 +513,7 @@ function generateControlledPrompt() {
 
   const prompt = buildControlledPrompt();
   elements.promptPreview.value = prompt;
-  setActionStatus("Controlled prompt generated for selected outputs only.");
+  setActionStatus("Controlled prompt generated for selected outputs only. Review the preview before using it.");
   return prompt;
 }
 
@@ -781,7 +781,7 @@ function downloadSessionReport() {
   const report = buildSessionReport();
   const filename = getSessionReportFileName();
   triggerMarkdownDownload(report, filename);
-  setActionStatus(`Session report prepared for download: ${filename}`);
+  setActionStatus(`Session report prepared as Markdown for browser download: ${filename}`);
   return { filename, report };
 }
 

@@ -222,6 +222,7 @@ label span,
 .template-row span {
   color: var(--muted);
   line-height: 1.42;
+  overflow-wrap: anywhere;
 }
 
 .agent-card.selected {
@@ -390,6 +391,7 @@ label span,
 .prompt-preview {
   min-height: 270px;
   font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
   line-height: 1.5;
 }
 

@@ -9,7 +9,7 @@
 <body>
   <header class="app-header">
     <div>
-      <p class="eyebrow">Version 1.5 Markdown prompt-control shell</p>
+      <p class="eyebrow">Version 1.7 Markdown prompt-control shell</p>
       <h1>DMS Implementing Agent 2.0</h1>
       <p class="subtitle">Markdown-first controlled prompt assistant for proposal preparation, project governance, document review and workflow design.</p>
     </div>
@@ -160,10 +160,10 @@
         <div class="button-row">
           <button id="generate-prompt" class="primary-button" type="button">Generate Controlled Prompt</button>
           <button id="copy-prompt" type="button">Copy Prompt</button>
-          <button id="download-report" type="button">Download Session Report</button>
+          <button id="download-report" type="button">Download Session Report (.md)</button>
         </div>
       </div>
-      <textarea id="prompt-preview" class="prompt-preview" rows="14" readonly>Select an agent and output, then click Generate Controlled Prompt.</textarea>
+      <textarea id="prompt-preview" class="prompt-preview" rows="14" readonly>Select an agent and one or more outputs, then click Generate Controlled Prompt. Session reports can be downloaded as Markdown.</textarea>
       <p id="action-status" class="action-status" aria-live="polite"></p>
     </section>
   </main>
