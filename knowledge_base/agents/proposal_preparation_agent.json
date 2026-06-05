@@ -1,0 +1,98 @@
+{
+  "id": "proposal_preparation_agent",
+  "name": "Proposal Preparation Agent",
+  "version": "1.0",
+  "status": "draft",
+  "ui_label": "Proposal Preparation Agent",
+  "purpose": "Prepares compliant and high-scoring bid proposals based on client TORs, RFQs, RFPs and previous DMS proposal examples.",
+  "required_inputs": [
+    "Client TOR / RFQ / RFP",
+    "Bid specification",
+    "Previous proposal example",
+    "Company profile"
+  ],
+  "optional_inputs": [
+    "DMS user manual",
+    "DMS architecture document",
+    "Pricing schedule",
+    "Reference letters"
+  ],
+  "allowed_inputs": [
+    "Client TOR / RFQ / RFP",
+    "Bid specification",
+    "Previous proposal example",
+    "DMS user manual",
+    "DMS architecture document",
+    "Pricing schedule",
+    "Reference letters",
+    "Company profile"
+  ],
+  "allowed_outputs": [
+    "Proposal"
+  ],
+  "default_output_folder": "outputs/markdown/proposals",
+  "template_group": "proposal_templates",
+  "prompt_file": "prompts/generation_prompt.md",
+  "selection_rules": {
+    "generate_only_selected_outputs": true,
+    "mark_missing_as_to_be_confirmed": true,
+    "use_session_documents_only": true,
+    "do_not_update_knowledge_base_from_session_documents": true
+  },
+  "input_aliases": {
+    "TOR": "Client TOR / RFQ / RFP",
+    "RFQ": "Client TOR / RFQ / RFP",
+    "RFP": "Client TOR / RFQ / RFP",
+    "bid spec": "Bid specification",
+    "proposal example": "Previous proposal example",
+    "company credentials": "Company profile"
+  },
+  "output_definitions": [
+    {
+      "output_id": "proposal",
+      "output_name": "Proposal",
+      "template_file": "templates/proposal_templates/PROPOSAL_TEMPLATE.md",
+      "output_folder": "outputs/markdown/proposals",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client TOR / RFQ / RFP"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    }
+  ],
+  "constraints": [
+    "Use session documents only for the current session.",
+    "Do not permanently update the knowledge base from session documents.",
+    "Generate selected outputs only.",
+    "Do not generate unselected outputs.",
+    "Do not invent facts, dates, names, prices, certifications or references.",
+    "Mark missing information as \"To be confirmed\".",
+    "Use formal public-sector consulting language.",
+    "Use Markdown-first output structure in Version 1.x.",
+    "Do not create DOCX outputs in Version 1.x.",
+    "Proposal must respond to the client TOR/RFQ/RFP and bid specification.",
+    "Do not invent pricing.",
+    "Do not invent reference letters.",
+    "Do not invent certifications, accreditation or compliance evidence.",
+    "Where pricing, certificates or evidence are missing, mark as \"To be confirmed\".",
+    "Proposal must be structured for compliance and scoring."
+  ],
+  "validation_rules": [
+    "Warn if Client TOR / RFQ / RFP is missing.",
+    "Warn if Bid specification is missing.",
+    "Warn if Previous proposal example is missing.",
+    "Warn if Company profile is missing.",
+    "Warn if Pricing schedule is missing but pricing content is requested.",
+    "Warn if Reference letters are missing but references are requested."
+  ],
+  "document_classification_guidance": [
+    "Classify TOR, RFQ, RFP, invitation to bid and tender requirement documents as Client TOR / RFQ / RFP.",
+    "Classify scoring criteria, mandatory requirements and compliance schedules as Bid specification.",
+    "Classify previous bid responses and similar proposal examples as Previous proposal example.",
+    "Classify organisational credentials, capability statements and company background documents as Company profile.",
+    "Classify price schedules, fee tables and cost breakdowns as Pricing schedule.",
+    "Classify client testimonials and signed reference letters as Reference letters."
+  ],
+  "missing_information_rule": "Mark missing information as To be confirmed."
+}

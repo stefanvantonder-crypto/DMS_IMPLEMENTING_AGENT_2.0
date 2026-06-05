@@ -1,0 +1,709 @@
+{
+  "version": "1.0",
+  "status": "draft",
+  "output_format": "markdown",
+  "missing_information_placeholder": "To be confirmed",
+  "generate_only_selected_outputs": true,
+  "outputs": [
+    {
+      "id": "proposal",
+      "label": "Proposal",
+      "agent_id": "proposal_preparation_agent",
+      "category": "proposal",
+      "description": "A selected Markdown proposal draft based on supplied proposal inputs.",
+      "template_file": "templates/proposal_templates/PROPOSAL_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/proposals",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client TOR / RFQ / RFP"
+      ],
+      "optional_inputs": [
+        "Bid specification",
+        "Previous proposal example",
+        "DMS user manual",
+        "DMS architecture document",
+        "Pricing schedule",
+        "Reference letters",
+        "Company profile"
+      ],
+      "quality_rules": [
+        "Use only supplied session information.",
+        "Mark missing proposal facts as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "audit_report_implementation_review",
+      "label": "Audit Report Implementation Review",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown review of audit report implementation status and follow-up actions.",
+      "template_file": "templates/project_governance_templates/AUDIT_REPORT_IMPLEMENTATION_REVIEW_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "Client TOR",
+        "Framework / Legislation / Standard",
+        "Client policies and procedures"
+      ],
+      "quality_rules": [
+        "Separate confirmed findings from To be confirmed items.",
+        "Include only selected governance output content."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "change_management_strategy",
+      "label": "Change Management Strategy",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown strategy for managing stakeholder and operational change during DMS implementation.",
+      "template_file": "templates/project_governance_templates/CHANGE_MANAGEMENT_STRATEGY_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "Client policies and procedures",
+        "Project charter example",
+        "DMS system documentation"
+      ],
+      "quality_rules": [
+        "Identify stakeholder impacts using supplied information only.",
+        "Mark missing change roles and dates as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "module_scoping_document",
+      "label": "Module Scoping Document",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown scope definition for selected DMS modules and implementation boundaries.",
+      "template_file": "templates/project_governance_templates/MODULE_SCOPING_DOCUMENT_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client implementation requirements",
+        "DMS system documentation"
+      ],
+      "optional_inputs": [
+        "Approved proposal",
+        "DMS architecture documentation",
+        "Client TOR"
+      ],
+      "quality_rules": [
+        "List in-scope and out-of-scope modules clearly.",
+        "Use To be confirmed for missing module decisions."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "needs_analysis",
+      "label": "Needs Analysis",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown analysis of client needs, implementation gaps, and priority requirements.",
+      "template_file": "templates/project_governance_templates/NEEDS_ANALYSIS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client TOR",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "Approved proposal",
+        "Client policies and procedures",
+        "Framework / Legislation / Standard"
+      ],
+      "quality_rules": [
+        "Tie needs to supplied client information.",
+        "Do not invent client priorities."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "network_capacity_assessment_approach",
+      "label": "Network Capacity Assessment Approach",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown approach for assessing network readiness and capacity for DMS deployment.",
+      "template_file": "templates/project_governance_templates/NETWORK_CAPACITY_ASSESSMENT_APPROACH_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client implementation requirements",
+        "DMS architecture documentation"
+      ],
+      "optional_inputs": [
+        "DMS system documentation",
+        "Client policies and procedures",
+        "Client TOR"
+      ],
+      "quality_rules": [
+        "Keep assessment steps practical and evidence-based.",
+        "Mark missing technical metrics as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "payment_system_uat_test_scripts",
+      "label": "Payment System - UAT Test Scripts",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "Markdown UAT test scripts focused on payment-system related implementation checks.",
+      "template_file": "templates/project_governance_templates/PAYMENT_SYSTEM_UAT_TEST_SCRIPTS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client implementation requirements",
+        "DMS system documentation"
+      ],
+      "optional_inputs": [
+        "Approved proposal",
+        "Client policies and procedures",
+        "Framework / Legislation / Standard"
+      ],
+      "quality_rules": [
+        "Define test purpose, steps, expected result, and status fields.",
+        "Use To be confirmed for missing test data."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "post_implementation_support_plan",
+      "label": "Post-Implementation Support Plan",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown plan for support activities after DMS implementation.",
+      "template_file": "templates/project_governance_templates/POST_IMPLEMENTATION_SUPPORT_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "DMS system documentation",
+        "Client policies and procedures",
+        "Project charter example"
+      ],
+      "quality_rules": [
+        "Separate support scope, responsibilities, and escalation items.",
+        "Mark unknown support dates or owners as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "project_charter",
+      "label": "Project Charter",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown project charter for DMS implementation governance.",
+      "template_file": "templates/project_governance_templates/PROJECT_CHARTER_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client TOR"
+      ],
+      "optional_inputs": [
+        "Project charter example",
+        "Client implementation requirements",
+        "Framework / Legislation / Standard"
+      ],
+      "quality_rules": [
+        "Include objectives, scope, roles, risks, and approval placeholders.",
+        "Mark missing project facts as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "project_scope",
+      "label": "Project Scope",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown project scope document defining inclusions, exclusions, deliverables, and assumptions.",
+      "template_file": "templates/project_governance_templates/PROJECT_SCOPE_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "Client TOR",
+        "DMS system documentation",
+        "DMS architecture documentation"
+      ],
+      "quality_rules": [
+        "Separate scope boundaries from assumptions.",
+        "Use To be confirmed for missing deliverables or exclusions."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "risk_management_plan",
+      "label": "Risk Management Plan",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown plan for identifying, rating, managing, and reporting DMS implementation risks.",
+      "template_file": "templates/project_governance_templates/RISK_MANAGEMENT_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "Client policies and procedures",
+        "Framework / Legislation / Standard",
+        "Project charter example"
+      ],
+      "quality_rules": [
+        "Include risk description, cause, impact, owner, and mitigation fields.",
+        "Mark missing owners and ratings as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "stakeholder_analysis_matrix",
+      "label": "Stakeholder Analysis Matrix",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown stakeholder matrix for roles, influence, needs, and engagement notes.",
+      "template_file": "templates/project_governance_templates/STAKEHOLDER_ANALYSIS_MATRIX_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "Approved proposal",
+        "Client TOR",
+        "Client policies and procedures"
+      ],
+      "quality_rules": [
+        "Separate named stakeholders from role-only placeholders.",
+        "Use To be confirmed when stakeholder names or responsibilities are missing."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "system_roll_out_plan",
+      "label": "System Roll-out Plan",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown plan for rolling out the DMS solution across users, sites, or modules.",
+      "template_file": "templates/project_governance_templates/SYSTEM_ROLLOUT_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "DMS system documentation",
+        "DMS architecture documentation",
+        "Client policies and procedures"
+      ],
+      "quality_rules": [
+        "Define roll-out phases, dependencies, and readiness checks.",
+        "Mark missing dates, sites, or owners as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "test_and_go_live_plan",
+      "label": "Test and Go-Live Plan",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown plan for testing, readiness, sign-off, and go-live activities.",
+      "template_file": "templates/project_governance_templates/TEST_AND_GO_LIVE_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "optional_inputs": [
+        "DMS system documentation",
+        "Client policies and procedures",
+        "Framework / Legislation / Standard"
+      ],
+      "quality_rules": [
+        "Include test phases, go-live criteria, and sign-off placeholders.",
+        "Use To be confirmed for missing approvals or dates."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "tor_technical_committee",
+      "label": "TOR Technical Committee",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "A Markdown terms-of-reference document for a technical committee.",
+      "template_file": "templates/project_governance_templates/TOR_TECHNICAL_COMMITTEE_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client implementation requirements",
+        "Client policies and procedures"
+      ],
+      "optional_inputs": [
+        "Approved proposal",
+        "Client TOR",
+        "Framework / Legislation / Standard"
+      ],
+      "quality_rules": [
+        "Define mandate, membership, roles, meetings, and reporting lines.",
+        "Mark missing committee members or authority levels as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "uat_test_scripts",
+      "label": "UAT Test Scripts",
+      "agent_id": "project_governance_agent",
+      "category": "project_governance",
+      "description": "General Markdown user acceptance testing scripts for DMS implementation.",
+      "template_file": "templates/project_governance_templates/UAT_TEST_SCRIPTS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Client implementation requirements",
+        "DMS system documentation"
+      ],
+      "optional_inputs": [
+        "Approved proposal",
+        "DMS architecture documentation",
+        "Client policies and procedures"
+      ],
+      "quality_rules": [
+        "Include test scenario, steps, expected result, actual result, and status fields.",
+        "Use To be confirmed for missing data, users, or expected outcomes."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "gap_analysis_report",
+      "label": "Gap Analysis Report",
+      "agent_id": "document_review_agent",
+      "category": "document_review",
+      "description": "A Markdown report comparing a reviewed document against selected standards or requirements.",
+      "template_file": "templates/review_templates/GAP_ANALYSIS_REPORT_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/review_reports",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Document to be reviewed"
+      ],
+      "optional_inputs": [
+        "GIAMA Act",
+        "FIDPM / LGFIDPM",
+        "C-AMP guideline",
+        "U-AMP guideline",
+        "GRAP standards",
+        "PFMA / MFMA",
+        "Client policies and procedures"
+      ],
+      "quality_rules": [
+        "Separate observed gaps from recommended actions.",
+        "Mark unsupported findings as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "improvement_action_plan",
+      "label": "Improvement Action Plan",
+      "agent_id": "document_review_agent",
+      "category": "document_review",
+      "description": "A Markdown action plan for improvements identified during document review.",
+      "template_file": "templates/review_templates/IMPROVEMENT_ACTION_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/review_reports",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Document to be reviewed"
+      ],
+      "optional_inputs": [
+        "Ad hoc review requirements",
+        "Client policies and procedures",
+        "Framework / Legislation / Standard"
+      ],
+      "quality_rules": [
+        "Include action, owner, priority, due date, and evidence fields where supplied.",
+        "Use To be confirmed for missing owners, priorities, or dates."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "executive_review_summary",
+      "label": "Executive Review Summary",
+      "agent_id": "document_review_agent",
+      "category": "document_review",
+      "description": "A concise Markdown executive summary of document review findings.",
+      "template_file": "templates/review_templates/EXECUTIVE_REVIEW_SUMMARY_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/review_reports",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Document to be reviewed"
+      ],
+      "optional_inputs": [
+        "Ad hoc review requirements",
+        "Other custom review documents",
+        "Client policies and procedures"
+      ],
+      "quality_rules": [
+        "Keep the summary evidence-based and easy to scan.",
+        "Mark missing executive context as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "workflow_design_document",
+      "label": "Workflow Design Document",
+      "agent_id": "workflow_agent",
+      "category": "workflow",
+      "description": "A Markdown workflow design document covering process flow, stages, roles, and routing logic.",
+      "template_file": "templates/workflow_templates/WORKFLOW_DESIGN_DOCUMENT_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Business process description",
+        "Mini Workflow Brief"
+      ],
+      "optional_inputs": [
+        "Client TOR",
+        "Approved proposal",
+        "Existing workflow example",
+        "Compliance requirements"
+      ],
+      "quality_rules": [
+        "Document workflow stages, roles, routing, and exceptions clearly.",
+        "Mark missing routing logic as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "workflow_steps",
+      "label": "Workflow Steps",
+      "agent_id": "workflow_agent",
+      "category": "workflow",
+      "description": "A Markdown step-by-step breakdown of a selected workflow.",
+      "template_file": "templates/workflow_templates/WORKFLOW_STEPS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Business process description",
+        "Mini Workflow Brief"
+      ],
+      "optional_inputs": [
+        "SOP",
+        "Existing workflow example",
+        "User interview notes"
+      ],
+      "quality_rules": [
+        "List steps in a clear sequence.",
+        "Use To be confirmed for missing triggers, actions, or outcomes."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "roles_and_responsibilities_matrix",
+      "label": "Roles and Responsibilities Matrix",
+      "agent_id": "workflow_agent",
+      "category": "workflow",
+      "description": "A Markdown matrix of workflow roles, responsibilities, handoffs, and approvals.",
+      "template_file": "templates/workflow_templates/ROLES_AND_RESPONSIBILITIES_MATRIX_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Roles / People involved",
+        "Mini Workflow Brief"
+      ],
+      "optional_inputs": [
+        "User interview notes",
+        "Client policy",
+        "SOP"
+      ],
+      "quality_rules": [
+        "Identify role names separately from named people where possible.",
+        "Mark missing responsibility owners as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "sla_escalation_rules",
+      "label": "SLA / Escalation Rules",
+      "agent_id": "workflow_agent",
+      "category": "workflow",
+      "description": "Markdown SLA and escalation rules for workflow timing, overdue handling, and escalation roles.",
+      "template_file": "templates/workflow_templates/SLA_ESCALATION_RULES_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Workflow Rules / Conditions",
+        "Mini Workflow Brief"
+      ],
+      "optional_inputs": [
+        "Client policy",
+        "Compliance requirements",
+        "SOP"
+      ],
+      "quality_rules": [
+        "Define timing, escalation trigger, escalation recipient, and expected action.",
+        "Use To be confirmed for missing SLA durations or escalation paths."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    },
+    {
+      "id": "intouch_configuration_notes",
+      "label": "InTouch Configuration Notes",
+      "agent_id": "workflow_agent",
+      "category": "workflow",
+      "description": "Markdown configuration notes for translating workflow requirements into InTouch setup guidance.",
+      "template_file": "templates/workflow_templates/INTOUCH_CONFIGURATION_NOTES_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_format": "markdown",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_inputs": [
+        "Business process description",
+        "Mini Workflow Brief"
+      ],
+      "optional_inputs": [
+        "Existing workflow example",
+        "Compliance requirements",
+        "User interview notes"
+      ],
+      "quality_rules": [
+        "Keep notes implementation-oriented but not executable backend logic.",
+        "Mark missing InTouch configuration details as To be confirmed."
+      ],
+      "missing_information_placeholder": "To be confirmed",
+      "suggested_file_name_pattern": "{session_name}_{output_label}_Draft_v01.md",
+      "selected_output_only_rule": true,
+      "supports_partial_data": true
+    }
+  ]
+}

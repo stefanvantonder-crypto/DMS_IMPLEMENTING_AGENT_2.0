@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.dms-implementing-agent/schemas/agent.schema.json",
+  "title": "DMS Implementing Agent Definition",
+  "description": "Schema for a V1.x Markdown-first agent definition. This schema controls agent metadata, input rules, output permissions, prompt linkage, and missing-information behavior.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "version",
+    "status",
+    "ui_label",
+    "purpose",
+    "required_inputs",
+    "allowed_inputs",
+    "allowed_outputs",
+    "default_output_folder",
+    "template_group",
+    "prompt_file",
+    "selection_rules",
+    "constraints",
+    "validation_rules",
+    "missing_information_rule"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$",
+      "description": "Stable machine-readable agent identifier."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Formal agent name."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v?[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$",
+      "description": "Agent definition version."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "inactive",
+        "archived"
+      ],
+      "description": "Lifecycle status for the agent definition."
+    },
+    "ui_label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short display label for future static UI controls."
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Plain-language statement of what the agent does."
+    },
+    "required_inputs": {
+      "type": "array",
+      "description": "Input types that must be supplied or marked as To be confirmed.",
+      "items": {
+        "$ref": "#/$defs/input_reference"
+      },
+      "uniqueItems": true
+    },
+    "optional_inputs": {
+      "type": "array",
+      "description": "Helpful input types that are not mandatory.",
+      "items": {
+        "$ref": "#/$defs/input_reference"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "allowed_inputs": {
+      "type": "array",
+      "description": "Complete list of input types this agent may accept.",
+      "items": {
+        "$ref": "#/$defs/input_reference"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "allowed_outputs": {
+      "type": "array",
+      "description": "Output identifiers this agent may generate when selected.",
+      "items": {
+        "$ref": "#/$defs/output_reference"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "default_output_folder": {
+      "type": "string",
+      "pattern": "^outputs/markdown/[a-z0-9_/-]+/$",
+      "description": "Approved V1 Markdown output folder for this agent."
+    },
+    "template_group": {
+      "type": "string",
+      "enum": [
+        "proposal_templates",
+        "project_governance_templates",
+        "review_templates",
+        "workflow_templates"
+      ],
+      "description": "Approved Markdown template group for the agent."
+    },
+    "prompt_file": {
+      "type": "string",
+      "pattern": "^prompts/[A-Za-z0-9_./-]+\\.md$",
+      "description": "Prompt-control file used by the agent."
+    },
+    "selection_rules": {
+      "type": "object",
+      "description": "Rules that prevent automatic or unselected generation.",
+      "additionalProperties": false,
+      "required": [
+        "generate_only_selected_outputs",
+        "mark_missing_as_to_be_confirmed",
+        "use_session_documents_only",
+        "do_not_update_knowledge_base_from_session_documents"
+      ],
+      "properties": {
+        "generate_only_selected_outputs": {
+          "const": true,
+          "description": "The agent may generate only outputs selected by the user."
+        },
+        "mark_missing_as_to_be_confirmed": {
+          "const": true,
+          "description": "Missing facts must be marked as To be confirmed."
+        },
+        "use_session_documents_only": {
+          "const": true,
+          "description": "The agent may use only documents supplied or selected for the current session."
+        },
+        "do_not_update_knowledge_base_from_session_documents": {
+          "const": true,
+          "description": "Session documents must not automatically alter knowledge-base files."
+        }
+      }
+    },
+    "input_aliases": {
+      "type": "object",
+      "description": "Optional mapping of alternate user wording to approved input types.",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": {}
+    },
+    "output_definitions": {
+      "type": "array",
+      "description": "Agent-local summaries of allowed outputs. Canonical output detail belongs in engine/output_registry.json.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "output_id",
+          "output_name",
+          "template_file",
+          "output_folder",
+          "enabled_in_v1",
+          "required_input_minimum",
+          "supports_partial_data",
+          "missing_data_placeholder"
+        ],
+        "properties": {
+          "output_id": {
+            "$ref": "#/$defs/output_reference"
+          },
+          "output_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "template_file": {
+            "type": "string",
+            "pattern": "^templates/[A-Za-z0-9_./ -]+\\.md$"
+          },
+          "output_folder": {
+            "type": "string",
+            "pattern": "^outputs/markdown/[a-z0-9_/-]+$"
+          },
+          "enabled_in_v1": {
+            "type": "boolean"
+          },
+          "required_input_minimum": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/input_reference"
+            },
+            "uniqueItems": true
+          },
+          "supports_partial_data": {
+            "type": "boolean"
+          },
+          "missing_data_placeholder": {
+            "type": "string",
+            "const": "To be confirmed"
+          }
+        }
+      },
+      "default": []
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Plain-language restrictions for the agent.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "validation_rules": {
+      "type": "array",
+      "description": "Manual or static validation checks required before accepting generated output.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "document_classification_guidance": {
+      "type": "array",
+      "description": "Plain-language guidance for matching session documents to approved input types.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "missing_information_rule": {
+      "type": "string",
+      "const": "Mark missing information as To be confirmed.",
+      "description": "Required rule for unknown or unavailable facts."
+    }
+  },
+  "$defs": {
+    "input_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output_reference": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"
+    }
+  }
+}

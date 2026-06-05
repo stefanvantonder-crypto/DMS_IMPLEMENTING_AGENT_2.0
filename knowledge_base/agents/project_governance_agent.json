@@ -1,0 +1,294 @@
+{
+  "id": "project_governance_agent",
+  "name": "Project Governance Agent",
+  "version": "1.0",
+  "status": "draft",
+  "ui_label": "Project Governance Agent",
+  "purpose": "Creates project governance and implementation documents required to deliver DMS implementation projects in a controlled and auditable manner.",
+  "required_inputs": [
+    "Approved proposal",
+    "Client TOR",
+    "DMS system documentation",
+    "DMS architecture documentation"
+  ],
+  "optional_inputs": [
+    "Project charter example",
+    "Client implementation requirements",
+    "Client policies and procedures",
+    "Framework / Legislation / Standard"
+  ],
+  "allowed_inputs": [
+    "Approved proposal",
+    "Client TOR",
+    "DMS system documentation",
+    "DMS architecture documentation",
+    "Project charter example",
+    "Client implementation requirements",
+    "Client policies and procedures",
+    "Framework / Legislation / Standard"
+  ],
+  "allowed_outputs": [
+    "Audit Report Implementation Review",
+    "Change Management Strategy",
+    "Module Scoping Document",
+    "Needs Analysis",
+    "Network Capacity Assessment Approach",
+    "Payment System - UAT Test Scripts",
+    "Post-Implementation Support Plan",
+    "Project Charter",
+    "Project Scope",
+    "Risk Management Plan",
+    "Stakeholder Analysis Matrix",
+    "System Roll-out Plan",
+    "Test and Go-Live Plan",
+    "TOR Technical Committee",
+    "UAT Test Scripts"
+  ],
+  "default_output_folder": "outputs/markdown/governance_documents",
+  "template_group": "project_governance_templates",
+  "prompt_file": "prompts/generation_prompt.md",
+  "selection_rules": {
+    "generate_only_selected_outputs": true,
+    "mark_missing_as_to_be_confirmed": true,
+    "use_session_documents_only": true,
+    "do_not_update_knowledge_base_from_session_documents": true
+  },
+  "input_aliases": {
+    "signed proposal": "Approved proposal",
+    "terms of reference": "Client TOR",
+    "system manual": "DMS system documentation",
+    "architecture": "DMS architecture documentation",
+    "implementation requirements": "Client implementation requirements",
+    "policies": "Client policies and procedures"
+  },
+  "output_definitions": [
+    {
+      "output_id": "audit_report_implementation_review",
+      "output_name": "Audit Report Implementation Review",
+      "template_file": "templates/project_governance_templates/AUDIT_REPORT_IMPLEMENTATION_REVIEW_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "change_management_strategy",
+      "output_name": "Change Management Strategy",
+      "template_file": "templates/project_governance_templates/CHANGE_MANAGEMENT_STRATEGY_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "module_scoping_document",
+      "output_name": "Module Scoping Document",
+      "template_file": "templates/project_governance_templates/MODULE_SCOPING_DOCUMENT_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client implementation requirements",
+        "DMS system documentation"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "needs_analysis",
+      "output_name": "Needs Analysis",
+      "template_file": "templates/project_governance_templates/NEEDS_ANALYSIS_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client TOR",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "network_capacity_assessment_approach",
+      "output_name": "Network Capacity Assessment Approach",
+      "template_file": "templates/project_governance_templates/NETWORK_CAPACITY_ASSESSMENT_APPROACH_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client implementation requirements",
+        "DMS architecture documentation"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "payment_system_uat_test_scripts",
+      "output_name": "Payment System - UAT Test Scripts",
+      "template_file": "templates/project_governance_templates/PAYMENT_SYSTEM_UAT_TEST_SCRIPTS_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client implementation requirements",
+        "DMS system documentation"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "post_implementation_support_plan",
+      "output_name": "Post-Implementation Support Plan",
+      "template_file": "templates/project_governance_templates/POST_IMPLEMENTATION_SUPPORT_PLAN_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "project_charter",
+      "output_name": "Project Charter",
+      "template_file": "templates/project_governance_templates/PROJECT_CHARTER_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client TOR"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "project_scope",
+      "output_name": "Project Scope",
+      "template_file": "templates/project_governance_templates/PROJECT_SCOPE_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "risk_management_plan",
+      "output_name": "Risk Management Plan",
+      "template_file": "templates/project_governance_templates/RISK_MANAGEMENT_PLAN_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "stakeholder_analysis_matrix",
+      "output_name": "Stakeholder Analysis Matrix",
+      "template_file": "templates/project_governance_templates/STAKEHOLDER_ANALYSIS_MATRIX_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "system_roll_out_plan",
+      "output_name": "System Roll-out Plan",
+      "template_file": "templates/project_governance_templates/SYSTEM_ROLL_OUT_PLAN_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "test_and_go_live_plan",
+      "output_name": "Test and Go-Live Plan",
+      "template_file": "templates/project_governance_templates/TEST_AND_GO_LIVE_PLAN_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Approved proposal",
+        "Client implementation requirements"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "tor_technical_committee",
+      "output_name": "TOR Technical Committee",
+      "template_file": "templates/project_governance_templates/TOR_TECHNICAL_COMMITTEE_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client implementation requirements",
+        "Client policies and procedures"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "uat_test_scripts",
+      "output_name": "UAT Test Scripts",
+      "template_file": "templates/project_governance_templates/UAT_TEST_SCRIPTS_TEMPLATE.md",
+      "output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Client implementation requirements",
+        "DMS system documentation"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    }
+  ],
+  "constraints": [
+    "Use session documents only for the current session.",
+    "Do not permanently update the knowledge base from session documents.",
+    "Generate selected outputs only.",
+    "Do not generate unselected outputs.",
+    "Do not invent facts, dates, names, prices, certifications or references.",
+    "Mark missing information as \"To be confirmed\".",
+    "Use formal public-sector consulting language.",
+    "Use Markdown-first output structure in Version 1.x.",
+    "Do not create DOCX outputs in Version 1.x.",
+    "Governance outputs must be controlled, auditable and implementation-ready.",
+    "Use approved proposal, TOR, DMS documentation, architecture documentation, client requirements and policies where provided.",
+    "Include governance, scope, roles, responsibilities, deliverables, milestones, risks, assumptions, dependencies, quality controls and sign-off sections where relevant.",
+    "Do not copy client-specific details from examples unless they apply to the current session.",
+    "Missing project-specific details must be marked \"To be confirmed\"."
+  ],
+  "validation_rules": [
+    "Warn if Approved proposal is missing.",
+    "Warn if Client TOR is missing.",
+    "Warn if DMS system documentation is missing.",
+    "Warn if DMS architecture documentation is missing.",
+    "Warn if Project Charter is selected but no project charter example is provided.",
+    "Warn if testing outputs are selected but no testing requirements are provided.",
+    "Warn if policy-heavy outputs are selected but no client policies and procedures are provided."
+  ],
+  "document_classification_guidance": [
+    "Classify signed or final proposal material as Approved proposal.",
+    "Classify implementation terms, bid requirements and client project instructions as Client TOR.",
+    "Classify manuals, module descriptions and user guidance as DMS system documentation.",
+    "Classify system diagrams, architecture packs and technical platform documents as DMS architecture documentation.",
+    "Classify governance examples carefully and do not copy client-specific details unless applicable to the current session.",
+    "Classify policies, SOPs and governance rules as Client policies and procedures."
+  ],
+  "missing_information_rule": "Mark missing information as To be confirmed."
+}

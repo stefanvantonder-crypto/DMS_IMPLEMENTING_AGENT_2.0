@@ -1,0 +1,51 @@
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+~$*
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor folders
+.vscode/*
+!.vscode/.gitkeep
+.idea/
+
+# Caches
+.cache/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+
+# Generated local test outputs
+outputs/local_test_runs/
+outputs/tmp/
+
+# Office lock files
+~$*.doc
+~$*.docx
+~$*.xls
+~$*.xlsx
+~$*.ppt
+~$*.pptx
+
+# Keep approved V1 project areas trackable
+!app/
+!knowledge_base/
+!engine/
+!templates/
+!prompts/
+!docs/
+!outputs/
+!outputs/.gitkeep

@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "status": "draft",
+  "purpose": "Approved V1.x input and document classifications for the DMS Implementing Agent.",
+  "missing_information_placeholder": "To be confirmed",
+  "agents": [
+    {
+      "agent_id": "proposal_preparation_agent",
+      "agent_name": "Proposal Preparation Agent",
+      "inputs": [
+        "Client TOR / RFQ / RFP",
+        "Bid specification",
+        "Previous proposal example",
+        "DMS user manual",
+        "DMS architecture document",
+        "Pricing schedule",
+        "Reference letters",
+        "Company profile"
+      ]
+    },
+    {
+      "agent_id": "project_governance_agent",
+      "agent_name": "Project Governance Agent",
+      "inputs": [
+        "Approved proposal",
+        "Client TOR",
+        "DMS system documentation",
+        "DMS architecture documentation",
+        "Project charter example",
+        "Client implementation requirements",
+        "Client policies and procedures",
+        "Framework / Legislation / Standard"
+      ]
+    },
+    {
+      "agent_id": "document_review_agent",
+      "agent_name": "Document Review Agent",
+      "inputs": [
+        "Document to be reviewed",
+        "GIAMA Act",
+        "FIDPM / LGFIDPM",
+        "C-AMP guideline",
+        "U-AMP guideline",
+        "GRAP standards",
+        "IFRS standards",
+        "mSCOA requirements",
+        "PFMA / MFMA",
+        "PMBOK 7",
+        "ISO 9001",
+        "TOGAF",
+        "Client policies and procedures",
+        "Ad hoc review requirements",
+        "Other custom review documents"
+      ]
+    },
+    {
+      "agent_id": "workflow_agent",
+      "agent_name": "Workflow Agent",
+      "inputs": [
+        "Client TOR",
+        "Approved proposal",
+        "Business process description",
+        "SOP",
+        "Client policy",
+        "Existing workflow example",
+        "User interview notes",
+        "Compliance requirements",
+        "Mini Workflow Brief"
+      ],
+      "mini_workflow_brief_fields": [
+        "Workflow Description / What must happen",
+        "Workflow Rules / Conditions",
+        "Roles / People involved",
+        "Expected outcome"
+      ]
+    }
+  ]
+}

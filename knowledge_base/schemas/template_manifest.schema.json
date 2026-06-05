@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.dms-implementing-agent/schemas/template_manifest.schema.json",
+  "title": "DMS Implementing Agent Template Manifest Entry",
+  "description": "Schema for a V1.x Markdown template manifest entry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "template_id",
+    "template_name",
+    "template_file",
+    "template_type",
+    "output_id",
+    "agent_id",
+    "template_group",
+    "version",
+    "status",
+    "required_sections",
+    "quality_checks",
+    "missing_information_rule"
+  ],
+  "properties": {
+    "template_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$",
+      "description": "Stable machine-readable template identifier."
+    },
+    "template_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable template name."
+    },
+    "template_file": {
+      "type": "string",
+      "pattern": "^templates/[A-Za-z0-9_./ -]+\\.md$",
+      "description": "Approved Markdown template path."
+    },
+    "template_type": {
+      "type": "string",
+      "const": "markdown",
+      "description": "V1 template type."
+    },
+    "output_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$",
+      "description": "Output definition connected to this template."
+    },
+    "agent_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$",
+      "description": "Agent definition connected to this template."
+    },
+    "template_group": {
+      "type": "string",
+      "enum": [
+        "proposal_templates",
+        "project_governance_templates",
+        "review_templates",
+        "workflow_templates"
+      ],
+      "description": "Approved template folder group."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v?[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$",
+      "description": "Template manifest version."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "inactive",
+        "archived"
+      ],
+      "description": "Template lifecycle status."
+    },
+    "required_sections": {
+      "type": "array",
+      "description": "Markdown sections that must appear in the template.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_tables": {
+      "type": "array",
+      "description": "Markdown tables that must appear in the template, if any.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "quality_checks": {
+      "type": "array",
+      "description": "Manual checks for template completeness and V1 compliance.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "missing_information_rule": {
+      "type": "string",
+      "const": "Use To be confirmed for missing information.",
+      "description": "Required missing-information behavior for this template."
+    }
+  }
+}

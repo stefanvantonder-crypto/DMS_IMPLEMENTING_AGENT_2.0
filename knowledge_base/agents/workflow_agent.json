@@ -1,0 +1,152 @@
+{
+  "id": "workflow_agent",
+  "name": "Workflow Agent",
+  "version": "1.0",
+  "status": "draft",
+  "ui_label": "Workflow Agent",
+  "purpose": "Designs structured workflows for implementation in the DMS InTouch module.",
+  "required_inputs": [
+    "Business process description OR SOP OR Client policy OR Existing workflow example OR User interview notes OR Mini Workflow Brief"
+  ],
+  "optional_inputs": [
+    "Client TOR",
+    "Approved proposal",
+    "Compliance requirements"
+  ],
+  "allowed_inputs": [
+    "Client TOR",
+    "Approved proposal",
+    "Business process description",
+    "SOP",
+    "Client policy",
+    "Existing workflow example",
+    "User interview notes",
+    "Compliance requirements",
+    "Mini Workflow Brief"
+  ],
+  "allowed_outputs": [
+    "Workflow Design Document",
+    "Workflow Steps",
+    "Roles and Responsibilities Matrix",
+    "SLA / Escalation Rules",
+    "InTouch Configuration Notes"
+  ],
+  "default_output_folder": "outputs/markdown/workflow_documents",
+  "template_group": "workflow_templates",
+  "prompt_file": "prompts/workflow_prompt.md",
+  "selection_rules": {
+    "generate_only_selected_outputs": true,
+    "mark_missing_as_to_be_confirmed": true,
+    "use_session_documents_only": true,
+    "do_not_update_knowledge_base_from_session_documents": true
+  },
+  "input_aliases": {
+    "process": "Business process description",
+    "procedure": "SOP",
+    "policy": "Client policy",
+    "workflow example": "Existing workflow example",
+    "interview notes": "User interview notes",
+    "brief": "Mini Workflow Brief",
+    "workflow brief": "Mini Workflow Brief"
+  },
+  "output_definitions": [
+    {
+      "output_id": "workflow_design_document",
+      "output_name": "Workflow Design Document",
+      "template_file": "templates/workflow_templates/WORKFLOW_DESIGN_DOCUMENT_TEMPLATE.md",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Business process description",
+        "Mini Workflow Brief"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "workflow_steps",
+      "output_name": "Workflow Steps",
+      "template_file": "templates/workflow_templates/WORKFLOW_STEPS_TEMPLATE.md",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Business process description",
+        "Mini Workflow Brief"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "roles_and_responsibilities_matrix",
+      "output_name": "Roles and Responsibilities Matrix",
+      "template_file": "templates/workflow_templates/ROLES_AND_RESPONSIBILITIES_MATRIX_TEMPLATE.md",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Roles / People involved",
+        "Mini Workflow Brief"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "sla_escalation_rules",
+      "output_name": "SLA / Escalation Rules",
+      "template_file": "templates/workflow_templates/SLA_ESCALATION_RULES_TEMPLATE.md",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Workflow Rules / Conditions",
+        "Mini Workflow Brief"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "intouch_configuration_notes",
+      "output_name": "InTouch Configuration Notes",
+      "template_file": "templates/workflow_templates/INTOUCH_CONFIGURATION_NOTES_TEMPLATE.md",
+      "output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Business process description",
+        "Mini Workflow Brief"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    }
+  ],
+  "constraints": [
+    "Use session documents only for the current session.",
+    "Do not permanently update the knowledge base from session documents.",
+    "Generate selected outputs only.",
+    "Do not generate unselected outputs.",
+    "Do not invent facts, dates, names, prices, certifications or references.",
+    "Mark missing information as \"To be confirmed\".",
+    "Use formal public-sector consulting language.",
+    "Use Markdown-first output structure in Version 1.x.",
+    "Do not create DOCX outputs in Version 1.x.",
+    "Workflow outputs must be suitable for DMS InTouch workflow configuration.",
+    "Include workflow steps, statuses, roles, decision points, SLA/escalation rules and configuration notes where relevant.",
+    "If no SOP, policy, procedure or process document is available, use the Mini Workflow Brief.",
+    "Do not invent workflow approvals, SLA values or escalation rules unless provided; mark missing items as \"To be confirmed\"."
+  ],
+  "validation_rules": [
+    "Warn if no SOP, business process description, client policy, existing workflow example, user interview notes or Mini Workflow Brief is provided.",
+    "Warn if SLA / Escalation Rules is selected but no SLA or escalation information is provided.",
+    "Warn if InTouch Configuration Notes is selected but no DMS/InTouch configuration requirements are provided."
+  ],
+  "document_classification_guidance": [
+    "Classify plain process descriptions as Business process description.",
+    "Classify formal step-by-step procedures as SOP.",
+    "Classify approved organisational process rules as Client policy.",
+    "Classify prior workflow designs or configuration examples as Existing workflow example.",
+    "Classify workshop notes, interview notes and discovery notes as User interview notes.",
+    "Treat Mini Workflow Brief as a first-class input object with fields: Workflow Description / What must happen; Workflow Rules / Conditions; Roles / People involved; Expected outcome.",
+    "Mini Workflow Brief example - Workflow Description / What must happen: A user requests tea. The request is checked, water is boiled, tea is prepared, quality is checked, tea is served, and the request is closed.",
+    "Mini Workflow Brief example - Workflow Rules / Conditions: Milk and sugar preference must be captured. If ingredients are unavailable, return the request for correction or mark as unavailable.",
+    "Mini Workflow Brief example - Roles / People involved: Requestor, preparer, reviewer, approver, service assistant.",
+    "Mini Workflow Brief example - Expected outcome: The request is fulfilled, recorded, quality-checked and closed."
+  ],
+  "missing_information_rule": "Mark missing information as To be confirmed."
+}

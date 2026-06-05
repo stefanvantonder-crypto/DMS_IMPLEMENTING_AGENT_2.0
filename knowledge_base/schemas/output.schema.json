@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.dms-implementing-agent/schemas/output.schema.json",
+  "title": "DMS Implementing Agent Output Definition",
+  "description": "Schema for a V1.x selected Markdown output definition.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "label",
+    "agent_id",
+    "category",
+    "description",
+    "template_file",
+    "template_type",
+    "output_format",
+    "output_folder",
+    "enabled_in_v1",
+    "required_inputs",
+    "quality_rules",
+    "missing_information_placeholder",
+    "suggested_file_name_pattern",
+    "selected_output_only_rule",
+    "supports_partial_data"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$",
+      "description": "Stable machine-readable output identifier."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable output name."
+    },
+    "agent_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$",
+      "description": "Agent identifier that may generate this output."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "proposal",
+        "project_governance",
+        "document_review",
+        "workflow"
+      ],
+      "description": "Primary output category."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Plain-language description of the output."
+    },
+    "template_file": {
+      "type": "string",
+      "pattern": "^templates/[A-Za-z0-9_./ -]+\\.md$",
+      "description": "Markdown template path for this output."
+    },
+    "template_type": {
+      "type": "string",
+      "const": "markdown",
+      "description": "V1 template type."
+    },
+    "output_format": {
+      "type": "string",
+      "const": "markdown",
+      "description": "V1 output format."
+    },
+    "output_folder": {
+      "type": "string",
+      "pattern": "^outputs/markdown/[a-z0-9_/-]+/$",
+      "description": "Approved output folder."
+    },
+    "enabled_in_v1": {
+      "type": "boolean",
+      "description": "Whether the output is available in V1."
+    },
+    "required_inputs": {
+      "type": "array",
+      "description": "Input types required for the output or marked as To be confirmed.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "optional_inputs": {
+      "type": "array",
+      "description": "Helpful input types that are not mandatory.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "quality_rules": {
+      "type": "array",
+      "description": "Manual quality checks for this output.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "missing_information_placeholder": {
+      "type": "string",
+      "const": "To be confirmed",
+      "description": "Required placeholder for unavailable information."
+    },
+    "suggested_file_name_pattern": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable filename pattern for generated Markdown files."
+    },
+    "selected_output_only_rule": {
+      "type": "string",
+      "const": "Generate this output only when explicitly selected.",
+      "description": "Rule preventing automatic output generation."
+    },
+    "supports_partial_data": {
+      "type": "boolean",
+      "description": "Whether the output may be generated with missing facts marked as To be confirmed."
+    }
+  }
+}

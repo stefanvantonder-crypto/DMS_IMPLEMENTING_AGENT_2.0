@@ -1,0 +1,699 @@
+{
+  "version": "1.0",
+  "status": "draft",
+  "template_type": "markdown",
+  "templates": [
+    {
+      "template_id": "proposal_template",
+      "template_name": "Proposal Template",
+      "template_file": "templates/proposal_templates/PROPOSAL_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "proposal",
+      "agent_id": "proposal_preparation_agent",
+      "template_group": "proposal_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Executive Summary",
+        "Client Requirements",
+        "Proposed Approach",
+        "Deliverables",
+        "Assumptions",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Compliance Matrix",
+        "Deliverables Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Use To be confirmed for missing information.",
+        "Generate only when Proposal is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "audit_report_implementation_review_template",
+      "template_name": "Audit Report Implementation Review Template",
+      "template_file": "templates/project_governance_templates/AUDIT_REPORT_IMPLEMENTATION_REVIEW_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "audit_report_implementation_review",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Review Scope",
+        "Implementation Status",
+        "Findings",
+        "Recommended Actions",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Implementation Review Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Separate confirmed findings from To be confirmed items.",
+        "Generate only when Audit Report Implementation Review is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "change_management_strategy_template",
+      "template_name": "Change Management Strategy Template",
+      "template_file": "templates/project_governance_templates/CHANGE_MANAGEMENT_STRATEGY_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "change_management_strategy",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Change Context",
+        "Stakeholder Impact",
+        "Communication Approach",
+        "Training Approach",
+        "Risks",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Stakeholder Change Impact Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing roles and dates as To be confirmed.",
+        "Generate only when Change Management Strategy is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "module_scoping_document_template",
+      "template_name": "Module Scoping Document Template",
+      "template_file": "templates/project_governance_templates/MODULE_SCOPING_DOCUMENT_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "module_scoping_document",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Purpose",
+        "In-Scope Modules",
+        "Out-of-Scope Modules",
+        "Dependencies",
+        "Assumptions",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Module Scope Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Keep module boundaries clear.",
+        "Generate only when Module Scoping Document is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "needs_analysis_template",
+      "template_name": "Needs Analysis Template",
+      "template_file": "templates/project_governance_templates/NEEDS_ANALYSIS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "needs_analysis",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Client Context",
+        "Current Needs",
+        "Gaps",
+        "Priority Requirements",
+        "Recommendations",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Needs and Gaps Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Do not invent client priorities.",
+        "Generate only when Needs Analysis is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "network_capacity_assessment_approach_template",
+      "template_name": "Network Capacity Assessment Approach Template",
+      "template_file": "templates/project_governance_templates/NETWORK_CAPACITY_ASSESSMENT_APPROACH_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "network_capacity_assessment_approach",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Assessment Purpose",
+        "Assessment Scope",
+        "Information Required",
+        "Assessment Steps",
+        "Reporting Approach",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Network Assessment Checklist"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing technical metrics as To be confirmed.",
+        "Generate only when Network Capacity Assessment Approach is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "payment_system_uat_test_scripts_template",
+      "template_name": "Payment System UAT Test Scripts Template",
+      "template_file": "templates/project_governance_templates/PAYMENT_SYSTEM_UAT_TEST_SCRIPTS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "payment_system_uat_test_scripts",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Test Scope",
+        "Test Preconditions",
+        "Test Scripts",
+        "Defect Notes",
+        "Sign-Off",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Payment UAT Script Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Include expected result and status fields.",
+        "Generate only when Payment System - UAT Test Scripts is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "post_implementation_support_plan_template",
+      "template_name": "Post-Implementation Support Plan Template",
+      "template_file": "templates/project_governance_templates/POST_IMPLEMENTATION_SUPPORT_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "post_implementation_support_plan",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Support Scope",
+        "Support Model",
+        "Roles",
+        "Escalation",
+        "Reporting",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Support Responsibility Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing owners and support dates as To be confirmed.",
+        "Generate only when Post-Implementation Support Plan is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "project_charter_template",
+      "template_name": "Project Charter Template",
+      "template_file": "templates/project_governance_templates/PROJECT_CHARTER_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "project_charter",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Project Background",
+        "Objectives",
+        "Scope",
+        "Roles",
+        "Risks",
+        "Approvals",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Project Role Table",
+        "Risk Summary Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing project facts as To be confirmed.",
+        "Generate only when Project Charter is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "project_scope_template",
+      "template_name": "Project Scope Template",
+      "template_file": "templates/project_governance_templates/PROJECT_SCOPE_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "project_scope",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Scope Statement",
+        "In Scope",
+        "Out of Scope",
+        "Deliverables",
+        "Dependencies",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Scope Boundary Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Separate scope from assumptions.",
+        "Generate only when Project Scope is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "risk_management_plan_template",
+      "template_name": "Risk Management Plan Template",
+      "template_file": "templates/project_governance_templates/RISK_MANAGEMENT_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "risk_management_plan",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Risk Approach",
+        "Risk Categories",
+        "Risk Register",
+        "Mitigation Approach",
+        "Reporting",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Risk Register Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing owners and ratings as To be confirmed.",
+        "Generate only when Risk Management Plan is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "stakeholder_analysis_matrix_template",
+      "template_name": "Stakeholder Analysis Matrix Template",
+      "template_file": "templates/project_governance_templates/STAKEHOLDER_ANALYSIS_MATRIX_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "stakeholder_analysis_matrix",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Stakeholder Context",
+        "Stakeholder Matrix",
+        "Engagement Notes",
+        "Risks",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Stakeholder Analysis Matrix"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Separate named stakeholders from role placeholders.",
+        "Generate only when Stakeholder Analysis Matrix is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "system_roll_out_plan_template",
+      "template_name": "System Roll-out Plan Template",
+      "template_file": "templates/project_governance_templates/SYSTEM_ROLLOUT_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "system_roll_out_plan",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Roll-out Scope",
+        "Roll-out Phases",
+        "Readiness Checks",
+        "Dependencies",
+        "Risks",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Roll-out Phase Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing dates, sites, and owners as To be confirmed.",
+        "Generate only when System Roll-out Plan is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "test_and_go_live_plan_template",
+      "template_name": "Test and Go-Live Plan Template",
+      "template_file": "templates/project_governance_templates/TEST_AND_GO_LIVE_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "test_and_go_live_plan",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Testing Approach",
+        "Go-Live Criteria",
+        "Readiness Checklist",
+        "Sign-Off",
+        "Risks",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Go-Live Readiness Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing approvals and dates as To be confirmed.",
+        "Generate only when Test and Go-Live Plan is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "tor_technical_committee_template",
+      "template_name": "TOR Technical Committee Template",
+      "template_file": "templates/project_governance_templates/TOR_TECHNICAL_COMMITTEE_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "tor_technical_committee",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Mandate",
+        "Membership",
+        "Roles and Responsibilities",
+        "Meetings",
+        "Reporting",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Committee Membership Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing committee details as To be confirmed.",
+        "Generate only when TOR Technical Committee is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "uat_test_scripts_template",
+      "template_name": "UAT Test Scripts Template",
+      "template_file": "templates/project_governance_templates/UAT_TEST_SCRIPTS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "uat_test_scripts",
+      "agent_id": "project_governance_agent",
+      "template_group": "project_governance_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Test Scope",
+        "Test Preconditions",
+        "Test Scripts",
+        "Defect Notes",
+        "Sign-Off",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "UAT Script Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Include expected result and status fields.",
+        "Generate only when UAT Test Scripts is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "gap_analysis_report_template",
+      "template_name": "Gap Analysis Report Template",
+      "template_file": "templates/review_templates/GAP_ANALYSIS_REPORT_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "gap_analysis_report",
+      "agent_id": "document_review_agent",
+      "template_group": "review_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Review Scope",
+        "Reference Requirements",
+        "Gap Findings",
+        "Recommendations",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Gap Analysis Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Separate findings from recommendations.",
+        "Generate only when Gap Analysis Report is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "improvement_action_plan_template",
+      "template_name": "Improvement Action Plan Template",
+      "template_file": "templates/review_templates/IMPROVEMENT_ACTION_PLAN_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "improvement_action_plan",
+      "agent_id": "document_review_agent",
+      "template_group": "review_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Improvement Context",
+        "Action Plan",
+        "Priorities",
+        "Monitoring",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Improvement Action Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing owners and due dates as To be confirmed.",
+        "Generate only when Improvement Action Plan is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "executive_review_summary_template",
+      "template_name": "Executive Review Summary Template",
+      "template_file": "templates/review_templates/EXECUTIVE_REVIEW_SUMMARY_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "executive_review_summary",
+      "agent_id": "document_review_agent",
+      "template_group": "review_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Executive Summary",
+        "Key Findings",
+        "Key Risks",
+        "Recommended Next Steps",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Executive Findings Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Keep the summary concise and evidence-based.",
+        "Generate only when Executive Review Summary is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "workflow_design_document_template",
+      "template_name": "Workflow Design Document Template",
+      "template_file": "templates/workflow_templates/WORKFLOW_DESIGN_DOCUMENT_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "workflow_design_document",
+      "agent_id": "workflow_agent",
+      "template_group": "workflow_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Workflow Overview",
+        "Workflow Stages",
+        "Routing Logic",
+        "Roles",
+        "Exceptions",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Workflow Stage Table",
+        "Routing Rule Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing routing logic as To be confirmed.",
+        "Generate only when Workflow Design Document is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "workflow_steps_template",
+      "template_name": "Workflow Steps Template",
+      "template_file": "templates/workflow_templates/WORKFLOW_STEPS_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "workflow_steps",
+      "agent_id": "workflow_agent",
+      "template_group": "workflow_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Trigger",
+        "Step Sequence",
+        "Decision Points",
+        "Expected Outcome",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Workflow Steps Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Keep steps in clear sequence.",
+        "Generate only when Workflow Steps is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "roles_and_responsibilities_matrix_template",
+      "template_name": "Roles and Responsibilities Matrix Template",
+      "template_file": "templates/workflow_templates/ROLES_AND_RESPONSIBILITIES_MATRIX_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "roles_and_responsibilities_matrix",
+      "agent_id": "workflow_agent",
+      "template_group": "workflow_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Role Context",
+        "Roles and Responsibilities",
+        "Handoffs",
+        "Approvals",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "Roles and Responsibilities Matrix"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing owners as To be confirmed.",
+        "Generate only when Roles and Responsibilities Matrix is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "sla_escalation_rules_template",
+      "template_name": "SLA Escalation Rules Template",
+      "template_file": "templates/workflow_templates/SLA_ESCALATION_RULES_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "sla_escalation_rules",
+      "agent_id": "workflow_agent",
+      "template_group": "workflow_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "SLA Context",
+        "SLA Rules",
+        "Escalation Triggers",
+        "Escalation Actions",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "SLA and Escalation Rule Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Mark missing SLA durations as To be confirmed.",
+        "Generate only when SLA / Escalation Rules is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    },
+    {
+      "template_id": "intouch_configuration_notes_template",
+      "template_name": "InTouch Configuration Notes Template",
+      "template_file": "templates/workflow_templates/INTOUCH_CONFIGURATION_NOTES_TEMPLATE.md",
+      "template_type": "markdown",
+      "output_id": "intouch_configuration_notes",
+      "agent_id": "workflow_agent",
+      "template_group": "workflow_templates",
+      "version": "1.0",
+      "status": "active",
+      "required_sections": [
+        "Document Control",
+        "Configuration Context",
+        "Workflow Mapping",
+        "Roles and Permissions",
+        "Routing Notes",
+        "Open Configuration Questions",
+        "Missing Information"
+      ],
+      "required_tables": [
+        "InTouch Configuration Notes Table"
+      ],
+      "quality_checks": [
+        "Use Markdown only.",
+        "Do not create backend workflow logic.",
+        "Generate only when InTouch Configuration Notes is selected."
+      ],
+      "missing_information_rule": "To be confirmed"
+    }
+  ]
+}

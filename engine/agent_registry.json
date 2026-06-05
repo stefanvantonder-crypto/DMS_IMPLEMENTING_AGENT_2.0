@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "status": "draft",
+  "purpose": "V1.x registry of approved DMS Implementing Agent agents.",
+  "agents": [
+    {
+      "id": "proposal_preparation_agent",
+      "name": "Proposal Preparation Agent",
+      "version": "1.0",
+      "status": "planned",
+      "agent_file": "knowledge_base/agents/proposal_preparation_agent.json",
+      "prompt_file": "prompts/generation_prompt.md",
+      "template_group": "proposal_templates",
+      "default_output_folder": "outputs/markdown/proposals",
+      "enabled_in_v1": true,
+      "ui_order": 1,
+      "description": "Supports selected Markdown proposal outputs using approved proposal inputs and templates."
+    },
+    {
+      "id": "project_governance_agent",
+      "name": "Project Governance Agent",
+      "version": "1.0",
+      "status": "planned",
+      "agent_file": "knowledge_base/agents/project_governance_agent.json",
+      "prompt_file": "prompts/generation_prompt.md",
+      "template_group": "project_governance_templates",
+      "default_output_folder": "outputs/markdown/governance_documents",
+      "enabled_in_v1": true,
+      "ui_order": 2,
+      "description": "Supports selected Markdown project governance outputs for DMS implementation control."
+    },
+    {
+      "id": "document_review_agent",
+      "name": "Document Review Agent",
+      "version": "1.0",
+      "status": "planned",
+      "agent_file": "knowledge_base/agents/document_review_agent.json",
+      "prompt_file": "prompts/review_prompt.md",
+      "template_group": "review_templates",
+      "default_output_folder": "outputs/markdown/review_reports",
+      "enabled_in_v1": true,
+      "ui_order": 3,
+      "description": "Supports selected Markdown review outputs using supplied review documents and standards."
+    },
+    {
+      "id": "workflow_agent",
+      "name": "Workflow Agent",
+      "version": "1.0",
+      "status": "planned",
+      "agent_file": "knowledge_base/agents/workflow_agent.json",
+      "prompt_file": "prompts/workflow_prompt.md",
+      "template_group": "workflow_templates",
+      "default_output_folder": "outputs/markdown/workflow_documents",
+      "enabled_in_v1": true,
+      "ui_order": 4,
+      "description": "Supports selected Markdown workflow outputs including workflow design, routing, roles, SLA, and InTouch notes."
+    }
+  ]
+}

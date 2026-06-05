@@ -1,0 +1,39 @@
+{
+  "system_name": "DMS Implementing Agent",
+  "version": "1.0",
+  "description": "Local HTML and JSON-based DMS Implementing Agent knowledge system.",
+  "agents": [
+    {
+      "agent_id": "01_DMS_PROPOSAL_AGENT_CORE",
+      "name": "DMS Proposal Preparation Agent",
+      "file": "knowledge_base/01_DMS_PROPOSAL_AGENT_CORE.json",
+      "purpose": "Prepare bid proposals from TORs, RFQs, RFPs and previous proposals."
+    },
+    {
+      "agent_id": "02_DMS_PROJECT_GOVERNANCE_AGENT_CORE",
+      "name": "DMS Project Governance Agent",
+      "file": "knowledge_base/02_DMS_PROJECT_GOVERNANCE_AGENT_CORE.json",
+      "purpose": "Create project implementation and governance documentation."
+    },
+    {
+      "agent_id": "03_DMS_DOCUMENT_REVIEW_AGENT_CORE",
+      "name": "DMS Document Review Agent",
+      "file": "knowledge_base/03_DMS_DOCUMENT_REVIEW_AGENT_CORE.json",
+      "purpose": "Review documents for compliance, gaps and audit readiness."
+    },
+    {
+      "agent_id": "04_DMS_WORKFLOW_AGENT_CORE",
+      "name": "DMS Workflow Agent",
+      "file": "knowledge_base/04_DMS_WORKFLOW_AGENT_CORE.json",
+      "purpose": "Design workflows for implementation in the DMS InTouch module."
+    }
+  ],
+  "folders": {
+    "knowledge_base": "Stores JSON agent core files.",
+    "prompts": "Stores reusable prompts.",
+    "templates": "Stores document templates.",
+    "source_documents": "Stores TORs, proposals, legislation, DMS manuals and client policies.",
+    "outputs": "Stores generated documents.",
+    "app": "Stores the local HTML dashboard."
+  }
+}

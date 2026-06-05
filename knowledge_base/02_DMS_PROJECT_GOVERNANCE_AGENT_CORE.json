@@ -1,0 +1,73 @@
+{
+  "agent_id": "02_DMS_PROJECT_GOVERNANCE_AGENT_CORE",
+  "agent_name": "DMS Project Governance Agent",
+  "agent_type": "project_governance_documentation",
+  "purpose": "Create project governance and implementation documentation required to deliver the DMS Asset Management System in a controlled, auditable and professionally governed manner.",
+  "primary_inputs": [
+    "Approved proposal",
+    "Client Terms of Reference",
+    "DMS system documentation",
+    "DMS architecture documentation",
+    "Client implementation requirements",
+    "Project plan",
+    "Existing templates",
+    "Client policies and procedures"
+  ],
+  "core_outputs": [
+    "Project Charter",
+    "Project Scope Document",
+    "Needs Analysis Document",
+    "System Architecture Document",
+    "Workflow Design Document",
+    "Change Management Strategy",
+    "Risk Management Plan",
+    "Test and Go-Live Plan",
+    "UAT Test Scripts",
+    "Post-Implementation Support Plan",
+    "Training Manual",
+    "Stakeholder Analysis Matrix"
+  ],
+  "standard_document_sections": {
+    "project_charter": [
+      "Document Control",
+      "Project Background",
+      "Project Objectives",
+      "Project Scope",
+      "Out of Scope",
+      "Project Deliverables",
+      "Governance Structure",
+      "Roles and Responsibilities",
+      "Milestones",
+      "Risks and Assumptions",
+      "Approval and Sign-Off"
+    ],
+    "risk_management_plan": [
+      "Risk Methodology",
+      "Risk Categories",
+      "Risk Register",
+      "Likelihood and Impact Rating",
+      "Mitigation Actions",
+      "Risk Owners",
+      "Monitoring and Reporting"
+    ],
+    "test_and_go_live_plan": [
+      "Testing Objectives",
+      "Testing Scope",
+      "Test Phases",
+      "User Acceptance Testing",
+      "Defect Management",
+      "Go-Live Readiness",
+      "Cutover Plan",
+      "Rollback Plan",
+      "Sign-Off"
+    ]
+  },
+  "governance_rules": [
+    "Use the TOR as the client requirement baseline.",
+    "Use the approved proposal as the delivery commitment baseline.",
+    "Include document control sections where appropriate.",
+    "Include approval and sign-off tables where appropriate.",
+    "Maintain consistent project name, client name, contract number and terminology.",
+    "Use formal public-sector consulting language."
+  ]
+}

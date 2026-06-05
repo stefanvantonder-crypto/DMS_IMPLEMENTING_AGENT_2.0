@@ -1,0 +1,135 @@
+{
+  "id": "document_review_agent",
+  "name": "Document Review Agent",
+  "version": "1.0",
+  "status": "draft",
+  "ui_label": "Document Review Agent",
+  "purpose": "Reviews documents for compliance, gaps, audit readiness, evidence quality and framework alignment.",
+  "required_inputs": [
+    "Document to be reviewed"
+  ],
+  "optional_inputs": [
+    "GIAMA Act",
+    "FIDPM / LGFIDPM",
+    "C-AMP guideline",
+    "U-AMP guideline",
+    "GRAP standards",
+    "IFRS standards",
+    "mSCOA requirements",
+    "PFMA / MFMA",
+    "PMBOK 7",
+    "ISO 9001",
+    "TOGAF",
+    "Client policies and procedures",
+    "Ad hoc review requirements",
+    "Other custom review documents"
+  ],
+  "allowed_inputs": [
+    "Document to be reviewed",
+    "GIAMA Act",
+    "FIDPM / LGFIDPM",
+    "C-AMP guideline",
+    "U-AMP guideline",
+    "GRAP standards",
+    "IFRS standards",
+    "mSCOA requirements",
+    "PFMA / MFMA",
+    "PMBOK 7",
+    "ISO 9001",
+    "TOGAF",
+    "Client policies and procedures",
+    "Ad hoc review requirements",
+    "Other custom review documents"
+  ],
+  "allowed_outputs": [
+    "Gap Analysis Report",
+    "Improvement Action Plan",
+    "Executive Review Summary"
+  ],
+  "default_output_folder": "outputs/markdown/review_reports",
+  "template_group": "review_templates",
+  "prompt_file": "prompts/review_prompt.md",
+  "selection_rules": {
+    "generate_only_selected_outputs": true,
+    "mark_missing_as_to_be_confirmed": true,
+    "use_session_documents_only": true,
+    "do_not_update_knowledge_base_from_session_documents": true
+  },
+  "input_aliases": {
+    "review document": "Document to be reviewed",
+    "gap review": "Document to be reviewed",
+    "GIAMA": "GIAMA Act",
+    "FIDPM": "FIDPM / LGFIDPM",
+    "LGFIDPM": "FIDPM / LGFIDPM",
+    "PFMA": "PFMA / MFMA",
+    "MFMA": "PFMA / MFMA"
+  },
+  "output_definitions": [
+    {
+      "output_id": "gap_analysis_report",
+      "output_name": "Gap Analysis Report",
+      "template_file": "templates/review_templates/GAP_ANALYSIS_REPORT_TEMPLATE.md",
+      "output_folder": "outputs/markdown/review_reports",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Document to be reviewed"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "improvement_action_plan",
+      "output_name": "Improvement Action Plan",
+      "template_file": "templates/review_templates/IMPROVEMENT_ACTION_PLAN_TEMPLATE.md",
+      "output_folder": "outputs/markdown/review_reports",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Document to be reviewed"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    },
+    {
+      "output_id": "executive_review_summary",
+      "output_name": "Executive Review Summary",
+      "template_file": "templates/review_templates/EXECUTIVE_REVIEW_SUMMARY_TEMPLATE.md",
+      "output_folder": "outputs/markdown/review_reports",
+      "enabled_in_v1": true,
+      "required_input_minimum": [
+        "Document to be reviewed"
+      ],
+      "supports_partial_data": true,
+      "missing_data_placeholder": "To be confirmed"
+    }
+  ],
+  "constraints": [
+    "Use session documents only for the current session.",
+    "Do not permanently update the knowledge base from session documents.",
+    "Generate selected outputs only.",
+    "Do not generate unselected outputs.",
+    "Do not invent facts, dates, names, prices, certifications or references.",
+    "Mark missing information as \"To be confirmed\".",
+    "Use formal public-sector consulting language.",
+    "Use Markdown-first output structure in Version 1.x.",
+    "Do not create DOCX outputs in Version 1.x.",
+    "Review must assess compliance, gaps, audit readiness, evidence quality and framework alignment.",
+    "Findings must include gap, impact, risk, recommendation and required evidence where relevant.",
+    "Where no supporting review source is loaded, use the core Document Review Agent framework rules.",
+    "Do not invent compliance findings not supported by the reviewed document or review criteria.",
+    "Use severity levels where appropriate: Critical, High, Medium, Low."
+  ],
+  "validation_rules": [
+    "Warn if Document to be reviewed is missing.",
+    "Warn if no framework, legislation, standard, policy, SOP, guideline or previous review example is selected.",
+    "Warn if Gap Analysis Report is selected but no review basis is provided.",
+    "Warn if Improvement Action Plan is selected but findings are not available."
+  ],
+  "document_classification_guidance": [
+    "Classify the main source document selected for assessment as Document to be reviewed.",
+    "Classify statutory and regulatory references by their approved names in the allowed inputs list.",
+    "Classify client-specific policy documents as Client policies and procedures.",
+    "Classify custom review instructions, ad hoc criteria and reviewer notes as Ad hoc review requirements.",
+    "Use Other custom review documents only when the document does not fit an approved classification."
+  ],
+  "missing_information_rule": "Mark missing information as To be confirmed."
+}

@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "status": "draft",
+  "purpose": "Approved V1.x output types for selected-output-only Markdown generation.",
+  "selected_output_only_rule": "Generate only outputs explicitly selected by the user.",
+  "agents": [
+    {
+      "agent_id": "proposal_preparation_agent",
+      "agent_name": "Proposal Preparation Agent",
+      "output_folder": "outputs/markdown/proposals/",
+      "outputs": [
+        "Proposal"
+      ]
+    },
+    {
+      "agent_id": "project_governance_agent",
+      "agent_name": "Project Governance Agent",
+      "output_folder": "outputs/markdown/governance_documents/",
+      "outputs": [
+        "Audit Report Implementation Review",
+        "Change Management Strategy",
+        "Module Scoping Document",
+        "Needs Analysis",
+        "Network Capacity Assessment Approach",
+        "Payment System - UAT Test Scripts",
+        "Post-Implementation Support Plan",
+        "Project Charter",
+        "Project Scope",
+        "Risk Management Plan",
+        "Stakeholder Analysis Matrix",
+        "System Roll-out Plan",
+        "Test and Go-Live Plan",
+        "TOR Technical Committee",
+        "UAT Test Scripts"
+      ]
+    },
+    {
+      "agent_id": "document_review_agent",
+      "agent_name": "Document Review Agent",
+      "output_folder": "outputs/markdown/review_reports/",
+      "outputs": [
+        "Gap Analysis Report",
+        "Improvement Action Plan",
+        "Executive Review Summary"
+      ]
+    },
+    {
+      "agent_id": "workflow_agent",
+      "agent_name": "Workflow Agent",
+      "output_folder": "outputs/markdown/workflow_documents/",
+      "outputs": [
+        "Workflow Design Document",
+        "Workflow Steps",
+        "Roles and Responsibilities Matrix",
+        "SLA / Escalation Rules",
+        "InTouch Configuration Notes"
+      ]
+    }
+  ]
+}
