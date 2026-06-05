@@ -49,3 +49,8 @@ outputs/tmp/
 !docs/
 !outputs/
 !outputs/.gitkeep
+
+# Local bundled runtimes / tools
+tools/node/
+tools/node.exe
+*.exe
