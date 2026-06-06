@@ -4,6 +4,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
+- Added V1.13A validation-only confirmation note documenting the static Markdown-first baseline, no-backend/no-DOCX scope and controlled prompt/session-report output model.
 - Confirmed V1.13A sample-session matrix results, resolving the previous no-backend/no-server prompt-quality note without changing app code.
 - Added V1.13 controlled prompt scope wording so generated prompts explicitly state no backend and no server-side generation are used in Version 1.x.
 - Recorded V1.12A sample session matrix execution results, including pass/fail outcomes, prompt quality observations and V1.13 prompt-fix recommendation.
