@@ -10,6 +10,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
+- Added V1.15B validation findings review, recommending V1.16 user acceptance testing before any V1.15C prompt wording fix.
 - Added V1.15A controlled prompt quality validation pack for Proposal Preparation, Project Governance, Document Review and Workflow Agent prompt-boundary testing.
 - Added V1.15 controlled prompt quality hardening plan, covering selected-output boundaries, template-use clarity, missing-information handling, source-document discipline and static V1.x scope-control safeguards.
 - Added V1.14A documentation-only template output control validation confirming complete manifest coverage, selected-output-only prompt/session-report controls and unchanged static Markdown-first scope.

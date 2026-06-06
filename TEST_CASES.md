@@ -395,3 +395,14 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm no app defects were found.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.13A.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
+
+## V1.15B Validation Findings Review
+
+- Confirm `docs/sample_sessions/V1_15B_VALIDATION_FINDINGS_REVIEW.md` exists.
+- Confirm the review references `docs/sample_sessions/V1_15A_CONTROLLED_PROMPT_QUALITY_VALIDATION.md` as the validation source reviewed.
+- Confirm selected-output-only control, source document inventory treatment, no-backend/no-server wording, no-DOCX wording, missing information rule, template path inclusion, output folder inclusion, agent-specific instruction quality, sample session usefulness and remaining prompt-quality risks are reviewed.
+- Confirm the findings table includes Finding ID, Area, Observation, Risk, Recommendation, Requires code change, Requires prompt wording change and Priority.
+- Confirm the decision records whether no action, V1.15C prompt wording fix or V1.16 user acceptance test pack is recommended.
+- Confirm no implementation changes were made in V1.15B.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.15B.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
