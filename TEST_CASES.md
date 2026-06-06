@@ -195,3 +195,26 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm Session Report includes the Source Document Inventory section.
 - Confirm selected-output-only generation still works.
 - Confirm no file upload, file parsing, PDF extraction, DOCX extraction, backend, Python, DOCX generation, `package.json`, `server.js`, external libraries or generated client documents are added.
+
+## V1.10 Session Save / Restore Planned Tests
+
+- Confirm session export downloads `{safe_session_name}_DMS_Session_v01.json`.
+- Confirm blank session export downloads `DMS_Session_v01.json`.
+- Confirm exported JSON includes `schema_version`, `app_version`, `exported_at`, session fields, selected agent, selected document classifications, source document inventory metadata, selected outputs, Mini Workflow Brief, controlled prompt and validation warnings.
+- Confirm exported JSON stores metadata and prompt text only, not actual source document files.
+- Confirm exported JSON does not include parsed PDF, DOCX or source file content.
+- Confirm importing a valid session JSON restores session fields.
+- Confirm importing a valid session JSON restores the selected agent.
+- Confirm importing a valid session JSON restores selected document classifications.
+- Confirm importing a valid session JSON restores source document inventory metadata.
+- Confirm importing a valid session JSON restores selected outputs without generating outputs automatically.
+- Confirm importing a valid session JSON restores Mini Workflow Brief values.
+- Confirm importing a valid session JSON restores controlled prompt text as previous session state, if available.
+- Confirm the app shows `Session restored from JSON. Re-upload/provide actual source documents when using the generated prompt.`
+- Confirm the user must click `Generate Controlled Prompt` again to create a fresh prompt after restore.
+- Confirm invalid JSON is rejected with a clear warning.
+- Confirm unsupported `schema_version` is rejected or warned without unsafe restore.
+- Confirm restored output IDs missing from `engine/output_registry.json` produce a warning.
+- Confirm restored agent IDs missing from `engine/agent_registry.json` produce a warning.
+- Confirm restored source inventory entries marked unavailable produce a warning.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, generated client documents or permanent knowledge base updates are added.

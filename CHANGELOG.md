@@ -2,6 +2,10 @@
 
 All notable repository-control changes are recorded here.
 
+## 2026-06-06
+
+- Added V1.10 session save / restore planning for downloadable/importable JSON, including architecture plan, ADR, roadmap entry and planned manual tests.
+
 ## 2026-06-05
 
 - Added V1.9 Source Document Inventory Panel for browser-memory session source metadata, including inventory-driven validation warnings, controlled prompt and session report inventory sections, and a source document session model architecture note.
