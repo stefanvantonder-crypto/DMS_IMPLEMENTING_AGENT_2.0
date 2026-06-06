@@ -147,7 +147,7 @@ const appState = {
   configSource: "loading",
   appConfig: {
     app_name: "DMS Implementing Agent 2.0",
-    version: "1.9"
+    version: "1.10A"
   },
   data: null,
   selectedAgentId: "",
@@ -196,6 +196,7 @@ function bindElements() {
     "action-status",
     "generate-prompt",
     "copy-prompt",
+    "export-session-json",
     "download-report"
   ].forEach((id) => {
     elements[toCamel(id)] = document.getElementById(id);
@@ -211,11 +212,14 @@ function bindActions() {
 
   elements.generatePrompt.addEventListener("click", generateControlledPrompt);
   elements.copyPrompt.addEventListener("click", copyPrompt);
+  elements.exportSessionJson.addEventListener("click", exportSessionJson);
   elements.downloadReport.addEventListener("click", downloadSessionReport);
   elements.addSourceDocument.addEventListener("click", addSourceDocument);
   elements.clearSourceDocuments.addEventListener("click", clearSourceDocumentInventory);
   elements.downloadReport.disabled = false;
   elements.downloadReport.title = "Download Markdown session report.";
+  elements.exportSessionJson.disabled = false;
+  elements.exportSessionJson.title = "Export current browser session metadata as JSON.";
 }
 
 async function loadConfiguration() {
@@ -224,7 +228,7 @@ async function loadConfiguration() {
   } catch (error) {
     appState.appConfig = {
       app_name: "DMS Implementing Agent 2.0",
-      version: "1.9"
+      version: "1.10A"
     };
   }
 
@@ -1019,6 +1023,50 @@ async function copyPrompt() {
   }
 }
 
+function exportSessionJson() {
+  const payload = buildSessionExportPayload();
+  const filename = getSessionExportFileName();
+  triggerJsonDownload(payload, filename);
+  setActionStatus(`Session JSON prepared for browser download: ${filename}`);
+  return { filename, payload };
+}
+
+function buildSessionExportPayload() {
+  return window.DmsSessionExport.createSessionExportPayload({
+    appVersion: appState.appConfig?.version || "1.10A",
+    sessionValues: getSessionValues(),
+    selectedAgentId: appState.selectedAgentId,
+    selectedAgentName: getSelectedAgentDefinition()?.name || getSelectedAgentRegistryRecord()?.name || "",
+    selectedClassifications: Array.from(appState.selectedInputs),
+    sourceDocuments: appState.sourceDocuments,
+    selectedOutputIds: Array.from(appState.selectedOutputs),
+    miniWorkflowBrief: getMiniWorkflowBriefExportValues(),
+    controlledPrompt: getControlledPromptForSessionExport(),
+    validationWarnings: getWarnings()
+  });
+}
+
+function getMiniWorkflowBriefExportValues() {
+  return {
+    workflowDescription: getValue("workflow-description"),
+    workflowRules: getValue("workflow-rules"),
+    workflowRoles: getValue("workflow-roles"),
+    workflowOutcome: getValue("workflow-outcome")
+  };
+}
+
+function getControlledPromptForSessionExport() {
+  const currentPrompt = elements.promptPreview?.value || "";
+  if (currentPrompt.startsWith("# DMS Implementing Agent 2.0")) {
+    return currentPrompt;
+  }
+  return "";
+}
+
+function getSessionExportFileName() {
+  return window.DmsSessionExport.getSessionExportFileName(getSessionValues().sessionName);
+}
+
 function downloadSessionReport() {
   const report = buildSessionReport();
   const filename = getSessionReportFileName();
@@ -1195,7 +1243,16 @@ function sanitizeFileComponent(value) {
 }
 
 function triggerMarkdownDownload(markdown, filename) {
-  const blob = new Blob([markdown], { type: "text/markdown;charset=utf-8" });
+  triggerBrowserDownload(markdown, filename, "text/markdown;charset=utf-8");
+}
+
+function triggerJsonDownload(payload, filename) {
+  const json = `${JSON.stringify(payload, null, 2)}\n`;
+  triggerBrowserDownload(json, filename, "application/json;charset=utf-8");
+}
+
+function triggerBrowserDownload(content, filename, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;

@@ -9,7 +9,7 @@
 <body>
   <header class="app-header">
     <div>
-      <p class="eyebrow">Version 1.9 Markdown prompt-control shell</p>
+      <p class="eyebrow">Version 1.10A Markdown prompt-control shell</p>
       <h1>DMS Implementing Agent 2.0</h1>
       <p class="subtitle">Markdown-first controlled prompt assistant for proposal preparation, project governance, document review and workflow design.</p>
     </div>
@@ -209,6 +209,7 @@
         <div class="button-row">
           <button id="generate-prompt" class="primary-button" type="button">Generate Controlled Prompt</button>
           <button id="copy-prompt" type="button">Copy Prompt</button>
+          <button id="export-session-json" type="button">Export Session JSON</button>
           <button id="download-report" type="button">Download Session Report (.md)</button>
         </div>
       </div>
@@ -217,6 +218,7 @@
     </section>
   </main>
 
+  <script src="session-export-core.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

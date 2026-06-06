@@ -183,6 +183,17 @@ These are source and reference materials. They must not be treated as V1 templat
 - DOC files detected: source/reference DOC files only, under `source_documents/`.
 - Generated output files detected: none in the old output folders or approved V1 output folders.
 
+### V1.10A Legacy Python Tooling Cleanup
+
+On 2026-06-06, legacy Python/tooling content was removed from the active tracked V1 repository because it is outside the static V1 scope and is not required by the HTML/CSS/JavaScript/JSON app runtime.
+
+Removed from active V1 scope:
+
+- `tools/template_migration.py`
+- `tools/python/`
+
+These paths must not be recommitted. The active V1 repository remains static and must not depend on Python, bundled runtimes, backend services, package managers, DOCX generation, file extraction or server routes.
+
 ## 3. Classification Table
 
 | Path | Classification | Reason |

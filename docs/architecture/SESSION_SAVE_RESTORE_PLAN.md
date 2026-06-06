@@ -1,5 +1,11 @@
 # V1.10 Session Save / Restore Plan
 
+## V1.10A Active Scope
+
+V1.10A is export-only. The active implementation must export the current browser session as a downloadable JSON file and must not implement import, restore, localStorage, backend storage, file upload, file parsing, DOCX generation or automatic document generation.
+
+Import and restore remain deferred until a later approved V1.10B task.
+
 ## A. Purpose
 
 V1.10 will allow users to save and restore project-specific DMS Implementing Agent sessions without using a backend or database.
@@ -10,10 +16,9 @@ The saved JSON is a session control artifact only. It is not a generated client 
 
 ## B. V1.10 Scope
 
-Allowed in V1.10:
+Allowed in V1.10A:
 
 - Export session metadata as JSON.
-- Import session JSON to restore UI state.
 - Include session fields.
 - Include selected agent.
 - Include selected document classifications.
@@ -24,8 +29,11 @@ Allowed in V1.10:
 - Include validation warnings at time of export.
 - Include app version and export timestamp.
 
-Not allowed in V1.10:
+Not allowed in V1.10A:
 
+- Importing session JSON.
+- Restoring UI state from JSON.
+- localStorage persistence.
 - Storing actual source files.
 - Reading source file contents.
 - Uploading files.
@@ -42,7 +50,7 @@ Draft structure:
 ```json
 {
   "schema_version": "1.0",
-  "app_version": "1.10",
+  "app_version": "1.10A",
   "exported_at": "2026-06-06T00:00:00.000Z",
   "session": {
     "session_name": "",
@@ -116,9 +124,9 @@ DMS_Session_v01.json
 
 The `safe_session_name` should use the same conservative filename sanitising approach used for session report downloads.
 
-## E. Import Behaviour
+## E. Deferred Import Behaviour
 
-The import action should:
+Import is not active in V1.10A. When a later V1.10B task is approved, the import action should:
 
 - Let the user select a previously exported JSON file.
 - Read the JSON file in the browser.

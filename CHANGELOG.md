@@ -4,7 +4,9 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
-- Added V1.10 session save / restore planning for downloadable/importable JSON, including architecture plan, ADR, roadmap entry and planned manual tests.
+- Removed legacy Python/tooling content from the active V1 scope and updated ignore rules so bundled runtimes and Python tool files are not recommitted.
+- Normalized V1.10A session JSON export to remain static-browser only by removing the optional Node-based helper test file and moving export validation coverage into manual/static checks.
+- Added V1.10 session JSON planning with V1.10A export-only scope and deferred V1.10B import/restore planning, including architecture plan, ADR, roadmap entry and planned manual tests.
 
 ## 2026-06-05
 

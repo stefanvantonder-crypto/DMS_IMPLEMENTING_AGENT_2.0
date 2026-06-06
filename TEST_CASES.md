@@ -196,13 +196,26 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm selected-output-only generation still works.
 - Confirm no file upload, file parsing, PDF extraction, DOCX extraction, backend, Python, DOCX generation, `package.json`, `server.js`, external libraries or generated client documents are added.
 
-## V1.10 Session Save / Restore Planned Tests
+## V1.10A Session JSON Export
 
 - Confirm session export downloads `{safe_session_name}_DMS_Session_v01.json`.
 - Confirm blank session export downloads `DMS_Session_v01.json`.
 - Confirm exported JSON includes `schema_version`, `app_version`, `exported_at`, session fields, selected agent, selected document classifications, source document inventory metadata, selected outputs, Mini Workflow Brief, controlled prompt and validation warnings.
 - Confirm exported JSON stores metadata and prompt text only, not actual source document files.
 - Confirm exported JSON does not include parsed PDF, DOCX or source file content.
+- Confirm `app/session-export-core.js` is loaded by `app/index.html` as a normal browser script before `app/script.js`.
+- Confirm `app/session-export-core.js` exposes `window.DmsSessionExport` and contains no `require`, `module.exports`, package imports, server calls or build-tool dependency.
+- Confirm the app can be opened from `app/index.html` or GitHub Pages using static HTML/CSS/JavaScript/JSON only, with no Node runtime required.
+- Confirm Export Session JSON does not import, restore, upload, parse files, use localStorage, call a backend or generate client documents.
+- Confirm no app runtime test file is required for V1.10A export and no Node-based test file is needed to operate the static app.
+- Confirm `tools/template_migration.py` is absent from the active V1 repository.
+- Confirm `tools/python/` is absent from the active V1 repository and no bundled Python runtime is required by the app.
+- Confirm no Python files remain in active V1 paths.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, generated client documents or permanent knowledge base updates are added.
+
+## V1.10B Session JSON Import / Restore Planned Tests
+
+- Import/restore is not active in V1.10A. Run these tests only after V1.10B is separately approved.
 - Confirm importing a valid session JSON restores session fields.
 - Confirm importing a valid session JSON restores the selected agent.
 - Confirm importing a valid session JSON restores selected document classifications.
