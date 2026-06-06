@@ -2,6 +2,12 @@
 
 All notable repository-control changes are recorded here.
 
+## V1.14 - Template and Output Control Hardening Planning
+
+- Started planning stricter Markdown template and output-selection controls for the V1.x static prompt-control baseline.
+- Reviewed agent, output, template manifest, prompt generation and session report export control files for V1.14 risk areas.
+- No application logic, backend, DOCX generation, database logic or architecture change was introduced in this planning step.
+
 ## 2026-06-06
 
 - Added V1.13A validation-only confirmation note documenting the static Markdown-first baseline, no-backend/no-DOCX scope and controlled prompt/session-report output model.
