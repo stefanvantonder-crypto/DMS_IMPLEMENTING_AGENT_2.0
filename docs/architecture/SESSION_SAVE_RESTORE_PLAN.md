@@ -12,6 +12,10 @@ V1.10B plans browser-only import and restore for JSON files exported by V1.10A. 
 
 V1.10B must not restore actual source files, read source document contents, parse PDFs or DOCX files, use backend or database storage, use localStorage, generate DOCX files, create client documents, or auto-generate a fresh prompt on import. Users must click `Generate Controlled Prompt` after restore if they need a fresh prompt.
 
+## V1.10D Smoke Hardening Status
+
+V1.10D completed a static import/export smoke and hardening pass. The session JSON export now includes `outputs.selected_output_details` and `export_notice` in addition to the V1.10 save/restore fields. See `docs/architecture/V1_10D_IMPORT_EXPORT_SMOKE_TEST_REPORT.md` for the pass/fail table, defect note and freeze recommendation.
+
 ## A. Purpose
 
 V1.10 will allow users to save and restore project-specific DMS Implementing Agent sessions without using a backend or database.

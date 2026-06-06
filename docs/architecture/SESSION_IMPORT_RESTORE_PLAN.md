@@ -1,5 +1,9 @@
 # V1.10B Session JSON Import / Restore Plan
 
+## V1.10D Smoke Hardening Status
+
+V1.10D completed the static import/export smoke pass for Project Governance and Workflow sessions, invalid imports, registry conflicts and basic import security checks. Import remains browser-only and memory-only. See `docs/architecture/V1_10D_IMPORT_EXPORT_SMOKE_TEST_REPORT.md`.
+
 ## A. Purpose
 
 V1.10B will allow the user to import a previously exported V1 session JSON file and restore static UI state without using a backend, database, localStorage or bundled runtime.

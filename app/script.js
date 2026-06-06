@@ -45,6 +45,7 @@ const WORKFLOW_PROCESS_SOURCE_INPUTS = [
 const SESSION_IMPORT_SCHEMA_VERSION = "1.0";
 const SESSION_IMPORT_SOURCE_WARNING = "Session restored from JSON. Re-upload/provide the actual source documents in ChatGPT/Codex when using the prompt. The JSON file stores metadata only.";
 const IMPORTED_PROMPT_PREFIX = "[Imported historical controlled prompt. Click Generate Controlled Prompt to create a fresh prompt from the restored session.]";
+const SESSION_EXPORT_NOTICE = "This JSON export stores session metadata and controlled prompt text only. It does not include source document files, parsed source content, generated client documents, localStorage data, backend data or DOCX output.";
 
 const FALLBACK_OUTPUT_ROWS = [
   ["proposal", "Proposal", "proposal_preparation_agent", "proposal", "templates/proposal_templates/PROPOSAL_TEMPLATE.md", "outputs/markdown/proposals"],
@@ -151,7 +152,7 @@ const appState = {
   configSource: "loading",
   appConfig: {
     app_name: "DMS Implementing Agent 2.0",
-    version: "1.10C"
+    version: "1.10D"
   },
   data: null,
   selectedAgentId: "",
@@ -246,7 +247,7 @@ async function loadConfiguration() {
   } catch (error) {
     appState.appConfig = {
       app_name: "DMS Implementing Agent 2.0",
-      version: "1.10C"
+      version: "1.10D"
     };
   }
 
@@ -1303,8 +1304,8 @@ function exportSessionJson() {
 }
 
 function buildSessionExportPayload() {
-  return window.DmsSessionExport.createSessionExportPayload({
-    appVersion: appState.appConfig?.version || "1.10C",
+  const payload = window.DmsSessionExport.createSessionExportPayload({
+    appVersion: appState.appConfig?.version || "1.10D",
     sessionValues: getSessionValues(),
     selectedAgentId: appState.selectedAgentId,
     selectedAgentName: getSelectedAgentDefinition()?.name || getSelectedAgentRegistryRecord()?.name || "",
@@ -1315,6 +1316,24 @@ function buildSessionExportPayload() {
     controlledPrompt: getControlledPromptForSessionExport(),
     validationWarnings: getWarnings()
   });
+  payload.export_notice = SESSION_EXPORT_NOTICE;
+  payload.outputs.selected_output_details = getSelectedOutputs().map(toSessionExportOutputDetail);
+  return payload;
+}
+
+function toSessionExportOutputDetail(output) {
+  const manifestEntry = getManifestEntry(output.id);
+  return {
+    output_id: output.id || "",
+    output_label: output.label || "",
+    agent_id: output.agent_id || "",
+    category: output.category || "",
+    template_file: manifestEntry?.template_file || output.template_file || "",
+    template_status: manifestEntry?.status || "",
+    output_folder: output.output_folder || "",
+    suggested_file_name_pattern: output.suggested_file_name_pattern || "",
+    enabled_in_v1: output.enabled_in_v1 === true
+  };
 }
 
 function getMiniWorkflowBriefExportValues() {

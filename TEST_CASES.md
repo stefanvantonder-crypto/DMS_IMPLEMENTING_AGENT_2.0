@@ -269,3 +269,33 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm Download Session Report after import states whether the session was restored from JSON, lists import warnings and includes the source document re-upload reminder.
 - Confirm selected-output-only behaviour still works after restore and fresh prompt generation.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file parsing, PDF extraction, DOCX extraction, generated client documents or permanent knowledge base updates are added.
+
+## V1.10D Import / Export Smoke Test
+
+- Export a Project Governance Agent session with Client TOR and Approved Proposal source inventory entries.
+- Select Project Charter only, generate a controlled prompt and export Session JSON.
+- Confirm exported JSON includes `schema_version`, `app_version`, `exported_at`, `session`, selected agent, `source_document_inventory`, `outputs.selected_output_ids`, `outputs.selected_output_details`, `controlled_prompt`, `validation_warnings` and `export_notice`.
+- Import the exported Project Governance JSON.
+- Confirm Project Governance Agent is selected after import.
+- Confirm Project Charter only is selected after import.
+- Confirm no extra governance outputs are selected after import.
+- Confirm source inventory metadata restores after import.
+- Confirm imported historical controlled prompt appears with the approved historical prompt prefix.
+- Click Generate Controlled Prompt after import.
+- Confirm the fresh prompt replaces the imported historical prompt.
+- Confirm selected-output-only still applies after fresh prompt generation.
+- Export a Workflow Agent session with Mini Workflow Brief populated and Workflow Design Document selected.
+- Import the Workflow Agent JSON and confirm Mini Workflow Brief fields restore.
+- Confirm Workflow Design Document only is selected after workflow import.
+- Confirm invalid JSON fails with `Import failed: invalid JSON file.` and does not mutate current UI state.
+- Confirm missing `schema_version` fails with `Import failed: imported session is missing schema_version and cannot be safely restored.` and does not mutate current UI state.
+- Confirm unsupported `schema_version` fails with `Import failed: unsupported session schema version.` and does not mutate current UI state.
+- Confirm unknown agent IDs warn and do not select invalid agents.
+- Confirm obsolete output IDs are ignored with warnings.
+- Confirm wrong-agent output IDs are ignored with warnings.
+- Confirm invalid classifications are ignored with warnings.
+- Confirm imported text is rendered as text only and is not executed as HTML or script.
+- Confirm imported JSON is not stored in localStorage or sessionStorage.
+- Confirm imported JSON is not uploaded over the network.
+- Confirm no source file contents are restored.
+- Confirm no backend, server file, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file parsing, PDF extraction, DOCX extraction, generated client documents or permanent knowledge base updates are added.
