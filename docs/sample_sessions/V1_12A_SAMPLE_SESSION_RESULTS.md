@@ -106,3 +106,7 @@ Suggested V1.13 scope:
 - Keep selected-output-only behavior unchanged.
 - Do not edit agents, registries or templates unless separately approved.
 - Do not introduce backend, DOCX generation, file parsing or generated client document workflows.
+
+V1.13 follow-up note:
+
+- V1.13 adds explicit no-backend/no-server wording to generated controlled prompts while keeping selected-output-only behavior unchanged.

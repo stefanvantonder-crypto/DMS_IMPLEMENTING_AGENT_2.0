@@ -777,7 +777,13 @@ function buildControlledPrompt() {
 
   lines.push("## 8. Global Rules");
   [
+    "Version 1.x is a static Markdown-first prompt-control system.",
+    "No backend is used in Version 1.x.",
+    "No server-side generation is used in Version 1.x.",
+    "No Python, FastAPI, Flask, Node framework, database, DOCX generation or automatic document generation is used in Version 1.x.",
+    "The app generates controlled prompts and session control artifacts only.",
     "Use uploaded/session documents only for the current session.",
+    "Source documents are session-specific and must be uploaded/provided manually with the prompt.",
     "Use only the source documents listed in this session inventory and any documents uploaded with this prompt. Do not permanently update the knowledge base from session documents.",
     "Do not permanently update the knowledge base.",
     "Generate selected outputs only.",
@@ -785,6 +791,7 @@ function buildControlledPrompt() {
     "Do not invent facts, names, dates, prices, certifications or reference details.",
     "Mark missing information as \"To be confirmed\".",
     "Use formal public-sector consulting language.",
+    "Generated outputs must be Markdown-first.",
     "Use Markdown-first output structure.",
     "Use numbered headings.",
     "Use tables for compliance, requirements, roles, risks, findings, deliverables, workflows, action plans and sign-off sections where appropriate.",

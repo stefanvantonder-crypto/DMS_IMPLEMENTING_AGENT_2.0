@@ -363,3 +363,17 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm app defects, if any, are documented but not fixed in V1.12A.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
+
+## V1.13 Prompt Scope Wording Fix
+
+- Confirm Proposal Agent plus Proposal only generates a prompt that explicitly says no backend is used in Version 1.x.
+- Confirm Proposal Agent plus Proposal only generates a prompt that explicitly says no server-side generation is used in Version 1.x.
+- Confirm Proposal Agent plus Proposal only still includes Proposal only.
+- Confirm Project Governance Agent plus Project Charter only includes no-backend/no-server wording.
+- Confirm Project Governance Agent plus Project Charter only does not include other governance outputs as generation targets.
+- Confirm Workflow Agent plus Mini Workflow Brief includes no-backend/no-server wording.
+- Confirm Workflow Agent plus Mini Workflow Brief includes the Mini Workflow Brief.
+- Confirm Workflow Agent plus Mini Workflow Brief still obeys selected-output-only behavior.
+- Confirm an imported governance session followed by Generate Controlled Prompt includes no-backend/no-server wording.
+- Confirm selected-output-only behavior is unchanged after import and fresh prompt generation.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
