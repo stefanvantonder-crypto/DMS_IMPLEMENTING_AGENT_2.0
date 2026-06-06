@@ -406,3 +406,21 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm no implementation changes were made in V1.15B.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.15B.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.16 User Acceptance Test Pack
+
+- Confirm `docs/uat/V1_16_USER_ACCEPTANCE_TEST_PLAN.md` exists.
+- Confirm `docs/uat/V1_16_UAT_TEST_SCRIPTS.md` exists.
+- Confirm `docs/uat/V1_16_UAT_RESULTS_REGISTER.md` exists.
+- Confirm `docs/uat/V1_16_UAT_SIGN_OFF_TEMPLATE.md` exists.
+- Confirm the UAT plan includes purpose, scope, out of scope, test environment, test roles, entry criteria, exit criteria, test data approach, defect logging approach, pass/fail rules, V1 scope controls and acceptance criteria.
+- Confirm the UAT scripts cover App Load and Navigation, Proposal Preparation Agent, Project Governance Agent, Document Review Agent, Workflow Agent, Validation Warnings, Session Save/Restore and Scope Control.
+- Confirm UAT scripts cover all four approved V1 agents.
+- Confirm UAT scripts cover selected-output-only behavior.
+- Confirm UAT scripts cover session JSON export/import.
+- Confirm UAT scripts cover Markdown session report download.
+- Confirm UAT scripts cover no-backend, no-DOCX, no file upload/parsing and no automatic client deliverable generation scope controls.
+- Confirm the results register includes severity levels: Critical, High, Medium and Low.
+- Confirm the sign-off template includes Accepted, Accepted with minor issues and Not accepted decisions.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.16 UAT pack creation.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
