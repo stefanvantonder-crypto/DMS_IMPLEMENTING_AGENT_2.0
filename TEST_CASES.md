@@ -324,3 +324,26 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm the user guide explains missing information must be treated as `To be confirmed`.
 - Confirm no app logic, agents, registries or templates were changed for V1.11.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
+
+## V1.12 Prompt Quality Review And Sample Session Pack
+
+- Confirm `docs/sample_sessions/proposal_agent_sample_session.md` exists.
+- Confirm `docs/sample_sessions/project_governance_sample_session.md` exists.
+- Confirm `docs/sample_sessions/document_review_sample_session.md` exists.
+- Confirm `docs/sample_sessions/workflow_agent_sample_session.md` exists.
+- Confirm `docs/sample_sessions/V1_12_PROMPT_QUALITY_REVIEW.md` exists.
+- Confirm `docs/sample_sessions/SAMPLE_SESSION_TEST_MATRIX.md` exists.
+- Confirm Proposal Agent sample selects Proposal only.
+- Confirm Proposal Agent sample expects no governance, review or workflow outputs.
+- Confirm Project Governance sample includes Project Charter, Risk Management Plan and Test and Go-Live Plan examples.
+- Confirm Project Governance sample expects selected governance outputs only.
+- Confirm Document Review sample includes Gap Analysis Report and Improvement Action Plan examples.
+- Confirm Document Review sample expects gap, impact, risk, recommendation, required evidence and severity levels.
+- Confirm Workflow Agent sample includes the tea-request Mini Workflow Brief example.
+- Confirm Workflow Agent sample expects selected workflow outputs only.
+- Confirm the sample session test matrix includes import restored governance session and workflow export/import restore rows.
+- Confirm prompt quality review includes selected-output-only enforcement, source document session specificity, missing information handling and V1 no-DOCX/no-backend scope.
+- Confirm all sample session files use placeholders such as `[Client Name]` and `[To be confirmed]`.
+- Confirm sample sessions do not contain real client confidential information.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.

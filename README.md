@@ -79,6 +79,12 @@ See `docs/architecture/GITHUB_PAGES_DEPLOYMENT.md` for setup and post-deployment
 - Full guide: `docs/user_guide/DMS_IMPLEMENTING_AGENT_V1_USER_GUIDE.md`
 - Quick start: `docs/user_guide/QUICK_START_GUIDE.md`
 
+## Sample Sessions And Prompt Quality
+
+- V1.12 prompt quality review: `docs/sample_sessions/V1_12_PROMPT_QUALITY_REVIEW.md`
+- V1.12 sample session test matrix: `docs/sample_sessions/SAMPLE_SESSION_TEST_MATRIX.md`
+- V1 user guide: `docs/user_guide/DMS_IMPLEMENTING_AGENT_V1_USER_GUIDE.md`
+
 ## V1 Scope Notice
 
 V1 is a static Markdown-first prompt-control app. It helps prepare controlled prompts, Markdown session reports and session JSON save/restore files.
