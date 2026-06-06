@@ -377,3 +377,21 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm an imported governance session followed by Generate Controlled Prompt includes no-backend/no-server wording.
 - Confirm selected-output-only behavior is unchanged after import and fresh prompt generation.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
+
+## V1.13A Prompt Matrix Confirmation
+
+- Confirm V1.13A rechecked the affected sample-session matrix rows.
+- Confirm Proposal Agent plus Proposal only now passes without prompt-quality note.
+- Confirm Governance Agent plus Project Charter only now passes without prompt-quality note.
+- Confirm Governance Agent plus Project Charter and Risk Management Plan now passes without prompt-quality note.
+- Confirm Review Agent plus Gap Analysis Report now passes without prompt-quality note.
+- Confirm Workflow Agent plus Workflow Design Document using Mini Workflow Brief now passes without prompt-quality note.
+- Confirm imported governance session plus fresh prompt generation now passes without prompt-quality note.
+- Confirm generated prompts include no-backend/no-server wording.
+- Confirm generated prompts include no Python, FastAPI, Flask, Node framework, database, DOCX generation or automatic document generation wording.
+- Confirm generated prompts still say source documents are session-specific and must be uploaded/provided manually.
+- Confirm selected-output-only behavior still passes.
+- Confirm no unselected outputs are included.
+- Confirm no app defects were found.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.13A.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.

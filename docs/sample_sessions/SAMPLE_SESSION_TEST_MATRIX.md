@@ -49,3 +49,30 @@ Summary:
 - Pass: 2
 - Pass with prompt quality note: 9
 - Fail: 0
+
+## V1.13A Recorded Results
+
+Execution date: 2026-06-06
+
+Execution method: Deterministic static-app harness using the current V1.13 app scripts and registry JSON files.
+
+| Test ID | Result / Status | Notes |
+|---|---|---|
+| V1.12-01 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-02 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-03 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-04 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-05 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-06 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-07 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-08 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-09 | Pass | V1.13 no-backend/no-server scope wording and selected-output-only checks passed. |
+| V1.12-10 | Pass | Imported governance session fresh prompt includes V1.13 scope wording and remains selected-output-only. |
+
+Summary:
+
+- Total rows rechecked: 10
+- Pass: 10
+- Fail: 0
+- Previous prompt-quality note resolved: Yes
+- Remaining prompt-quality issues: None found in rechecked rows

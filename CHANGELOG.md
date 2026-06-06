@@ -4,6 +4,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
+- Confirmed V1.13A sample-session matrix results, resolving the previous no-backend/no-server prompt-quality note without changing app code.
 - Added V1.13 controlled prompt scope wording so generated prompts explicitly state no backend and no server-side generation are used in Version 1.x.
 - Recorded V1.12A sample session matrix execution results, including pass/fail outcomes, prompt quality observations and V1.13 prompt-fix recommendation.
 - Added V1.12 sample session pack, prompt quality review criteria and sample-session test matrix for all four static V1 agents.

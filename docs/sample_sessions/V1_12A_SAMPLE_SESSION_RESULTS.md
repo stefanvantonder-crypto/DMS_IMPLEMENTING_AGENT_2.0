@@ -110,3 +110,45 @@ Suggested V1.13 scope:
 V1.13 follow-up note:
 
 - V1.13 adds explicit no-backend/no-server wording to generated controlled prompts while keeping selected-output-only behavior unchanged.
+
+## 9. V1.13A Confirmation
+
+Confirmation date: 2026-06-06
+
+V1.13A reran the affected matrix checks after the V1.13 prompt scope wording fix.
+
+Rechecked rows:
+
+- V1.12-01: Proposal Preparation Agent + Proposal.
+- V1.12-02: Project Governance Agent + Project Charter.
+- V1.12-03: Project Governance Agent + Project Charter and Risk Management Plan.
+- V1.12-04: Project Governance Agent + Test and Go-Live Plan.
+- V1.12-05: Document Review Agent + Gap Analysis Report.
+- V1.12-06: Document Review Agent + Gap Analysis Report and Improvement Action Plan.
+- V1.12-07: Workflow Agent + Workflow Design Document using SOP inventory.
+- V1.12-08: Workflow Agent + Workflow Design Document using Mini Workflow Brief.
+- V1.12-09: Workflow Agent + multiple selected workflow outputs.
+- V1.12-10: Imported governance session followed by fresh prompt generation.
+
+Confirmed prompt scope wording:
+
+- `No backend is used in Version 1.x.`
+- `No server-side generation is used in Version 1.x.`
+- `No Python, FastAPI, Flask, Node framework, database, DOCX generation or automatic document generation is used in Version 1.x.`
+- `Source documents are session-specific and must be uploaded/provided manually with the prompt.`
+- `Generate selected outputs only.`
+- `Do not generate unselected outputs.`
+
+V1.13A summary:
+
+| Result Type | Count |
+|---|---:|
+| Pass | 10 |
+| Fail | 0 |
+| Total rows rechecked | 10 |
+
+Previous prompt-quality note resolved: Yes.
+
+Remaining prompt-quality issues: None found in the rechecked rows.
+
+App defects found: None.
