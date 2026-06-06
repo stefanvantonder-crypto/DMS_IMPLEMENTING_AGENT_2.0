@@ -68,3 +68,48 @@ No registry path changes are required for V1.8.
 - Confirm session report download works.
 - Confirm no DOCX output is generated.
 - Confirm no generated client documents are created in the repository.
+
+## V1.11 Live Validation Checklist
+
+Use this checklist after GitHub Pages has published the latest `main` branch.
+
+Expected URL:
+
+```text
+https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/
+```
+
+Validation steps:
+
+- Confirm the GitHub Pages URL opens.
+- Confirm the root redirect works.
+- Confirm `app/index.html` loads.
+- Confirm four agents display.
+- Confirm Project Governance Agent shows 15 outputs.
+- Confirm Project Charter prompt generation works.
+- Confirm session report download works.
+- Confirm Session JSON exports.
+- Confirm Session JSON imports.
+- Confirm no DOCX generation appears.
+- Confirm no backend or server is required.
+
+Record results:
+
+```text
+Validation date:
+Validated by:
+GitHub Pages URL status:
+Root redirect status:
+app/index.html status:
+Agent registry status:
+Project Governance output count:
+Project Charter prompt test:
+Session report download:
+Session JSON export:
+Session JSON import:
+DOCX generation absent:
+Backend/server absent:
+Notes:
+```
+
+If the GitHub Pages URL returns 404, confirm that Pages is enabled, the source branch is `main`, the folder is `/root`, and the site has finished publishing.

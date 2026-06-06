@@ -62,7 +62,7 @@ docs/decisions/
 
 To open the app locally, open `app/index.html` directly in a browser.
 
-After GitHub Pages is enabled for the repository, open:
+Expected live GitHub Pages URL:
 
 ```text
 https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/
@@ -73,6 +73,17 @@ GitHub Pages should serve from the repository root. The root `index.html` redire
 V1 remains static only. It does not require a backend, Python, Node, DOCX generation, package manager, server file, build tooling or generated client documents.
 
 See `docs/architecture/GITHUB_PAGES_DEPLOYMENT.md` for setup and post-deployment checks.
+
+## User Guides
+
+- Full guide: `docs/user_guide/DMS_IMPLEMENTING_AGENT_V1_USER_GUIDE.md`
+- Quick start: `docs/user_guide/QUICK_START_GUIDE.md`
+
+## V1 Scope Notice
+
+V1 is a static Markdown-first prompt-control app. It helps prepare controlled prompts, Markdown session reports and session JSON save/restore files.
+
+V1 does not upload source documents, parse files, generate DOCX files, use localStorage, use a backend, use a database, install external libraries or automatically generate client documents. Actual source documents must still be provided manually to ChatGPT/Codex with the generated prompt.
 
 ## Development Control
 

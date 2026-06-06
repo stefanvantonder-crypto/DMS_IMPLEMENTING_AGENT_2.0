@@ -4,6 +4,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
+- Added V1.11 GitHub Pages live validation checklist plus full and quick-start user guides for the static V1 prompt-control app.
 - Completed V1.10D import/export smoke hardening, confirming export notice and selected output detail metadata in session JSON, recording smoke results, final manual test coverage and static scope-scan cleanup.
 - Implemented V1.10C browser-only Session JSON import/restore for schema `1.0`, including safe local JSON parsing, registry-aware restore warnings, session report import notes and manual validation coverage.
 - Added V1.10B import/restore planning for validated browser-only session JSON restore, with implementation deferred to V1.10C.

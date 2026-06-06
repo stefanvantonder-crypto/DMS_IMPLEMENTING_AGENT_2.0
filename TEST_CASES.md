@@ -299,3 +299,28 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm imported JSON is not uploaded over the network.
 - Confirm no source file contents are restored.
 - Confirm no backend, server file, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file parsing, PDF extraction, DOCX extraction, generated client documents or permanent knowledge base updates are added.
+
+## V1.11 GitHub Pages Live Validation And User Guides
+
+- Confirm `docs/user_guide/DMS_IMPLEMENTING_AGENT_V1_USER_GUIDE.md` exists.
+- Confirm `docs/user_guide/QUICK_START_GUIDE.md` exists.
+- Confirm README links to the user guide and quick start guide.
+- Confirm `docs/architecture/GITHUB_PAGES_DEPLOYMENT.md` includes the V1.11 live validation checklist.
+- Open `https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/`.
+- Confirm the GitHub Pages URL opens after Pages has finished publishing.
+- Confirm the root redirect works.
+- Confirm `app/index.html` loads.
+- Confirm four agents display.
+- Confirm Project Governance Agent shows 15 outputs.
+- Confirm Project Charter prompt generation works.
+- Confirm session report download works.
+- Confirm Session JSON exports.
+- Confirm Session JSON imports.
+- Confirm no DOCX generation appears.
+- Confirm no backend or server is required.
+- Confirm the user guide explains that source document inventory stores metadata only.
+- Confirm the user guide explains that actual source documents must still be uploaded/provided manually to ChatGPT/Codex.
+- Confirm the user guide explains selected-output-only behavior.
+- Confirm the user guide explains missing information must be treated as `To be confirmed`.
+- Confirm no app logic, agents, registries or templates were changed for V1.11.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
