@@ -58,6 +58,22 @@ docs/decisions/
 4. Save generated Markdown outputs only in the approved output folders.
 5. Mark unknown or missing information as `To be confirmed`.
 
+## GitHub Pages
+
+To open the app locally, open `app/index.html` directly in a browser.
+
+After GitHub Pages is enabled for the repository, open:
+
+```text
+https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/
+```
+
+GitHub Pages should serve from the repository root. The root `index.html` redirects to `app/index.html`.
+
+V1 remains static only. It does not require a backend, Python, Node, DOCX generation, package manager, server file, build tooling or generated client documents.
+
+See `docs/architecture/GITHUB_PAGES_DEPLOYMENT.md` for setup and post-deployment checks.
+
 ## Development Control
 
 Future development is controlled by:

@@ -158,3 +158,40 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm prompt preview text wraps cleanly and remains readable.
 - Confirm Download Session Report creates a Markdown browser download only and does not create generated client documents inside the repository.
 - Confirm no backend, Python, DOCX generation, root `package.json`, `server.js`, external libraries or generated client documents are added.
+
+## V1.8 GitHub Pages Post-Deployment Checklist
+
+- Confirm GitHub Pages is configured with Source `Deploy from a branch`, Branch `main`, and Folder `/root`.
+- Open `https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/`.
+- Confirm the root page redirects to `app/index.html`.
+- Confirm the app loads without a backend.
+- Confirm four agents display.
+- Confirm Project Governance Agent shows exactly 15 outputs.
+- Confirm Proposal Preparation Agent plus Proposal selected generates a controlled prompt containing Proposal only.
+- Confirm Project Governance Agent plus Project Charter selected generates a controlled prompt containing Project Charter only.
+- Confirm session report download works as a Markdown browser download.
+- Confirm repository JSON loads from `../engine/` and `../knowledge_base/agents/` where the browser allows it.
+- If fallback mode appears, confirm it is clearly marked non-authoritative.
+- Confirm no DOCX output is generated.
+- Confirm no backend, Python, package manager, `package.json`, `server.js`, external libraries or generated client documents are added.
+
+## V1.9 Source Document Inventory Panel
+
+- Confirm the Source Document Inventory panel appears in `app/index.html`.
+- Confirm the panel explains that source documents are not stored or processed by the app and must be uploaded manually with the generated prompt.
+- Confirm Document Classification options are populated from the selected agent's allowed inputs plus `Other session source document`.
+- Confirm Document Type options include TOR, RFQ, RFP, Approved Proposal, Previous Proposal Example, Bid Specification, DMS User Manual, DMS Architecture Document, Client Policy, Client Procedure, Framework / Legislation / Standard, SOP, Business Process Description, User Interview Notes, Pricing Schedule, Reference Letter and Other.
+- Confirm Add Source Document adds an entry to the inventory table.
+- Confirm Clear Source Document Inventory clears the browser-memory inventory.
+- Confirm Remove removes one inventory row.
+- Confirm source inventory entries clear on page reload or remain browser-memory only.
+- Confirm existing classification checkboxes still work.
+- Confirm source inventory entries supplement classification checkboxes for required input warnings.
+- Confirm a required source document marked Available for upload `No` shows `Required source document is listed but not available for upload.`
+- Confirm Generate Controlled Prompt includes `Session Source Document Inventory`.
+- Confirm prompt entries include Document Name, Classification, Type, Date, Version / Reference Number, Available for upload and Notes.
+- Confirm a source document marked Available for upload `No` adds the related `To be confirmed` instruction.
+- Confirm empty inventory prompts and reports say `No source document inventory entries were recorded. Use the selected document classifications as the session document checklist.`
+- Confirm Session Report includes the Source Document Inventory section.
+- Confirm selected-output-only generation still works.
+- Confirm no file upload, file parsing, PDF extraction, DOCX extraction, backend, Python, DOCX generation, `package.json`, `server.js`, external libraries or generated client documents are added.

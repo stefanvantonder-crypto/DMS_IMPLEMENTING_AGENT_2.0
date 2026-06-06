@@ -20,7 +20,7 @@ docs/
 
 ## Area Responsibilities
 
-`app/` is reserved for the future V1.3 static UI shell. Do not add UI files until V1.3 is approved.
+`app/` contains the approved V1 static UI shell.
 
 `knowledge_base/agents/` is reserved for future agent definitions.
 
@@ -53,6 +53,20 @@ The V1 workflow is controlled by prompts and future static registry files:
 5. Mark missing facts as `To be confirmed`.
 6. Generate selected Markdown outputs only.
 7. Export a session report when V1.5 is approved.
+
+## GitHub Pages Deployment
+
+V1.8 may be served by GitHub Pages from the repository root. The root `index.html` is a static redirect only and points to `app/index.html`.
+
+The app remains static. It loads repository JSON using paths relative to `app/index.html`, including `../engine/agent_registry.json`, `../engine/output_registry.json`, `../engine/template_manifest.json`, and `../knowledge_base/agents/*.json`.
+
+No backend, Python, Node, package manager, server route, DOCX generation or build tooling is part of the V1 GitHub Pages architecture.
+
+## Source Document Session Inventory
+
+V1.9 includes a static Source Document Inventory Panel. It records source document metadata for the current browser session only and supplements the document classification checklist.
+
+The inventory does not upload, parse, extract, store or process source files. Session source documents must be uploaded manually with the generated prompt and must not permanently update the knowledge base, registries, schemas, templates or system rules.
 
 ## Explicit Non-Architecture
 

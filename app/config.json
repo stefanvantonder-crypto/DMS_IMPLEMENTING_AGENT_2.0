@@ -1,7 +1,7 @@
 {
   "app_name": "DMS Implementing Agent 2.0",
-  "version": "1.5",
-  "scope": "Static UI shell, controlled prompt generation and browser-based session report export",
+  "version": "1.9",
+  "scope": "Static UI shell, source document session inventory, controlled prompt generation, browser-based session report export and GitHub Pages deployment readiness",
   "architecture": "Markdown-first controlled prompt assistant",
   "authoritative_data": {
     "agent_registry": "../engine/agent_registry.json",
@@ -23,6 +23,12 @@
   "fallback_configuration": {
     "enabled_for_static_file_testing": true,
     "non_authoritative": true,
-    "message": "Fallback configuration loaded. Repository JSON not available. Use only for local UI testing."
+    "message": "Fallback configuration loaded. Repository JSON not available. Non-authoritative; use only for local UI testing."
+  },
+  "source_document_inventory": {
+    "storage": "browser memory only",
+    "file_upload_active": false,
+    "file_parsing_active": false,
+    "permanent_knowledge_base_update": false
   }
 }

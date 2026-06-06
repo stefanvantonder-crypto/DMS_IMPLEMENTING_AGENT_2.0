@@ -4,6 +4,8 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-05
 
+- Added V1.9 Source Document Inventory Panel for browser-memory session source metadata, including inventory-driven validation warnings, controlled prompt and session report inventory sections, and a source document session model architecture note.
+- Added V1.8 GitHub Pages deployment preparation with a root static redirect, `.nojekyll`, deployment guide, README instructions, architecture note, post-deployment checklist and static V1 scope confirmation.
 - Added V1.7 manual browser polish updates for clearer static shell versioning, fallback warning copy, validation success messaging, Markdown report button labeling, prompt preview readability and the V1.7 manual browser checklist.
 - Completed V1.6 static smoke testing and hardening review, documenting repository scope control, JSON validation, agent/output/template coverage, validation warnings, controlled prompt generation, session report export behavior and final manual browser smoke-test steps.
 - Added V1.5 browser-based Markdown session report export using built-in Blob download, including session setup, selected agent, selected classifications, selected outputs only, validation warnings, controlled prompt content and V1 scope-control notice.

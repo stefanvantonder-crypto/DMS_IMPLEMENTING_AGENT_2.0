@@ -11,6 +11,37 @@ const DATA_PATHS = {
   }
 };
 
+const SOURCE_DOCUMENT_OTHER_CLASSIFICATION = "Other session source document";
+
+const SOURCE_DOCUMENT_TYPES = [
+  "TOR",
+  "RFQ",
+  "RFP",
+  "Approved Proposal",
+  "Previous Proposal Example",
+  "Bid Specification",
+  "DMS User Manual",
+  "DMS Architecture Document",
+  "Client Policy",
+  "Client Procedure",
+  "Framework / Legislation / Standard",
+  "SOP",
+  "Business Process Description",
+  "User Interview Notes",
+  "Pricing Schedule",
+  "Reference Letter",
+  "Other"
+];
+
+const WORKFLOW_PROCESS_SOURCE_INPUTS = [
+  "Business process description",
+  "SOP",
+  "Client policy",
+  "Existing workflow example",
+  "User interview notes",
+  "Mini Workflow Brief"
+];
+
 const FALLBACK_OUTPUT_ROWS = [
   ["proposal", "Proposal", "proposal_preparation_agent", "proposal", "templates/proposal_templates/PROPOSAL_TEMPLATE.md", "outputs/markdown/proposals"],
   ["audit_report_implementation_review", "Audit Report Implementation Review", "project_governance_agent", "project_governance", "templates/project_governance_templates/AUDIT_REPORT_IMPLEMENTATION_REVIEW_TEMPLATE.md", "outputs/markdown/governance_documents"],
@@ -116,12 +147,14 @@ const appState = {
   configSource: "loading",
   appConfig: {
     app_name: "DMS Implementing Agent 2.0",
-    version: "1.5"
+    version: "1.9"
   },
   data: null,
   selectedAgentId: "",
   selectedInputs: new Set(),
-  selectedOutputs: new Set()
+  selectedOutputs: new Set(),
+  sourceDocuments: [],
+  nextSourceDocumentId: 1
 };
 
 const elements = {};
@@ -144,6 +177,17 @@ function bindElements() {
     "classification-list",
     "output-list",
     "output-count",
+    "source-document-count",
+    "source-doc-name",
+    "source-doc-classification",
+    "source-doc-type",
+    "source-doc-date",
+    "source-doc-reference",
+    "source-doc-notes",
+    "source-doc-available",
+    "add-source-document",
+    "clear-source-documents",
+    "source-document-inventory-table",
     "workflow-brief-panel",
     "template-status-list",
     "warning-list",
@@ -160,7 +204,7 @@ function bindElements() {
 
 function bindActions() {
   document.addEventListener("input", (event) => {
-    if (event.target.matches("input, textarea")) {
+    if (event.target.matches("input, textarea, select")) {
       renderWarnings();
     }
   });
@@ -168,6 +212,8 @@ function bindActions() {
   elements.generatePrompt.addEventListener("click", generateControlledPrompt);
   elements.copyPrompt.addEventListener("click", copyPrompt);
   elements.downloadReport.addEventListener("click", downloadSessionReport);
+  elements.addSourceDocument.addEventListener("click", addSourceDocument);
+  elements.clearSourceDocuments.addEventListener("click", clearSourceDocumentInventory);
   elements.downloadReport.disabled = false;
   elements.downloadReport.title = "Download Markdown session report.";
 }
@@ -178,7 +224,7 @@ async function loadConfiguration() {
   } catch (error) {
     appState.appConfig = {
       app_name: "DMS Implementing Agent 2.0",
-      version: "1.5"
+      version: "1.9"
     };
   }
 
@@ -291,6 +337,7 @@ function buildFallbackConfiguration() {
 function renderApp() {
   renderConfigBanner();
   renderAgents();
+  renderSourceDocumentPanel();
   renderSelectedAgent();
   renderWarnings();
 }
@@ -369,6 +416,7 @@ function renderSelectedAgent() {
 
   renderClassifications(agentDefinition);
   renderOutputs();
+  renderSourceDocumentPanel();
   renderTemplateStatus();
   renderWarnings();
 }
@@ -420,6 +468,138 @@ function renderOutputs() {
       renderTemplateStatus();
       renderWarnings();
     });
+  });
+}
+
+function renderSourceDocumentPanel() {
+  renderSourceDocumentTypeOptions();
+  renderSourceDocumentClassificationOptions();
+  renderSourceDocumentInventoryTable();
+}
+
+function renderSourceDocumentTypeOptions() {
+  if (!elements.sourceDocType || elements.sourceDocType.options.length > 0) {
+    return;
+  }
+  elements.sourceDocType.innerHTML = SOURCE_DOCUMENT_TYPES
+    .map((type) => `<option value="${escapeAttribute(type)}">${escapeHtml(type)}</option>`)
+    .join("");
+}
+
+function renderSourceDocumentClassificationOptions() {
+  if (!elements.sourceDocClassification) {
+    return;
+  }
+  const currentValue = elements.sourceDocClassification.value;
+  const options = getSourceDocumentClassificationOptions();
+  elements.sourceDocClassification.innerHTML = options
+    .map((classification) => `<option value="${escapeAttribute(classification)}">${escapeHtml(classification)}</option>`)
+    .join("");
+  elements.sourceDocClassification.value = options.includes(currentValue) ? currentValue : options[0];
+}
+
+function getSourceDocumentClassificationOptions() {
+  const agentDefinition = getSelectedAgentDefinition();
+  const options = new Set(agentDefinition?.allowed_inputs || []);
+  options.add(SOURCE_DOCUMENT_OTHER_CLASSIFICATION);
+  return Array.from(options);
+}
+
+function addSourceDocument() {
+  const documentName = getValue("source-doc-name");
+  if (!documentName) {
+    setActionStatus("Source document not added. Document Name is required.");
+    return;
+  }
+
+  appState.sourceDocuments.push({
+    id: appState.nextSourceDocumentId,
+    documentName,
+    classification: getValue("source-doc-classification") || SOURCE_DOCUMENT_OTHER_CLASSIFICATION,
+    documentType: getValue("source-doc-type") || "Other",
+    documentDate: getValue("source-doc-date") || "",
+    referenceNumber: getValue("source-doc-reference") || "",
+    notes: getValue("source-doc-notes") || "",
+    availableForUpload: getValue("source-doc-available") || "Yes"
+  });
+  appState.nextSourceDocumentId += 1;
+
+  clearSourceDocumentForm();
+  renderSourceDocumentPanel();
+  renderWarnings();
+  setActionStatus("Source document added to the current browser session inventory.");
+}
+
+function clearSourceDocumentForm() {
+  ["source-doc-name", "source-doc-date", "source-doc-reference", "source-doc-notes"].forEach((id) => {
+    const field = document.getElementById(id);
+    if (field) {
+      field.value = "";
+    }
+  });
+  if (elements.sourceDocAvailable) {
+    elements.sourceDocAvailable.value = "Yes";
+  }
+}
+
+function clearSourceDocumentInventory() {
+  appState.sourceDocuments = [];
+  renderSourceDocumentPanel();
+  renderWarnings();
+  setActionStatus("Source document inventory cleared for this browser session.");
+}
+
+function removeSourceDocument(sourceDocumentId) {
+  appState.sourceDocuments = appState.sourceDocuments.filter((entry) => entry.id !== sourceDocumentId);
+  renderSourceDocumentInventoryTable();
+  renderWarnings();
+  setActionStatus("Source document removed from the current browser session inventory.");
+}
+
+function renderSourceDocumentInventoryTable() {
+  elements.sourceDocumentCount.textContent = String(appState.sourceDocuments.length);
+  if (appState.sourceDocuments.length === 0) {
+    elements.sourceDocumentInventoryTable.classList.add("muted-block");
+    elements.sourceDocumentInventoryTable.innerHTML = "No source document inventory entries were recorded.";
+    return;
+  }
+
+  elements.sourceDocumentInventoryTable.classList.remove("muted-block");
+  elements.sourceDocumentInventoryTable.innerHTML = `
+    <div class="table-scroll">
+      <table class="inventory-table">
+        <thead>
+          <tr>
+            <th>Document Name</th>
+            <th>Classification</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Version / Reference Number</th>
+            <th>Available</th>
+            <th>Notes</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${appState.sourceDocuments.map((entry) => `
+            <tr>
+              <td>${escapeHtml(entry.documentName)}</td>
+              <td>${escapeHtml(entry.classification)}</td>
+              <td>${escapeHtml(entry.documentType)}</td>
+              <td>${escapeHtml(entry.documentDate || "To be confirmed")}</td>
+              <td>${escapeHtml(entry.referenceNumber || "To be confirmed")}</td>
+              <td>${escapeHtml(entry.availableForUpload)}</td>
+              <td>${escapeHtml(entry.notes || "To be confirmed")}</td>
+              <td><button type="button" class="small-button" data-source-document-id="${entry.id}">Remove</button></td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  elements.sourceDocumentInventoryTable.querySelectorAll("[data-source-document-id]").forEach((button) => {
+    button.addEventListener("click", () => removeSourceDocument(Number(button.dataset.sourceDocumentId)));
   });
 }
 
@@ -484,13 +664,15 @@ function getWarnings() {
         warnings.push("Workflow Agent selected without process source and without Mini Workflow Brief.");
       }
     } else {
-      (agentDefinition.required_inputs || []).forEach((input) => {
-        if (!appState.selectedInputs.has(input)) {
-          warnings.push(`Missing required document classification: ${input}.`);
-        }
+      getMissingRequiredInputs(agentDefinition).forEach((input) => {
+        warnings.push(`Missing required document classification: ${input}.`);
       });
     }
   }
+
+  getUnavailableRequiredSourceDocuments(agentDefinition).forEach((entry) => {
+    warnings.push(`Required source document is listed but not available for upload. Document: ${entry.documentName}.`);
+  });
 
   getSelectedOutputs().forEach((output) => {
     const manifestEntry = getManifestEntry(output.id);
@@ -557,7 +739,9 @@ function buildControlledPrompt() {
   lines.push("- The user must upload/provide the actual session documents to ChatGPT/Codex together with this prompt.");
   lines.push("");
 
-  lines.push("## 4. Selected Outputs");
+  appendSourceDocumentInventory(lines, "## 4. Session Source Document Inventory");
+
+  lines.push("## 5. Selected Outputs");
   lines.push("Generate selected outputs only. Do not generate unselected outputs.");
   selectedOutputs.forEach((output, index) => appendSelectedOutput(lines, output, index + 1));
 
@@ -565,12 +749,13 @@ function buildControlledPrompt() {
     appendMiniWorkflowBrief(lines);
   }
 
-  lines.push("## 6. Agent-Specific Instructions");
+  lines.push("## 7. Agent-Specific Instructions");
   appendAgentSpecificInstructions(lines, appState.selectedAgentId);
 
-  lines.push("## 7. Global Rules");
+  lines.push("## 8. Global Rules");
   [
     "Use uploaded/session documents only for the current session.",
+    "Use only the source documents listed in this session inventory and any documents uploaded with this prompt. Do not permanently update the knowledge base from session documents.",
     "Do not permanently update the knowledge base.",
     "Generate selected outputs only.",
     "Do not generate unselected outputs.",
@@ -585,10 +770,10 @@ function buildControlledPrompt() {
   ].forEach((rule) => lines.push(`- ${rule}`));
   lines.push("");
 
-  lines.push("## 8. Output Formatting Instructions");
+  lines.push("## 9. Output Formatting Instructions");
   selectedOutputs.forEach((output, index) => {
     const manifestEntry = getManifestEntry(output.id);
-    lines.push(`### 8.${index + 1}. ${output.label}`);
+    lines.push(`### 9.${index + 1}. ${output.label}`);
     lines.push("- Start with the document title.");
     lines.push(`- Follow the relevant Markdown template file structure: ${manifestEntry?.template_file || output.template_file || "To be confirmed"}.`);
     lines.push("- Include Document Control where relevant.");
@@ -600,7 +785,7 @@ function buildControlledPrompt() {
     lines.push("");
   });
 
-  lines.push("## 9. Validation Warnings");
+  lines.push("## 10. Validation Warnings");
   appendBulletList(lines, "Current UI validation warnings", validationWarnings);
 
   return lines.join("\n");
@@ -609,7 +794,7 @@ function buildControlledPrompt() {
 function appendSelectedOutput(lines, output, number) {
   const manifestEntry = getManifestEntry(output.id);
   lines.push("");
-  lines.push(`### 4.${number}. ${output.label}`);
+  lines.push(`### 5.${number}. ${output.label}`);
   lines.push(`- Output ID: ${output.id}`);
   lines.push(`- Output label: ${output.label}`);
   lines.push(`- Output category: ${output.category || "To be confirmed"}`);
@@ -627,7 +812,7 @@ function appendMiniWorkflowBrief(lines) {
   const hasMiniBrief = getMiniWorkflowBriefValues().some((value) => value.trim().length > 0);
   const hasProcessSource = hasWorkflowProcessSource();
   lines.push("");
-  lines.push("## 5. Mini Workflow Brief");
+  lines.push("## 6. Mini Workflow Brief");
   if (hasMiniBrief) {
     lines.push(`- Workflow Description / What must happen: ${getValue("workflow-description") || "To be confirmed"}`);
     lines.push(`- Workflow Rules / Conditions: ${getValue("workflow-rules") || "To be confirmed"}`);
@@ -714,7 +899,7 @@ function getMissingRequiredInputs(agentDefinition) {
     const hasMiniBrief = getMiniWorkflowBriefValues().some((value) => value.trim().length > 0);
     return hasWorkflowProcessSource() || hasMiniBrief ? [] : (agentDefinition.required_inputs || []);
   }
-  return (agentDefinition.required_inputs || []).filter((input) => !appState.selectedInputs.has(input));
+  return (agentDefinition.required_inputs || []).filter((input) => !hasSessionInputClassification(input));
 }
 
 function getSelectedRequiredInputs(agentDefinition) {
@@ -725,7 +910,7 @@ function getSelectedRequiredInputs(agentDefinition) {
     const hasMiniBrief = getMiniWorkflowBriefValues().some((value) => value.trim().length > 0);
     return hasWorkflowProcessSource() || hasMiniBrief ? (agentDefinition.required_inputs || []) : [];
   }
-  return (agentDefinition.required_inputs || []).filter((input) => appState.selectedInputs.has(input));
+  return (agentDefinition.required_inputs || []).filter((input) => hasSessionInputClassification(input));
 }
 
 function getSelectedOptionalInputs(agentDefinition) {
@@ -733,19 +918,76 @@ function getSelectedOptionalInputs(agentDefinition) {
     return [];
   }
   const optionalInputs = new Set(agentDefinition.optional_inputs || []);
-  return Array.from(appState.selectedInputs).filter((input) => optionalInputs.has(input));
+  return Array.from(getSessionInputClassifications()).filter((input) => optionalInputs.has(input));
 }
 
 function getOptionalInputsNotSelected(agentDefinition) {
   if (!agentDefinition) {
     return [];
   }
-  return (agentDefinition.optional_inputs || []).filter((input) => !appState.selectedInputs.has(input));
+  return (agentDefinition.optional_inputs || []).filter((input) => !hasSessionInputClassification(input));
 }
 
 function hasWorkflowProcessSource() {
-  return ["Business process description", "SOP", "Client policy", "Existing workflow example", "User interview notes", "Mini Workflow Brief"]
-    .some((input) => appState.selectedInputs.has(input));
+  return WORKFLOW_PROCESS_SOURCE_INPUTS.some((input) => hasSessionInputClassification(input));
+}
+
+function getSessionInputClassifications() {
+  const classifications = new Set(appState.selectedInputs);
+  appState.sourceDocuments.forEach((entry) => {
+    if (entry.classification) {
+      classifications.add(entry.classification);
+    }
+  });
+  return classifications;
+}
+
+function hasSessionInputClassification(input) {
+  return getSessionInputClassifications().has(input);
+}
+
+function getUnavailableRequiredSourceDocuments(agentDefinition) {
+  if (!agentDefinition) {
+    return [];
+  }
+
+  if (appState.selectedAgentId === "workflow_agent") {
+    return appState.sourceDocuments.filter((entry) => (
+      entry.availableForUpload === "No" && WORKFLOW_PROCESS_SOURCE_INPUTS.includes(entry.classification)
+    ));
+  }
+
+  const requiredInputs = new Set(agentDefinition.required_inputs || []);
+  return appState.sourceDocuments.filter((entry) => (
+    entry.availableForUpload === "No" && requiredInputs.has(entry.classification)
+  ));
+}
+
+function appendSourceDocumentInventory(lines, heading) {
+  lines.push(heading);
+  if (appState.sourceDocuments.length === 0) {
+    lines.push("- No source document inventory entries were recorded. Use the selected document classifications as the session document checklist.");
+    lines.push("- Use only the source documents listed in this session inventory and any documents uploaded with this prompt. Do not permanently update the knowledge base from session documents.");
+    lines.push("");
+    return;
+  }
+
+  appState.sourceDocuments.forEach((entry, index) => {
+    lines.push(`### Source Document ${index + 1}: ${entry.documentName || "To be confirmed"}`);
+    lines.push(`- Document Name: ${entry.documentName || "To be confirmed"}`);
+    lines.push(`- Classification: ${entry.classification || "To be confirmed"}`);
+    lines.push(`- Type: ${entry.documentType || "To be confirmed"}`);
+    lines.push(`- Date: ${entry.documentDate || "To be confirmed"}`);
+    lines.push(`- Version / Reference Number: ${entry.referenceNumber || "To be confirmed"}`);
+    lines.push(`- Available for upload: ${entry.availableForUpload || "To be confirmed"}`);
+    lines.push(`- Notes: ${entry.notes || "To be confirmed"}`);
+    if (entry.availableForUpload === "No") {
+      lines.push(`- Document listed but not available for upload: ${entry.documentName || "To be confirmed"}. Treat related information as To be confirmed unless provided elsewhere.`);
+    }
+    lines.push("");
+  });
+  lines.push("- Use only the source documents listed in this session inventory and any documents uploaded with this prompt. Do not permanently update the knowledge base from session documents.");
+  lines.push("");
 }
 
 function appendBulletList(lines, title, items = []) {
@@ -828,7 +1070,9 @@ function buildSessionReport() {
   appendBulletList(lines, "Optional inputs not selected", getOptionalInputsNotSelected(agentDefinition));
   lines.push("");
 
-  lines.push("## 5. Selected Outputs");
+  appendSourceDocumentInventory(lines, "## 5. Source Document Inventory");
+
+  lines.push("## 6. Selected Outputs");
   if (selectedOutputs.length === 0) {
     lines.push("- To be confirmed");
   } else {
@@ -836,10 +1080,10 @@ function buildSessionReport() {
   }
   lines.push("");
 
-  lines.push("## 6. Mini Workflow Brief");
+  lines.push("## 7. Mini Workflow Brief");
   appendSessionReportMiniWorkflowBrief(lines);
 
-  lines.push("## 7. Validation Warnings");
+  lines.push("## 8. Validation Warnings");
   if (validationWarnings.length === 0) {
     lines.push("- No validation warnings at time of report generation.");
   } else {
@@ -847,13 +1091,13 @@ function buildSessionReport() {
   }
   lines.push("");
 
-  lines.push("## 8. Controlled Prompt");
+  lines.push("## 9. Controlled Prompt");
   lines.push("```text");
   lines.push(getControlledPromptForReport());
   lines.push("```");
   lines.push("");
 
-  lines.push("## 9. Suggested Output Save Plan");
+  lines.push("## 10. Suggested Output Save Plan");
   if (selectedOutputs.length === 0) {
     lines.push("- To be confirmed");
   } else {
@@ -867,7 +1111,7 @@ function buildSessionReport() {
   }
   lines.push("");
 
-  lines.push("## 10. Session Completion Checklist");
+  lines.push("## 11. Session Completion Checklist");
   [
     "Confirm the correct agent was selected.",
     "Confirm required source documents were uploaded/provided to ChatGPT/Codex.",
@@ -882,7 +1126,7 @@ function buildSessionReport() {
   ].forEach((item) => lines.push(`- [ ] ${item}`));
   lines.push("");
 
-  lines.push("## 11. V1 Scope Control Notice");
+  lines.push("## 12. V1 Scope Control Notice");
   lines.push("This Version 1.x session report is a control artifact only. It does not represent an automatically generated client deliverable. Version 1.x uses Markdown-first prompt control and does not perform DOCX generation.");
 
   return lines.join("\n");
@@ -890,7 +1134,7 @@ function buildSessionReport() {
 
 function appendSessionReportOutput(lines, output, number) {
   const manifestEntry = getManifestEntry(output.id);
-  lines.push(`### 5.${number}. ${output.label}`);
+  lines.push(`### 6.${number}. ${output.label}`);
   lines.push(`- Output ID: ${output.id}`);
   lines.push(`- Output Label: ${output.label}`);
   lines.push(`- Category: ${output.category || "To be confirmed"}`);

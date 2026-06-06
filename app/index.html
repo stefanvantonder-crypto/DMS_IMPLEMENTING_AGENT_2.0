@@ -9,7 +9,7 @@
 <body>
   <header class="app-header">
     <div>
-      <p class="eyebrow">Version 1.7 Markdown prompt-control shell</p>
+      <p class="eyebrow">Version 1.9 Markdown prompt-control shell</p>
       <h1>DMS Implementing Agent 2.0</h1>
       <p class="subtitle">Markdown-first controlled prompt assistant for proposal preparation, project governance, document review and workflow design.</p>
     </div>
@@ -100,6 +100,55 @@
         <div id="output-list" class="output-list muted-block">Select an agent first.</div>
       </section>
     </div>
+
+    <section class="panel source-document-panel" aria-labelledby="source-document-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="section-kicker">Session sources</p>
+          <h2 id="source-document-heading">Source Document Inventory</h2>
+        </div>
+        <span id="source-document-count" class="count-pill">0</span>
+      </div>
+      <p class="panel-note">Record the source documents for this project session. These documents are not stored or processed by the app. Upload the actual documents manually with the generated prompt in ChatGPT/Codex.</p>
+      <div class="form-grid source-document-form">
+        <label>
+          <span>Document Name</span>
+          <input id="source-doc-name" type="text" autocomplete="off">
+        </label>
+        <label>
+          <span>Document Classification</span>
+          <select id="source-doc-classification"></select>
+        </label>
+        <label>
+          <span>Document Type</span>
+          <select id="source-doc-type"></select>
+        </label>
+        <label>
+          <span>Document Date</span>
+          <input id="source-doc-date" type="date">
+        </label>
+        <label>
+          <span>Version / Reference Number</span>
+          <input id="source-doc-reference" type="text" autocomplete="off">
+        </label>
+        <label>
+          <span>Available for upload</span>
+          <select id="source-doc-available">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <label class="wide-field">
+          <span>Notes</span>
+          <textarea id="source-doc-notes" rows="3"></textarea>
+        </label>
+      </div>
+      <div class="button-row source-document-actions">
+        <button id="add-source-document" class="primary-button" type="button">Add Source Document</button>
+        <button id="clear-source-documents" type="button">Clear Source Document Inventory</button>
+      </div>
+      <div id="source-document-inventory-table" class="source-document-table muted-block">No source document inventory entries were recorded.</div>
+    </section>
 
     <section id="workflow-brief-panel" class="panel hidden" aria-labelledby="workflow-brief-heading">
       <div class="panel-heading">
