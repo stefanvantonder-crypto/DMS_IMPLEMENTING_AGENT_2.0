@@ -113,3 +113,27 @@ Notes:
 ```
 
 If the GitHub Pages URL returns 404, confirm that Pages is enabled, the source branch is `main`, the folder is `/root`, and the site has finished publishing.
+
+## V1.14 Live Verification Result
+
+Verification date: 2026-06-06
+
+URL tested:
+
+```text
+https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/
+```
+
+Result: Go for live V1 static prompt-control use.
+
+Summary:
+
+- Root URL resolved to `app/index.html`.
+- `DMS Implementing Agent 2.0` loaded in the live browser.
+- All four V1 agents displayed.
+- Output counts matched the approved V1 registries: Proposal 1, Governance 15, Review 3 and Workflow 5.
+- Key template paths displayed correctly for Project Charter, Risk Management Plan, Gap Analysis Report and Workflow Design Document.
+- Project Governance Agent plus Project Charter only generated a controlled prompt with no-backend/no-server wording, no-DOCX wording, `To be confirmed`, source inventory entries and selected-output-only behavior.
+- No backend, server upload, DOCX generation, PDF/DOCX parsing, source file upload, database, `localStorage` or `sessionStorage` workflow was exposed.
+
+See `docs/architecture/V1_14_GITHUB_PAGES_LIVE_VERIFICATION.md` for the detailed pass/fail table and automation limitation notes.

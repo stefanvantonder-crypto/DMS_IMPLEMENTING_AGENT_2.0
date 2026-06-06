@@ -10,6 +10,8 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
+- Added V1.16A UAT execution report and results register updates, recording GitHub Pages prompt-control passes, blocked local/download-import checks, zero defects and no app-code changes.
+- Recorded V1.14 live GitHub Pages verification, confirming the deployed static app loads, displays approved agents and outputs, generates Project Charter-only prompts with V1 scope wording and remains free of backend, DOCX, parsing, database and storage workflows.
 - Added V1.16 user acceptance test pack with UAT plan, detailed test scripts, results register and sign-off template for static V1 prompt-control validation.
 - Added V1.15B validation findings review, recommending V1.16 user acceptance testing before any V1.15C prompt wording fix.
 - Added V1.15A controlled prompt quality validation pack for Proposal Preparation, Project Governance, Document Review and Workflow Agent prompt-boundary testing.

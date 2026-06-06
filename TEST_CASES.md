@@ -396,6 +396,34 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.13A.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
 
+## V1.14 GitHub Pages Live Verification
+
+- Confirm `docs/architecture/V1_14_GITHUB_PAGES_LIVE_VERIFICATION.md` exists.
+- Open `https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/`.
+- Confirm the root URL resolves to `app/index.html`.
+- Confirm the live app title and heading display `DMS Implementing Agent 2.0`.
+- Confirm all four V1 agents display.
+- Confirm Proposal Agent shows 1 output.
+- Confirm Project Governance Agent shows 15 outputs.
+- Confirm Document Review Agent shows 3 outputs.
+- Confirm Workflow Agent shows 5 outputs.
+- Confirm Project Charter maps to `PROJECT_CHARTER_TEMPLATE.md`.
+- Confirm Risk Management Plan maps to `RISK_MANAGEMENT_PLAN_TEMPLATE.md`.
+- Confirm Gap Analysis Report maps to `GAP_ANALYSIS_REPORT_TEMPLATE.md`.
+- Confirm Workflow Design Document maps to `WORKFLOW_DESIGN_DOCUMENT_TEMPLATE.md`.
+- Confirm Project Governance Agent plus Project Charter only generates a controlled prompt.
+- Confirm the live prompt includes no-backend/no-server wording.
+- Confirm the live prompt includes no-DOCX wording.
+- Confirm the live prompt includes `To be confirmed`.
+- Confirm the live prompt includes source inventory entries for Client TOR and Approved Proposal.
+- Confirm the live prompt excludes unselected governance outputs.
+- Confirm the Markdown session report download control is available.
+- Confirm Session JSON export and import controls are available.
+- Confirm any browser automation limitation for download capture or native file-picker import is recorded in the V1.14 verification report.
+- Confirm the live app exposes no backend, server upload, DOCX generation, PDF/DOCX parsing, source file upload, database, `localStorage` or `sessionStorage` workflow.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.14 live verification.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
+
 ## V1.15B Validation Findings Review
 
 - Confirm `docs/sample_sessions/V1_15B_VALIDATION_FINDINGS_REVIEW.md` exists.
@@ -423,4 +451,15 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm the results register includes severity levels: Critical, High, Medium and Low.
 - Confirm the sign-off template includes Accepted, Accepted with minor issues and Not accepted decisions.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.16 UAT pack creation.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.16A UAT Execution
+
+- Confirm `docs/uat/V1_16A_UAT_EXECUTION_REPORT.md` exists.
+- Confirm the V1.16A report records test date, tester, environment, local app result, GitHub Pages result, summary counts, defect summary, UAT conclusion and recommendation.
+- Confirm the V1.16 UAT results register records executed results for V1.16-UAT-01 through V1.16-UAT-13.
+- Confirm passed tests include GitHub Pages load, four approved agents, 15 governance outputs, selected-output-only prompt checks, review prompt quality, validation warnings and scope-control checks.
+- Confirm blocked tests are clearly marked where local `file://` execution or browser download/import capture could not be completed.
+- Confirm blocked execution-tool limitations are not recorded as app defects.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.16A.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
