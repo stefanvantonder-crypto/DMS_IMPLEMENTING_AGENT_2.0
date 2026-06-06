@@ -42,6 +42,10 @@ const WORKFLOW_PROCESS_SOURCE_INPUTS = [
   "Mini Workflow Brief"
 ];
 
+const SESSION_IMPORT_SCHEMA_VERSION = "1.0";
+const SESSION_IMPORT_SOURCE_WARNING = "Session restored from JSON. Re-upload/provide the actual source documents in ChatGPT/Codex when using the prompt. The JSON file stores metadata only.";
+const IMPORTED_PROMPT_PREFIX = "[Imported historical controlled prompt. Click Generate Controlled Prompt to create a fresh prompt from the restored session.]";
+
 const FALLBACK_OUTPUT_ROWS = [
   ["proposal", "Proposal", "proposal_preparation_agent", "proposal", "templates/proposal_templates/PROPOSAL_TEMPLATE.md", "outputs/markdown/proposals"],
   ["audit_report_implementation_review", "Audit Report Implementation Review", "project_governance_agent", "project_governance", "templates/project_governance_templates/AUDIT_REPORT_IMPLEMENTATION_REVIEW_TEMPLATE.md", "outputs/markdown/governance_documents"],
@@ -147,14 +151,22 @@ const appState = {
   configSource: "loading",
   appConfig: {
     app_name: "DMS Implementing Agent 2.0",
-    version: "1.10A"
+    version: "1.10C"
   },
   data: null,
   selectedAgentId: "",
   selectedInputs: new Set(),
   selectedOutputs: new Set(),
   sourceDocuments: [],
-  nextSourceDocumentId: 1
+  nextSourceDocumentId: 1,
+  importState: {
+    restoredFromJson: false,
+    importedAt: "",
+    sessionName: "",
+    warnings: [],
+    ignoredOutputIds: [],
+    ignoredClassifications: []
+  }
 };
 
 const elements = {};
@@ -196,7 +208,9 @@ function bindElements() {
     "action-status",
     "generate-prompt",
     "copy-prompt",
+    "import-session-json",
     "export-session-json",
+    "session-json-file",
     "download-report"
   ].forEach((id) => {
     elements[toCamel(id)] = document.getElementById(id);
@@ -212,6 +226,8 @@ function bindActions() {
 
   elements.generatePrompt.addEventListener("click", generateControlledPrompt);
   elements.copyPrompt.addEventListener("click", copyPrompt);
+  elements.importSessionJson.addEventListener("click", () => elements.sessionJsonFile.click());
+  elements.sessionJsonFile.addEventListener("change", importSessionJsonFromFile);
   elements.exportSessionJson.addEventListener("click", exportSessionJson);
   elements.downloadReport.addEventListener("click", downloadSessionReport);
   elements.addSourceDocument.addEventListener("click", addSourceDocument);
@@ -220,6 +236,8 @@ function bindActions() {
   elements.downloadReport.title = "Download Markdown session report.";
   elements.exportSessionJson.disabled = false;
   elements.exportSessionJson.title = "Export current browser session metadata as JSON.";
+  elements.importSessionJson.disabled = false;
+  elements.importSessionJson.title = "Import a previously exported V1 session JSON file.";
 }
 
 async function loadConfiguration() {
@@ -228,7 +246,7 @@ async function loadConfiguration() {
   } catch (error) {
     appState.appConfig = {
       app_name: "DMS Implementing Agent 2.0",
-      version: "1.10A"
+      version: "1.10C"
     };
   }
 
@@ -646,7 +664,7 @@ function renderWarnings() {
 }
 
 function getWarnings() {
-  const warnings = [];
+  const warnings = [...(appState.importState?.warnings || [])];
   const agentDefinition = getSelectedAgentDefinition();
 
   if (!appState.selectedAgentId) {
@@ -1023,6 +1041,259 @@ async function copyPrompt() {
   }
 }
 
+function importSessionJsonFromFile(event) {
+  const file = event.target.files?.[0];
+  event.target.value = "";
+
+  if (!file) {
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    let payload;
+    try {
+      payload = JSON.parse(String(reader.result || ""));
+    } catch (error) {
+      setActionStatus("Import failed: invalid JSON file.");
+      return;
+    }
+
+    const validation = validateSessionImportPayload(payload);
+    if (!validation.valid) {
+      setActionStatus(validation.message);
+      return;
+    }
+
+    const result = restoreSessionFromPayload(payload);
+    renderRestoredSession(result);
+  };
+  reader.onerror = () => setActionStatus("Import failed: invalid JSON file.");
+  reader.readAsText(file);
+}
+
+function validateSessionImportPayload(payload) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+    return { valid: false, message: "Import failed: invalid JSON file." };
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(payload, "schema_version")) {
+    return {
+      valid: false,
+      message: "Import failed: imported session is missing schema_version and cannot be safely restored."
+    };
+  }
+
+  if (payload.schema_version !== SESSION_IMPORT_SCHEMA_VERSION) {
+    return { valid: false, message: "Import failed: unsupported session schema version." };
+  }
+
+  const requiredFields = [
+    "schema_version",
+    "session",
+    "agent",
+    "document_classifications",
+    "source_document_inventory",
+    "outputs",
+    "mini_workflow_brief"
+  ];
+  const missingFields = requiredFields.filter((field) => !Object.prototype.hasOwnProperty.call(payload, field));
+  if (missingFields.length > 0) {
+    return {
+      valid: false,
+      message: `Import failed: missing required field(s): ${missingFields.join(", ")}.`
+    };
+  }
+
+  return { valid: true };
+}
+
+function restoreSessionFromPayload(payload) {
+  const result = {
+    restoredSessionName: getImportedSessionField(payload, "session_name"),
+    restoredAgentName: "To be confirmed",
+    restoredOutputCount: 0,
+    ignoredOutputIds: [],
+    ignoredClassifications: [],
+    warnings: [SESSION_IMPORT_SOURCE_WARNING]
+  };
+
+  restoreSessionFields(payload.session);
+
+  const importedAgentId = String(payload.agent?.selected_agent_id || "").trim();
+  const restoredAgent = getAgents().find((agent) => agent.id === importedAgentId);
+  appState.selectedAgentId = "";
+  appState.selectedInputs.clear();
+  appState.selectedOutputs.clear();
+
+  if (importedAgentId && restoredAgent) {
+    appState.selectedAgentId = importedAgentId;
+    result.restoredAgentName = restoredAgent.name || importedAgentId;
+  } else if (importedAgentId) {
+    result.warnings.push(`Imported agent ID is no longer available: ${importedAgentId}.`);
+  } else {
+    result.warnings.push("Imported session did not include a selected agent.");
+  }
+
+  const agentDefinition = getSelectedAgentDefinition();
+  restoreImportedClassifications(payload.document_classifications, agentDefinition, result);
+  restoreImportedSourceDocuments(payload.source_document_inventory, result);
+  restoreImportedOutputs(payload.outputs, result);
+  restoreImportedMiniWorkflowBrief(payload.mini_workflow_brief);
+  restoreImportedControlledPrompt(payload.controlled_prompt);
+
+  appState.importState = {
+    restoredFromJson: true,
+    importedAt: new Date().toISOString(),
+    sessionName: result.restoredSessionName,
+    warnings: result.warnings,
+    ignoredOutputIds: result.ignoredOutputIds,
+    ignoredClassifications: result.ignoredClassifications
+  };
+
+  result.restoredOutputCount = appState.selectedOutputs.size;
+  return result;
+}
+
+function restoreSessionFields(session = {}) {
+  setFieldValue("session-name", session.session_name);
+  setFieldValue("client-name", session.client_name);
+  setFieldValue("project-name", session.project_name);
+  setFieldValue("contract-number", session.contract_bid_number);
+  setFieldValue("prepared-by", session.prepared_by);
+  setFieldValue("session-notes", session.session_notes);
+}
+
+function restoreImportedClassifications(documentClassifications = {}, agentDefinition, result) {
+  const importedClassifications = Array.isArray(documentClassifications.selected) ? documentClassifications.selected : [];
+  if (!appState.selectedAgentId || !agentDefinition) {
+    if (importedClassifications.length > 0) {
+      result.warnings.push("Imported document classifications were not restored because no valid agent was restored.");
+      result.ignoredClassifications.push(...importedClassifications.map((item) => String(item || "")));
+    }
+    return;
+  }
+
+  const allowedInputs = new Set(agentDefinition.allowed_inputs || []);
+  importedClassifications.forEach((classification) => {
+    const value = String(classification || "").trim();
+    if (!value) {
+      return;
+    }
+    if (allowedInputs.has(value)) {
+      appState.selectedInputs.add(value);
+    } else {
+      result.ignoredClassifications.push(value);
+      result.warnings.push(`Imported document classification is no longer valid for the restored agent: ${value}.`);
+    }
+  });
+}
+
+function restoreImportedSourceDocuments(sourceDocumentInventory, result) {
+  const entries = Array.isArray(sourceDocumentInventory) ? sourceDocumentInventory : [];
+  appState.sourceDocuments = entries.map((entry, index) => {
+    const availabilityValue = String(entry?.available_for_upload ?? "").trim().toLowerCase();
+    const isUnavailable = entry?.available_for_upload === false || availabilityValue === "false" || availabilityValue === "no";
+    return {
+      id: index + 1,
+      documentName: String(entry?.document_name || ""),
+      classification: String(entry?.classification || ""),
+      documentType: String(entry?.document_type || ""),
+      documentDate: String(entry?.document_date || ""),
+      referenceNumber: String(entry?.version_reference || ""),
+      availableForUpload: isUnavailable ? "No" : "Yes",
+      notes: String(entry?.notes || "")
+    };
+  });
+  appState.sourceDocuments.forEach((entry) => {
+    if (entry.availableForUpload === "No") {
+      result.warnings.push(`Imported source document is marked unavailable for upload: ${entry.documentName || "To be confirmed"}.`);
+    }
+  });
+  appState.nextSourceDocumentId = appState.sourceDocuments.length + 1;
+}
+
+function restoreImportedOutputs(outputs = {}, result) {
+  const importedOutputIds = Array.isArray(outputs.selected_output_ids) ? outputs.selected_output_ids : [];
+  const outputRegistry = appState.data?.outputRegistry?.outputs || [];
+
+  importedOutputIds.forEach((outputId) => {
+    const value = String(outputId || "").trim();
+    if (!value) {
+      return;
+    }
+
+    const output = outputRegistry.find((record) => record.id === value);
+    if (!output) {
+      result.ignoredOutputIds.push(value);
+      result.warnings.push(`Imported output ID is no longer available: ${value}.`);
+      return;
+    }
+
+    if (output.agent_id !== appState.selectedAgentId) {
+      result.ignoredOutputIds.push(value);
+      result.warnings.push(`Imported output ID does not belong to the restored agent and was ignored: ${value}.`);
+      return;
+    }
+
+    if (output.enabled_in_v1 !== true) {
+      result.ignoredOutputIds.push(value);
+      result.warnings.push(`Imported output ID is not enabled in V1 and was ignored: ${value}.`);
+      return;
+    }
+
+    appState.selectedOutputs.add(value);
+  });
+}
+
+function restoreImportedMiniWorkflowBrief(miniWorkflowBrief = {}) {
+  setFieldValue("workflow-description", miniWorkflowBrief.workflow_description);
+  setFieldValue("workflow-rules", miniWorkflowBrief.workflow_rules);
+  setFieldValue("workflow-roles", miniWorkflowBrief.roles_people);
+  setFieldValue("workflow-outcome", miniWorkflowBrief.expected_outcome);
+}
+
+function restoreImportedControlledPrompt(controlledPrompt) {
+  const prompt = String(controlledPrompt || "").trim();
+  if (prompt) {
+    elements.promptPreview.value = `${IMPORTED_PROMPT_PREFIX}\n\n${prompt}`;
+    return;
+  }
+  elements.promptPreview.value = "Imported session did not include a controlled prompt. Click Generate Controlled Prompt to create a fresh prompt from the restored session.";
+}
+
+function renderRestoredSession(result) {
+  renderAgents();
+  renderSelectedAgent();
+  renderSourceDocumentPanel();
+  renderTemplateStatus();
+  renderWarnings();
+
+  const hasWarnings = result.warnings.length > 1 || result.ignoredOutputIds.length > 0 || result.ignoredClassifications.length > 0;
+  const status = hasWarnings ? "Session restored with warnings." : "Session restored successfully.";
+  const summary = [
+    status,
+    `Restored session name: ${result.restoredSessionName || "To be confirmed"}.`,
+    `Restored agent: ${result.restoredAgentName || "To be confirmed"}.`,
+    `Restored output count: ${result.restoredOutputCount}.`,
+    `Ignored output IDs: ${result.ignoredOutputIds.length ? result.ignoredOutputIds.join(", ") : "None"}.`,
+    `Ignored classifications: ${result.ignoredClassifications.length ? result.ignoredClassifications.join(", ") : "None"}.`,
+    `Warnings: ${result.warnings.join(" ")}`
+  ].join(" ");
+  setActionStatus(summary);
+}
+
+function getImportedSessionField(payload, fieldName) {
+  return String(payload.session?.[fieldName] || "").trim();
+}
+
+function setFieldValue(id, value) {
+  const field = document.getElementById(id);
+  if (field) {
+    field.value = String(value || "");
+  }
+}
+
 function exportSessionJson() {
   const payload = buildSessionExportPayload();
   const filename = getSessionExportFileName();
@@ -1033,7 +1304,7 @@ function exportSessionJson() {
 
 function buildSessionExportPayload() {
   return window.DmsSessionExport.createSessionExportPayload({
-    appVersion: appState.appConfig?.version || "1.10A",
+    appVersion: appState.appConfig?.version || "1.10C",
     sessionValues: getSessionValues(),
     selectedAgentId: appState.selectedAgentId,
     selectedAgentName: getSelectedAgentDefinition()?.name || getSelectedAgentRegistryRecord()?.name || "",
@@ -1057,10 +1328,13 @@ function getMiniWorkflowBriefExportValues() {
 
 function getControlledPromptForSessionExport() {
   const currentPrompt = elements.promptPreview?.value || "";
-  if (currentPrompt.startsWith("# DMS Implementing Agent 2.0")) {
-    return currentPrompt;
+  if (!currentPrompt || currentPrompt.startsWith("Select an agent and one or more outputs")) {
+    return "";
   }
-  return "";
+  if (currentPrompt.startsWith("Imported session did not include a controlled prompt.")) {
+    return "";
+  }
+  return currentPrompt;
 }
 
 function getSessionExportFileName() {
@@ -1090,6 +1364,12 @@ function buildSessionReport() {
   lines.push(`- Date generated: ${new Date().toLocaleString()}`);
   lines.push(`- Configuration mode: ${getConfigurationModeLabel()}`);
   lines.push(`- App version: ${appState.appConfig?.version || "To be confirmed"}`);
+  lines.push(`- Session restored from imported JSON: ${appState.importState.restoredFromJson ? "Yes" : "No"}`);
+  if (appState.importState.restoredFromJson) {
+    lines.push(`- Imported at: ${appState.importState.importedAt || "To be confirmed"}`);
+    appendBulletList(lines, "Import warnings", appState.importState.warnings);
+    lines.push(`- Source document reminder: ${SESSION_IMPORT_SOURCE_WARNING}`);
+  }
   lines.push("");
 
   lines.push("## 2. Session Details");
@@ -1211,10 +1491,13 @@ function appendSessionReportMiniWorkflowBrief(lines) {
 
 function getControlledPromptForReport() {
   const currentPrompt = elements.promptPreview?.value || "";
-  if (currentPrompt.startsWith("# DMS Implementing Agent 2.0")) {
-    return currentPrompt;
+  if (!currentPrompt || currentPrompt.startsWith("Select an agent and one or more outputs")) {
+    return "Controlled prompt has not yet been generated.";
   }
-  return "Controlled prompt has not yet been generated.";
+  if (currentPrompt.startsWith("Imported session did not include a controlled prompt.")) {
+    return "Controlled prompt has not yet been generated.";
+  }
+  return currentPrompt;
 }
 
 function getSessionReportFileName() {

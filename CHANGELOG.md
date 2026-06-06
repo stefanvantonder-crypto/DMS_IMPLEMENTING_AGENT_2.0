@@ -4,6 +4,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
+- Implemented V1.10C browser-only Session JSON import/restore for schema `1.0`, including safe local JSON parsing, registry-aware restore warnings, session report import notes and manual validation coverage.
 - Added V1.10B import/restore planning for validated browser-only session JSON restore, with implementation deferred to V1.10C.
 - Removed legacy Python/tooling content from the active V1 scope and updated ignore rules so bundled runtimes and Python tool files are not recommitted.
 - Normalized V1.10A session JSON export to remain static-browser only by removing the optional Node-based helper test file and moving export validation coverage into manual/static checks.

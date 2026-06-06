@@ -1,7 +1,7 @@
 {
   "app_name": "DMS Implementing Agent 2.0",
-  "version": "1.10A",
-  "scope": "Static UI shell, source document session inventory, controlled prompt generation, browser-based session report export, V1.10A session JSON export and GitHub Pages deployment readiness",
+  "version": "1.10C",
+  "scope": "Static UI shell, source document session inventory, controlled prompt generation, browser-based session report export, V1.10A session JSON export, V1.10C session JSON import/restore and GitHub Pages deployment readiness",
   "architecture": "Markdown-first controlled prompt assistant",
   "authoritative_data": {
     "agent_registry": "../engine/agent_registry.json",
@@ -40,5 +40,15 @@
     "local_storage_active": false,
     "file_upload_active": false,
     "file_parsing_active": false
+  },
+  "session_json_import": {
+    "version": "1.10C",
+    "schema_version": "1.0",
+    "import_restore_active": true,
+    "storage": "browser memory only",
+    "local_storage_active": false,
+    "source_file_upload_active": false,
+    "file_parsing_active": false,
+    "auto_prompt_generation_active": false
   }
 }

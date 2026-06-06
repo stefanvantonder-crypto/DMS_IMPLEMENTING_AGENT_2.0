@@ -461,6 +461,14 @@ label span,
   display: none;
 }
 
+.visually-hidden-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 920px) {
   .workspace-grid,
   .form-grid {

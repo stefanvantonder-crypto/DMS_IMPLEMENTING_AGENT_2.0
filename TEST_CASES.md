@@ -239,3 +239,33 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm fallback configuration active is reported in import warnings.
 - Confirm selected-output-only behaviour still works after restore.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file parsing, PDF extraction, DOCX extraction, generated client documents or permanent knowledge base updates are added.
+
+## V1.10C Session JSON Import / Restore
+
+- Confirm `Import Session JSON` appears in the static `app/index.html` UI.
+- Confirm clicking `Import Session JSON` opens a local `.json` file picker and does not upload the file.
+- Confirm importing a valid schema `1.0` session restores session fields: Session Name, Client Name, Project Name, Contract / Bid Number, Prepared By and Session Notes.
+- Confirm importing a valid session restores the selected agent only when the imported agent ID still exists in the current agent registry.
+- Confirm an unavailable imported agent shows `Imported agent ID is no longer available: [id].` and does not restore document classifications or outputs for that agent.
+- Confirm imported document classifications restore only when valid for the restored agent.
+- Confirm invalid or obsolete imported document classifications are ignored and listed in the import summary.
+- Confirm imported source document inventory restores metadata only: document name, classification, document type, document date, version/reference, available-for-upload flag and notes.
+- Confirm restored source document inventory does not contain file contents and does not treat source documents as uploaded.
+- Confirm restored source inventory entries marked unavailable produce an import warning.
+- Confirm imported selected outputs restore only when the output exists, belongs to the restored agent and is enabled in V1.
+- Confirm missing, disabled or wrong-agent output IDs are ignored and listed in the import summary.
+- Confirm Mini Workflow Brief fields restore from imported JSON.
+- Confirm imported historical controlled prompt text is restored with the prefix `[Imported historical controlled prompt. Click Generate Controlled Prompt to create a fresh prompt from the restored session.]`
+- Confirm import does not auto-generate a fresh controlled prompt or download any output.
+- Confirm after successful import the app shows `Session restored from JSON. Re-upload/provide the actual source documents in ChatGPT/Codex when using the prompt. The JSON file stores metadata only.`
+- Confirm valid import with no ignored items shows `Session restored successfully`.
+- Confirm partial import with ignored outputs, ignored classifications or obsolete agent data shows `Session restored with warnings`.
+- Confirm invalid JSON shows `Import failed: invalid JSON file.` and does not alter the current UI state.
+- Confirm missing `schema_version` shows `Import failed: imported session is missing schema_version and cannot be safely restored.` and does not alter the current UI state.
+- Confirm unsupported schema versions show `Import failed: unsupported session schema version.` and do not alter the current UI state.
+- Confirm missing required top-level fields show `Import failed: missing required field(s): ...` and list the missing fields.
+- Confirm imported text is rendered as text only and is not executed as HTML or script.
+- Confirm Export Session JSON after import reflects the restored current state.
+- Confirm Download Session Report after import states whether the session was restored from JSON, lists import warnings and includes the source document re-upload reminder.
+- Confirm selected-output-only behaviour still works after restore and fresh prompt generation.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file parsing, PDF extraction, DOCX extraction, generated client documents or permanent knowledge base updates are added.
