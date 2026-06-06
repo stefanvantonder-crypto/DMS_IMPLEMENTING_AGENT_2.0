@@ -347,3 +347,19 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm sample sessions do not contain real client confidential information.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.
+
+## V1.12A Sample Session Matrix Execution Results
+
+- Confirm `docs/sample_sessions/V1_12A_SAMPLE_SESSION_RESULTS.md` exists.
+- Confirm `docs/sample_sessions/SAMPLE_SESSION_TEST_MATRIX.md` includes a V1.12A recorded results section.
+- Confirm all 11 sample-session matrix rows have a recorded result.
+- Confirm Proposal Agent plus Proposal only was tested.
+- Confirm Project Governance Agent Project Charter-only and multi-output cases were tested.
+- Confirm Document Review Agent single-output and multi-output cases were tested.
+- Confirm Workflow Agent SOP, Mini Workflow Brief and multi-output cases were tested.
+- Confirm import restored governance session plus fresh prompt regeneration was tested.
+- Confirm workflow export/import plus Mini Workflow Brief restore was tested.
+- Confirm prompt quality issues are recorded as observations only.
+- Confirm app defects, if any, are documented but not fixed in V1.12A.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, PDF extraction, DOCX extraction, generated client documents or alternate app folders are added.

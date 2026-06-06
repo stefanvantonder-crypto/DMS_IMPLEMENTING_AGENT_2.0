@@ -22,3 +22,30 @@ Use this matrix to test controlled prompt quality across all four V1 agents.
 - Do not use real confidential client content in sample-session tests.
 - Actual source documents must still be uploaded/provided manually to ChatGPT/Codex.
 - Any prompt wording issue should be recorded in `docs/sample_sessions/V1_12_PROMPT_QUALITY_REVIEW.md` before a separate prompt-fix phase is proposed.
+
+## V1.12A Recorded Results
+
+Execution date: 2026-06-06
+
+Execution method: Live app load sanity check plus deterministic static-app harness using the current app scripts and registry JSON files.
+
+| Test ID | Result / Status | Notes |
+|---|---|---|
+| V1.12-01 | Pass with prompt quality note | Proposal only passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-02 | Pass with prompt quality note | Project Charter only passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-03 | Pass with prompt quality note | Project Charter plus Risk Management Plan passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-04 | Pass with prompt quality note | Test and Go-Live Plan only passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-05 | Pass with prompt quality note | Gap Analysis Report only passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-06 | Pass with prompt quality note | Gap Analysis Report plus Improvement Action Plan passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-07 | Pass with prompt quality note | Workflow Design Document using SOP inventory passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-08 | Pass with prompt quality note | Workflow Design Document using Mini Workflow Brief passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-09 | Pass with prompt quality note | Multiple selected workflow outputs passed selected-output-only checks. Prompt includes no-DOCX rule but does not explicitly include a no-backend rule. |
+| V1.12-10 | Pass | Imported governance session restored Project Charter only and fresh prompt replaced historical prompt. |
+| V1.12-11 | Pass | Workflow export/import restored Mini Workflow Brief and Workflow Design Document only. |
+
+Summary:
+
+- Total rows tested: 11
+- Pass: 2
+- Pass with prompt quality note: 9
+- Fail: 0

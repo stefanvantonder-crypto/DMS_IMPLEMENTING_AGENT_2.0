@@ -4,6 +4,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-06
 
+- Recorded V1.12A sample session matrix execution results, including pass/fail outcomes, prompt quality observations and V1.13 prompt-fix recommendation.
 - Added V1.12 sample session pack, prompt quality review criteria and sample-session test matrix for all four static V1 agents.
 - Added V1.11 GitHub Pages live validation checklist plus full and quick-start user guides for the static V1 prompt-control app.
 - Completed V1.10D import/export smoke hardening, confirming export notice and selected output detail metadata in session JSON, recording smoke results, final manual test coverage and static scope-scan cleanup.
