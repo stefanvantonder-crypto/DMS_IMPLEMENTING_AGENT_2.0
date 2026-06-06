@@ -216,6 +216,7 @@ These are manual test categories only. They define what must be checked as V1 fe
 ## V1.10B Session JSON Import / Restore Planned Tests
 
 - Import/restore is not active in V1.10A. Run these tests only after V1.10B is separately approved.
+- Confirm the V1.10B planning documents exist: `docs/architecture/SESSION_IMPORT_RESTORE_PLAN.md` and `docs/decisions/ADR_V1_10B_SESSION_IMPORT_RESTORE.md`.
 - Confirm importing a valid session JSON restores session fields.
 - Confirm importing a valid session JSON restores the selected agent.
 - Confirm importing a valid session JSON restores selected document classifications.
@@ -223,11 +224,18 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm importing a valid session JSON restores selected outputs without generating outputs automatically.
 - Confirm importing a valid session JSON restores Mini Workflow Brief values.
 - Confirm importing a valid session JSON restores controlled prompt text as previous session state, if available.
-- Confirm the app shows `Session restored from JSON. Re-upload/provide actual source documents when using the generated prompt.`
+- Confirm the app shows `Session restored from JSON. Re-upload/provide the actual source documents in ChatGPT/Codex when using the prompt. The JSON file stores metadata only.`
 - Confirm the user must click `Generate Controlled Prompt` again to create a fresh prompt after restore.
 - Confirm invalid JSON is rejected with a clear warning.
+- Confirm missing `schema_version` shows `Imported session is missing schema_version and cannot be safely restored.`
 - Confirm unsupported `schema_version` is rejected or warned without unsafe restore.
+- Confirm unsupported `schema_version` shows `Unsupported session schema version. Import was not restored.`
 - Confirm restored output IDs missing from `engine/output_registry.json` produce a warning.
 - Confirm restored agent IDs missing from `engine/agent_registry.json` produce a warning.
+- Confirm restored output IDs belonging to a different agent are ignored and listed in the import summary.
+- Confirm restored classifications not valid for the restored agent are ignored or marked unknown.
+- Confirm restored source document inventory does not treat source files as uploaded.
 - Confirm restored source inventory entries marked unavailable produce a warning.
-- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, generated client documents or permanent knowledge base updates are added.
+- Confirm fallback configuration active is reported in import warnings.
+- Confirm selected-output-only behaviour still works after restore.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file parsing, PDF extraction, DOCX extraction, generated client documents or permanent knowledge base updates are added.

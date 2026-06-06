@@ -32,9 +32,21 @@ Session report export.
 
 V1 smoke testing and hardening.
 
-### V1.10
+### V1.10A
 
-Session save / restore using downloadable/importable JSON only.
+Export Session JSON.
+
+### V1.10B
+
+Import Session JSON planning.
+
+### V1.10C
+
+Import Session JSON implementation.
+
+### V1.10D
+
+Import/export smoke test and hardening.
 
 ## Future Versions
 

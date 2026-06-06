@@ -6,6 +6,12 @@ V1.10A is export-only. The active implementation must export the current browser
 
 Import and restore remain deferred until a later approved V1.10B task.
 
+## V1.10B Import / Restore Planning
+
+V1.10B plans browser-only import and restore for JSON files exported by V1.10A. The planned import restores session metadata and UI state only: session fields, selected agent, selected classifications, source document inventory metadata, selected output IDs, Mini Workflow Brief values, controlled prompt text as imported/historical state and validation messages.
+
+V1.10B must not restore actual source files, read source document contents, parse PDFs or DOCX files, use backend or database storage, use localStorage, generate DOCX files, create client documents, or auto-generate a fresh prompt on import. Users must click `Generate Controlled Prompt` after restore if they need a fresh prompt.
+
 ## A. Purpose
 
 V1.10 will allow users to save and restore project-specific DMS Implementing Agent sessions without using a backend or database.
