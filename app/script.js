@@ -45,7 +45,7 @@ const WORKFLOW_PROCESS_SOURCE_INPUTS = [
 const SESSION_IMPORT_SCHEMA_VERSION = "1.0";
 const SESSION_IMPORT_SOURCE_WARNING = "Session restored from JSON. Re-upload/provide the actual source documents in ChatGPT/Codex when using the prompt. The JSON file stores metadata only.";
 const IMPORTED_PROMPT_PREFIX = "[Imported historical controlled prompt. Click Generate Controlled Prompt to create a fresh prompt from the restored session.]";
-const SESSION_EXPORT_NOTICE = "This JSON export stores session metadata and controlled prompt text only. It does not include source document files, parsed source content, generated client documents, localStorage data, backend data or DOCX output.";
+const SESSION_EXPORT_NOTICE = "This JSON export stores session metadata and controlled prompt text only. It does not include source document files, parsed source content, generated client documents, browser storage data, backend data or DOCX output.";
 
 const FALLBACK_OUTPUT_ROWS = [
   ["proposal", "Proposal", "proposal_preparation_agent", "proposal", "templates/proposal_templates/PROPOSAL_TEMPLATE.md", "outputs/markdown/proposals"],

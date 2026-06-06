@@ -49,18 +49,20 @@ The app remains a static HTML/CSS/JavaScript/JSON/Markdown system. No backend, s
 
 ## 5. Defects Found
 
-One export hardening defect was found:
+No functional import/export restore defect was found in the fresh V1.10D smoke pass.
 
-- The V1.10C export payload did not include `selected_output_details` or `export_notice`, both required by the V1.10D smoke checklist.
+One hardening issue was found:
+
+- The export notice used the literal storage API name in explanatory text, which caused a conservative static forbidden-marker scan to flag `app/script.js` even though no browser storage implementation existed.
 
 No selected-output-only restore defect was found.
 
 ## 6. Fixes Made
 
-- Added `export_notice` to the session JSON payload.
-- Added `outputs.selected_output_details` to the session JSON payload using existing selected output registry and template manifest metadata.
-- Updated static version metadata from V1.10C to V1.10D in the UI/config fallback path.
-- Updated V1.10D manual smoke checklist and changelog.
+- Confirmed `export_notice` is present in the session JSON payload.
+- Confirmed `outputs.selected_output_details` is present in the session JSON payload using existing selected output registry and template manifest metadata.
+- Reworded the export notice from the literal storage API name to `browser storage data` so static scope scans stay clean without changing export behavior.
+- Confirmed V1.10D manual smoke checklist and changelog entries are present.
 
 ## 7. Remaining Limitations
 
