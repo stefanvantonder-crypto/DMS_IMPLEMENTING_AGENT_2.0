@@ -509,3 +509,21 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm the release checklist includes V1.18 live run confirmation status.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.18.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.19 Real Sample Project Run
+
+- Confirm `docs/sample_sessions/V1_19_REAL_SAMPLE_PROJECT_RUN.md` exists.
+- Confirm `docs/sample_sessions/V1_19_REAL_SAMPLE_PROJECT_PROMPT_CAPTURE.md` exists.
+- Confirm `docs/sample_sessions/V1_19_REAL_SAMPLE_PROJECT_OBSERVATIONS.md` exists.
+- Confirm the sample scenario uses FSGLTA Automated Asset Management System Sample Run as validation context only.
+- Confirm the selected agent is Project Governance Agent.
+- Confirm selected outputs are Project Charter, Risk Management Plan and Test and Go-Live Plan.
+- Confirm the source inventory examples include Client TOR, Approved proposal, DMS system documentation and DMS architecture documentation.
+- Confirm the run records selected-output-only behavior and excludes unselected governance outputs.
+- Confirm template paths and output folders are recorded for the selected outputs.
+- Confirm no-backend/no-server wording, no-DOCX wording and the `To be confirmed` missing-information rule are checked.
+- Confirm the documents state actual source documents must be uploaded/provided manually to ChatGPT/Codex.
+- Confirm the documents do not claim source documents were parsed or processed by the app.
+- Confirm the documents do not claim final client deliverables were generated.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.19.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
