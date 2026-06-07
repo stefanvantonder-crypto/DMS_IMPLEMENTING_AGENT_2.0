@@ -56,11 +56,11 @@ Export strategy planning only.
 
 ### V2.1
 
-Output schema hardening.
+Output schema hardening and Markdown output review planning.
 
 ### V2.2
 
-Markdown output capture / review workflow.
+Controlled Markdown output capture / storage planning.
 
 ### V2.3
 

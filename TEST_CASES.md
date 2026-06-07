@@ -55,6 +55,25 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm no `package.json`, `server.js` or Python implementation was added.
 - Confirm no generated deliverables were created.
 
+## V2.1 Output Schema And Review Planning
+
+- Confirm `docs/planning/V2_1_OUTPUT_SCHEMA_HARDENING_PLAN.md` exists.
+- Confirm `docs/planning/V2_1_MARKDOWN_OUTPUT_CAPTURE_REVIEW_MODEL.md` exists.
+- Confirm `docs/planning/V2_1_OUTPUT_QUALITY_GATE_MODEL.md` exists.
+- Confirm `docs/planning/V2_1_SELECTED_OUTPUT_COMPLIANCE_MODEL.md` exists.
+- Confirm `docs/decisions/ADR_V2_1_MARKDOWN_OUTPUT_CAPTURE_REVIEW.md` exists.
+- Confirm V2.1 planning docs define output validity, metadata, required sections and required rules.
+- Confirm the capture/review model states clearly that capture implementation is not approved.
+- Confirm the quality gate model defines eight gates with pass/fail and evidence requirements.
+- Confirm the selected-output compliance model protects selected-output-only behaviour.
+- Confirm no app files changed.
+- Confirm no runtime files were added.
+- Confirm no backend was added.
+- Confirm no DOCX generation was added.
+- Confirm no `package.json`, `server.js` or Python implementation was added.
+- Confirm no generated deliverables were created.
+- Confirm ADR status remains `Proposed`.
+
 ## Session Report Export
 
 - Confirm session reports include selected agent, selected outputs, missing information, and generated file paths.
