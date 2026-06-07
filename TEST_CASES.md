@@ -38,6 +38,23 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm routing logic is captured when supplied.
 - Confirm missing routing details are marked as `To be confirmed`.
 
+## V2.0 Export Strategy Planning
+
+- Confirm `docs/planning/V2_0_MARKDOWN_TO_DOCX_EXPORT_STRATEGY.md` exists.
+- Confirm `docs/planning/V2_0_ARCHITECTURE_OPTIONS_ANALYSIS.md` exists.
+- Confirm `docs/planning/V2_0_DOCX_TEMPLATE_CONTROL_MODEL.md` exists.
+- Confirm `docs/planning/V2_0_RISK_AND_GUARDRAIL_REGISTER.md` exists.
+- Confirm `docs/decisions/ADR_V2_0_DOCUMENT_EXPORT_STRATEGY.md` exists.
+- Confirm the ADR status is `Proposed`.
+- Confirm the planning docs keep Markdown as the recommended canonical source format.
+- Confirm the planning docs do not approve backend or DOCX generation yet.
+- Confirm `VERSION_ROADMAP.md` includes the staged V2.0 through V2.5 roadmap.
+- Confirm no app files changed.
+- Confirm no backend was added.
+- Confirm no DOCX generation was added.
+- Confirm no `package.json`, `server.js` or Python implementation was added.
+- Confirm no generated deliverables were created.
+
 ## Session Report Export
 
 - Confirm session reports include selected agent, selected outputs, missing information, and generated file paths.

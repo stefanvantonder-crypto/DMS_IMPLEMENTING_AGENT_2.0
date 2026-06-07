@@ -52,7 +52,27 @@ Import/export smoke test and hardening.
 
 ### V2.0
 
-Optional Markdown-to-DOCX conversion.
+Export strategy planning only.
+
+### V2.1
+
+Output schema hardening.
+
+### V2.2
+
+Markdown output capture / review workflow.
+
+### V2.3
+
+Manual Word packaging guide.
+
+### V2.4
+
+DOCX proof-of-concept decision gate.
+
+### V2.5
+
+Backend decision gate, if required.
 
 ### V3.0
 
