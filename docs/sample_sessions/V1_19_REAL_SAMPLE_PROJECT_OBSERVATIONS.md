@@ -43,6 +43,16 @@ The prompt is ready to be used with manually uploaded/provided source documents 
 
 Actual generated prompt evidence is captured in `docs/sample_sessions/V1_19_REAL_SAMPLE_PROJECT_PROMPT_CAPTURE.md`.
 
+V1.19B prepares the review pack for testing the captured prompt with manually uploaded source documents.
+
+Actual generated outputs must be reviewed separately and must not be treated as repository-generated deliverables.
+
+V1.19C recorded that actual source-document prompt execution produced usable Markdown-first outputs.
+
+No prompt refinement issue was recorded.
+
+V2 planning may proceed.
+
 Before using the prompt for real project work, the reviewer should confirm:
 
 - The source documents are current and authorised for use.

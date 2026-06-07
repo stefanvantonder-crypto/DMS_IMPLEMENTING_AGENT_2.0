@@ -538,3 +538,33 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm the V1.19 observations document states whether actual prompt evidence is captured or pending.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.19A.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.19B Actual Source Document Execution Review
+
+- Confirm `docs/sample_sessions/V1_19B_SOURCE_DOCUMENT_UPLOAD_INSTRUCTIONS.md` exists.
+- Confirm `docs/sample_sessions/V1_19B_OUTPUT_REVIEW_CHECKLIST.md` exists.
+- Confirm `docs/sample_sessions/V1_19B_ACTUAL_SOURCE_DOCUMENT_EXECUTION_REVIEW.md` exists.
+- Confirm the upload instructions list the four expected source documents and the recommended upload order.
+- Confirm the upload instructions require manual document upload to ChatGPT/Codex and use of the captured V1.19A prompt afterward.
+- Confirm the upload instructions warn against uploading unrelated documents.
+- Confirm the output review checklist covers general output checks, Project Charter checks, Risk Management Plan checks, Test and Go-Live Plan checks, evidence quality checks and a result section.
+- Confirm the execution review document references `docs/sample_sessions/V1_19_REAL_SAMPLE_PROJECT_PROMPT_CAPTURE.md`.
+- Confirm the execution review document keeps execution status pending unless actual results are supplied.
+- Confirm the V1.19 observations document includes the V1.19B preparation note.
+- Confirm no official output documents were created in `outputs/`.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.19B.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.19C Actual Source Document Execution Results
+
+- Confirm `docs/sample_sessions/V1_19C_EXECUTION_RESULTS_SUMMARY.md` exists.
+- Confirm the V1.19B execution review document records `Execution status: Executed`.
+- Confirm the V1.19B execution review document records a pass result and notes that the result is based on user review, not formal client approval.
+- Confirm the V1.19B output review checklist records pass results and notes that user-reviewed output quality was excellent with no major issues recorded.
+- Confirm the V1.19C summary records manual source upload, captured prompt use and Markdown-first output generation.
+- Confirm the V1.19C summary records the user review statement: `The Markdown files look excellent.`
+- Confirm the V1.19C summary records no issues found and `V1.19C passed`.
+- Confirm the V1.19 observations document includes the V1.19C outcome note.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.19C.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders were added.
+- Confirm no formal client approval is claimed.

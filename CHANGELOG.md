@@ -10,6 +10,8 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-07
 
+- Added V1.19C actual source document execution result records, confirming usable Markdown-first outputs from the captured prompt plus manual source upload workflow and no major issues recorded.
+- Added V1.19B actual source document prompt execution review pack, including manual upload instructions, output review checklist and pending execution review documentation.
 - Added V1.19A actual generated prompt evidence capture, recording the live FSGLTA sample controlled prompt text and its prompt-control review results.
 - Added V1.19 real sample project run documentation pack for an FSGLTA Automated Asset Management System Project Governance Agent prompt-control scenario.
 - Added V1.18 live GitHub Pages run confirmation, recording live app load and Project Charter prompt pass results plus the Codex in-app browser download/import limitation.
