@@ -10,6 +10,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-07
 
+- Added V1.19A actual generated prompt evidence capture, recording the live FSGLTA sample controlled prompt text and its prompt-control review results.
 - Added V1.19 real sample project run documentation pack for an FSGLTA Automated Asset Management System Project Governance Agent prompt-control scenario.
 - Added V1.18 live GitHub Pages run confirmation, recording live app load and Project Charter prompt pass results plus the Codex in-app browser download/import limitation.
 - Added V1.17 release readiness documentation pack, including the release readiness certificate, V1 scope statement, known limitations and release checklist for controlled use of the static Markdown-first baseline.

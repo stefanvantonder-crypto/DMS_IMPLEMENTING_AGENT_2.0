@@ -527,3 +527,14 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm the documents do not claim final client deliverables were generated.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.19.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.19A Actual Generated Prompt Evidence Capture
+
+- Confirm `docs/sample_sessions/V1_19_REAL_SAMPLE_PROJECT_PROMPT_CAPTURE.md` records evidence status as either `Captured` or `Pending actual prompt paste`.
+- Confirm the V1.19A prompt capture document does not fabricate prompt text.
+- Confirm actual prompt text is included only if it was captured from the app or provided by the user.
+- Confirm the evidence review checklist covers session details, selected agent, source inventory, selected outputs only, selected template paths, output folder, no-backend/no-server wording, no-DOCX wording, manual upload instruction, `To be confirmed`, Markdown-first rule, no source-document processing claim and no final client-deliverable claim.
+- Confirm the V1.19 run document includes a short V1.19A evidence cross-reference note.
+- Confirm the V1.19 observations document states whether actual prompt evidence is captured or pending.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.19A.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.

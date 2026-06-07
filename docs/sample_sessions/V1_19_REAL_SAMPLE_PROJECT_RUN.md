@@ -79,6 +79,7 @@ The generated prompt was checked for selected-output-only behavior. It did not i
 - Live app loaded at `https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/app/index.html`.
 - Browser title was `DMS Implementing Agent 2.0`.
 - Generated prompt length observed: 8701 characters.
+- Actual generated prompt evidence is captured in `docs/sample_sessions/V1_19_REAL_SAMPLE_PROJECT_PROMPT_CAPTURE.md`.
 - Generated prompt included session details for the sample project.
 - Generated prompt included selected agent name and ID.
 - Generated prompt included the four source document inventory entries.
@@ -121,6 +122,8 @@ No issues recorded.
 
 Observation: As in V1.18, browser download/import checks were not part of this V1.19 sample prompt run. The purpose of this run was prompt-control evidence for a realistic sample project, not download/import evidence.
 
+V1.19A follow-up note: actual generated prompt evidence has now been captured in the dedicated prompt-capture document.
+
 ## 11. Scope Confirmation
 
 This V1.19 sample run did not introduce or claim:
@@ -146,4 +149,3 @@ The source document details are sample-session context only and do not indicate 
 V1.19 passed for the realistic sample Project Governance Agent prompt run.
 
 The generated prompt is ready to be used as a controlled prompt with manually uploaded/provided source documents in ChatGPT/Codex, subject to normal human review and confirmation of project facts.
-
