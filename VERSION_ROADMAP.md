@@ -60,7 +60,7 @@ Output schema hardening and Markdown output review planning.
 
 ### V2.2
 
-Controlled Markdown output capture / storage planning.
+Controlled Markdown output capture / storage workflow planning.
 
 ### V2.3
 

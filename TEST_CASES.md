@@ -74,6 +74,28 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm no generated deliverables were created.
 - Confirm ADR status remains `Proposed`.
 
+## V2.2 Controlled Markdown Capture Storage Planning
+
+- Confirm `docs/planning/V2_2_CONTROLLED_MARKDOWN_CAPTURE_WORKFLOW.md` exists.
+- Confirm `docs/planning/V2_2_MARKDOWN_OUTPUT_FOLDER_MODEL.md` exists.
+- Confirm `docs/planning/V2_2_OUTPUT_NAMING_VERSIONING_STANDARD.md` exists.
+- Confirm `docs/planning/V2_2_OUTPUT_REVIEW_STATUS_MODEL.md` exists.
+- Confirm `docs/planning/V2_2_CAPTURE_EVIDENCE_MODEL.md` exists.
+- Confirm `docs/decisions/ADR_V2_2_MARKDOWN_CAPTURE_STORAGE_WORKFLOW.md` exists.
+- Confirm the workflow plan defines statuses, roles, control points and planning-only boundaries.
+- Confirm the folder model states that no actual folders or generated output files are created by V2.2.
+- Confirm the naming/versioning plan defines controlled filename and version rules.
+- Confirm the review status model distinguishes `Approved for Packaging` from client approval.
+- Confirm the evidence model links source documents, prompt evidence, generated output and review evidence.
+- Confirm no app files changed.
+- Confirm no runtime files were added.
+- Confirm no backend was added.
+- Confirm no DOCX generation was added.
+- Confirm no `package.json`, `server.js` or Python implementation was added.
+- Confirm no generated deliverables were created.
+- Confirm no actual output folders/files were created unless already existing placeholders exist.
+- Confirm ADR status remains `Proposed`.
+
 ## Session Report Export
 
 - Confirm session reports include selected agent, selected outputs, missing information, and generated file paths.

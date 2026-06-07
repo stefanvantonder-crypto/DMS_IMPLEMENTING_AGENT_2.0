@@ -10,6 +10,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-07
 
+- Added V2.2 planning-only controlled Markdown capture/storage workflow pack, including folder model, naming/versioning standard, review status model, evidence model and proposed ADR.
 - Added V2.1 planning-only output schema hardening and Markdown output capture/review governance pack, including quality gates, selected-output compliance model and proposed ADR.
 - Added V2.0 planning-only Markdown-to-DOCX and document export strategy pack, including architecture options analysis, DOCX template control model, risk register and proposed ADR.
 - Added V1.19C actual source document execution result records, confirming usable Markdown-first outputs from the captured prompt plus manual source upload workflow and no major issues recorded.
