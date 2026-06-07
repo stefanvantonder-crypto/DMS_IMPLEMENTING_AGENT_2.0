@@ -463,3 +463,49 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm blocked execution-tool limitations are not recorded as app defects.
 - Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.16A.
 - Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.16B Blocker Resolution
+
+- Confirm `docs/uat/V1_16B_BLOCKER_RESOLUTION_REPORT.md` exists.
+- Confirm the V1.16B report states that manual browser testing was not performed.
+- Confirm the five V1.16A blocked items are resolved only through deterministic static harness evidence.
+- Confirm the static harness evidence covers local static file readiness, `app/script.js` syntax validation, `app/config.json` parsing, static shell markers and registry-rendered agent labels.
+- Confirm the static harness evidence covers real session report generation, filename sanitisation, Project Charter-only selected-output report content and browser Blob/download mechanism.
+- Confirm the static harness evidence covers real Session JSON export structure, `selected_output_ids` containing `project_charter` only, selected output detail for `PROJECT_CHARTER_TEMPLATE.md` and export notice.
+- Confirm the static harness evidence covers real Session JSON import/restore behavior, including Project Governance Agent, Project Charter only, source inventory metadata, historical prompt prefix and no automatic fresh prompt generation.
+- Confirm the static harness evidence covers fresh prompt generation after import, including Project Charter only, no-backend/no-server wording, no-DOCX wording, `To be confirmed` and Project Charter template path.
+- Confirm the V1.16 results register changes the five formerly blocked rows to `Passed by static harness evidence` only where evidence exists.
+- Confirm the V1.16A execution report records 8 originally passed, 5 resolved by static harness evidence, 0 failed and 0 remaining blocked.
+- Confirm no manual browser pass is claimed.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.16B.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents, permanent test harness files or alternate app folders are added.
+
+## V1.17 Release Readiness Documentation
+
+- Confirm `docs/release/V1_17_RELEASE_READINESS_CERTIFICATE.md` exists.
+- Confirm `docs/release/V1_RELEASE_SCOPE_STATEMENT.md` exists.
+- Confirm `docs/release/V1_KNOWN_LIMITATIONS.md` exists.
+- Confirm `docs/release/V1_RELEASE_CHECKLIST.md` exists.
+- Confirm the release readiness certificate states release status as ready for controlled use.
+- Confirm the release scope statement explains what V1 does, what V1 does not do and how users should use V1.
+- Confirm the known limitations document lists no backend, no DOCX generation, no PDF/DOCX extraction, no source document upload, no permanent storage, no `localStorage`, no AI API integration and no automatic client deliverables.
+- Confirm the release checklist includes repository clean, latest changes pushed, release tag created, GitHub Pages status checked, user guide, quick start guide, UAT pack, UAT blocker resolution, no forbidden architecture, known limitations and release certificate completion checks.
+- Confirm README links to all four release documents.
+- Confirm the release documentation does not claim backend, DOCX generation, file parsing, AI API integration, database persistence or automatic client deliverable capability.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.17.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.
+
+## V1.18 Live GitHub Pages Run Confirmation
+
+- Confirm `docs/release/V1_18_LIVE_RUN_CONFIRMATION.md` exists.
+- Confirm the V1.18 report records repository URL, expected GitHub Pages URL, browser/environment, date tested and tester field.
+- Confirm the live URL check records the opened URL, final URL, result and notes.
+- Confirm the app load check covers root redirect, `app/index.html`, title and four-agent display.
+- Confirm the practical run uses Project Governance Agent and Project Charter only.
+- Confirm the generated prompt checks include Project Charter only, `PROJECT_CHARTER_TEMPLATE.md`, selected-output-only rule, no-backend/no-server rule, no-DOCX rule, `To be confirmed` and source document inventory.
+- Confirm session report download, Session JSON export, Session JSON import and fresh prompt after import are not falsely marked complete if the browser environment blocks downloads.
+- Confirm the V1.18 result table records pass, blocked or fail status for each live run check.
+- Confirm the GitHub Pages deployment document includes a V1.18 live run status note.
+- Confirm the release checklist includes V1.18 live run confirmation status.
+- Confirm no app files, agent JSON files, registry JSON files, templates or prompts were changed in V1.18.
+- Confirm no backend, database, Python, DOCX generation, Markdown-to-DOCX conversion, `package.json`, `server.js`, external libraries, localStorage implementation, file upload, file parsing, generated client documents or alternate app folders are added.

@@ -137,3 +137,28 @@ Summary:
 - No backend, server upload, DOCX generation, PDF/DOCX parsing, source file upload, database, `localStorage` or `sessionStorage` workflow was exposed.
 
 See `docs/architecture/V1_14_GITHUB_PAGES_LIVE_VERIFICATION.md` for the detailed pass/fail table and automation limitation notes.
+
+## V1.18 Live Run Status Note
+
+Verification date: 2026-06-07
+
+URL tested:
+
+```text
+https://stefanvantonder-crypto.github.io/DMS_IMPLEMENTING_AGENT_2.0/
+```
+
+Status: Confirmed live with browser-download limitation.
+
+Summary:
+
+- Root URL resolved to `app/index.html`.
+- `DMS Implementing Agent 2.0` loaded in the live browser.
+- All four V1 agents displayed.
+- Project Governance Agent plus Project Charter only generated a controlled prompt.
+- Prompt checks passed for `PROJECT_CHARTER_TEMPLATE.md`, selected-output-only wording, no-backend/no-server wording, no-DOCX wording, `To be confirmed` and source document inventory.
+- Session report and Session JSON browser download controls prepared downloads, but the Codex in-app browser reported that downloads are not supported.
+- Session JSON import and fresh prompt after import were not completed in the in-app browser because the exported JSON file could not be captured.
+- No app defect was recorded.
+
+See `docs/release/V1_18_LIVE_RUN_CONFIRMATION.md` for the V1.18 result table and remaining evidence limitation.

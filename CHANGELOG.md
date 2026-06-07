@@ -8,8 +8,14 @@ All notable repository-control changes are recorded here.
 - Reviewed agent, output, template manifest, prompt generation and session report export control files for V1.14 risk areas.
 - No application logic, backend, DOCX generation, database logic or architecture change was introduced in this planning step.
 
+## 2026-06-07
+
+- Added V1.18 live GitHub Pages run confirmation, recording live app load and Project Charter prompt pass results plus the Codex in-app browser download/import limitation.
+- Added V1.17 release readiness documentation pack, including the release readiness certificate, V1 scope statement, known limitations and release checklist for controlled use of the static Markdown-first baseline.
+
 ## 2026-06-06
 
+- Added V1.16B blocker resolution report, resolving the five V1.16A blocked UAT items through deterministic static harness evidence without claiming manual browser testing or changing app code.
 - Added V1.16A UAT execution report and results register updates, recording GitHub Pages prompt-control passes, blocked local/download-import checks, zero defects and no app-code changes.
 - Recorded V1.14 live GitHub Pages verification, confirming the deployed static app loads, displays approved agents and outputs, generates Project Charter-only prompts with V1 scope wording and remains free of backend, DOCX, parsing, database and storage workflows.
 - Added V1.16 user acceptance test pack with UAT plan, detailed test scripts, results register and sign-off template for static V1 prompt-control validation.

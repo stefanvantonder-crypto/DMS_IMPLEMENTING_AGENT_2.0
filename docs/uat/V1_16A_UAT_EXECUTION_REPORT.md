@@ -35,6 +35,14 @@ The GitHub Pages app resolved to `https://stefanvantonder-crypto.github.io/DMS_I
 |---:|---:|---:|---:|---:|
 | 13 | 8 | 0 | 5 | 0 |
 
+## 6A. V1.16B Static Harness Resolution Summary
+
+| Passed originally | Resolved by static harness evidence | Failed | Remaining blocked |
+|---:|---:|---:|---:|
+| 8 | 5 | 0 | 0 |
+
+The five V1.16A blocked items were retested through deterministic static harness evidence in V1.16B. Manual browser evidence was not claimed.
+
 ## 7. Tests Executed
 
 | Test ID | Result | Evidence summary |
@@ -73,6 +81,19 @@ The core prompt-control, selected-output-only, template reference, warning and s
 No fix required.
 
 Recommended next step: complete a manual V1.16B UAT completion pass for local `app/index.html` loading and Session JSON/session report download-import evidence before sign-off.
+
+## 10A. V1.16B Static Harness Resolution Note
+
+The five blocked V1.16A automation items were resolved in `docs/uat/V1_16B_BLOCKER_RESOLUTION_REPORT.md` through deterministic static harness evidence against the real app files and app logic.
+
+Manual browser testing was not performed and manual browser evidence was not claimed. The static harness validated local static file readiness, Markdown session report generation, Session JSON export structure, Session JSON import/restore behavior and fresh prompt generation after import.
+
+Updated UAT position:
+
+- Passed originally: 8.
+- Resolved by static harness evidence: 5.
+- Failed: 0.
+- Remaining blocked: 0.
 
 ## 11. Scope Confirmation
 

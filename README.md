@@ -85,6 +85,13 @@ See `docs/architecture/GITHUB_PAGES_DEPLOYMENT.md` for setup and post-deployment
 - V1.12 sample session test matrix: `docs/sample_sessions/SAMPLE_SESSION_TEST_MATRIX.md`
 - V1 user guide: `docs/user_guide/DMS_IMPLEMENTING_AGENT_V1_USER_GUIDE.md`
 
+## Release Documentation
+
+- V1.17 release readiness certificate: `docs/release/V1_17_RELEASE_READINESS_CERTIFICATE.md`
+- V1 release scope statement: `docs/release/V1_RELEASE_SCOPE_STATEMENT.md`
+- V1 known limitations: `docs/release/V1_KNOWN_LIMITATIONS.md`
+- V1 release checklist: `docs/release/V1_RELEASE_CHECKLIST.md`
+
 ## V1 Scope Notice
 
 V1 is a static Markdown-first prompt-control app. It helps prepare controlled prompts, Markdown session reports and session JSON save/restore files.
