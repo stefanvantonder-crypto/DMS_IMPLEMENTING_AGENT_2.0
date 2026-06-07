@@ -115,6 +115,27 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm no generated deliverables were created.
 - Confirm ADR status remains `Proposed`.
 
+## V2.4 DOCX Proof-Of-Concept Decision Gate Planning
+
+- Confirm `docs/planning/V2_4_DOCX_POC_DECISION_GATE.md` exists.
+- Confirm `docs/planning/V2_4_DOCX_POC_SCOPE_AND_CONSTRAINTS.md` exists.
+- Confirm `docs/planning/V2_4_DOCX_FIDELITY_EVALUATION_MODEL.md` exists.
+- Confirm `docs/planning/V2_4_DOCX_POC_ENTRY_EXIT_CRITERIA.md` exists.
+- Confirm `docs/planning/V2_4_DOCX_POC_STOP_RULES.md` exists.
+- Confirm `docs/decisions/ADR_V2_4_DOCX_POC_GATE.md` exists.
+- Confirm the decision gate says no DOCX proof-of-concept is approved yet.
+- Confirm the scope document restricts the future POC to one output type at a time.
+- Confirm the fidelity model defines pass/fail criteria and evidence requirements.
+- Confirm the entry/exit model defines readiness and success/failure criteria.
+- Confirm the stop rules document defines explicit stop conditions.
+- Confirm no app files changed.
+- Confirm no runtime files were added.
+- Confirm no backend was added.
+- Confirm no DOCX generation was added.
+- Confirm no `package.json`, `server.js` or Python implementation was added.
+- Confirm no generated deliverables were created.
+- Confirm ADR status remains `Proposed`.
+
 ## Session Report Export
 
 - Confirm session reports include selected agent, selected outputs, missing information, and generated file paths.

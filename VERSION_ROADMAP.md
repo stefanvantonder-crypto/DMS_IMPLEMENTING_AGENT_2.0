@@ -68,11 +68,15 @@ Manual Word packaging guide planning.
 
 ### V2.4
 
-DOCX export proof-of-concept decision gate.
+DOCX proof-of-concept decision gate planning.
 
 ### V2.5
 
 Backend decision gate, if required.
+
+### V2.6
+
+Possible DOCX POC approval request, if ever approved later.
 
 ### V3.0
 

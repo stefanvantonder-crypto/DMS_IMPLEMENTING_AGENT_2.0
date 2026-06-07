@@ -10,6 +10,7 @@ All notable repository-control changes are recorded here.
 
 ## 2026-06-07
 
+- Added V2.4 planning-only DOCX proof-of-concept decision gate pack, including scope and constraints, fidelity evaluation model, entry/exit criteria, stop rules and proposed ADR.
 - Added V2.3 planning-only manual Word packaging guide pack, including template application model, visuals/tables/annexure handling, packaging evidence and proposed ADR.
 - Added V2.2 planning-only controlled Markdown capture/storage workflow pack, including folder model, naming/versioning standard, review status model, evidence model and proposed ADR.
 - Added V2.1 planning-only output schema hardening and Markdown output capture/review governance pack, including quality gates, selected-output compliance model and proposed ADR.
