@@ -96,6 +96,25 @@ These are manual test categories only. They define what must be checked as V1 fe
 - Confirm no actual output folders/files were created unless already existing placeholders exist.
 - Confirm ADR status remains `Proposed`.
 
+## V2.3 Manual Word Packaging Guide Planning
+
+- Confirm `docs/planning/V2_3_MANUAL_WORD_PACKAGING_GUIDE.md` exists.
+- Confirm `docs/planning/V2_3_WORD_TEMPLATE_APPLICATION_MODEL.md` exists.
+- Confirm `docs/planning/V2_3_VISUALS_TABLES_AND_ANNEXURE_HANDLING.md` exists.
+- Confirm `docs/planning/V2_3_PACKAGING_EVIDENCE_AND_SIGNOFF_MODEL.md` exists.
+- Confirm `docs/decisions/ADR_V2_3_MANUAL_WORD_PACKAGING.md` exists.
+- Confirm the manual packaging guide defines the packaging workflow, roles and control points.
+- Confirm the template application model preserves the mandatory Word style control note.
+- Confirm the visuals/tables/annexures document defines evidence and checklist expectations.
+- Confirm the packaging evidence/signoff model distinguishes packaged baseline from client approved.
+- Confirm no app files changed.
+- Confirm no runtime files were added.
+- Confirm no backend was added.
+- Confirm no DOCX generation was added.
+- Confirm no `package.json`, `server.js` or Python implementation was added.
+- Confirm no generated deliverables were created.
+- Confirm ADR status remains `Proposed`.
+
 ## Session Report Export
 
 - Confirm session reports include selected agent, selected outputs, missing information, and generated file paths.

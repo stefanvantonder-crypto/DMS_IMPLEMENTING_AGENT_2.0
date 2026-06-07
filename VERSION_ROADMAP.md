@@ -64,11 +64,11 @@ Controlled Markdown output capture / storage workflow planning.
 
 ### V2.3
 
-Manual Word packaging guide.
+Manual Word packaging guide planning.
 
 ### V2.4
 
-DOCX proof-of-concept decision gate.
+DOCX export proof-of-concept decision gate.
 
 ### V2.5
 
